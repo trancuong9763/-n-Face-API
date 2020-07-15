@@ -19,7 +19,14 @@ namespace FaceAPI
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            timer.Start();
+            lblNgay.Text = DateTime.Now.ToString("dd/MM/yyyy");
+        }
 
+        private void timer_Tick(object sender, EventArgs e)
+        {
+            lblGio.Text = DateTime.Now.ToString("HH:mm:ss");
+            timer.Start();
         }
     }
 }
