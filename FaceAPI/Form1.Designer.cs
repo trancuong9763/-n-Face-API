@@ -363,11 +363,13 @@
             this.imgBox.Location = new System.Drawing.Point(3, 3);
             this.imgBox.Name = "imgBox";
             this.imgBox.Size = new System.Drawing.Size(255, 255);
+            this.imgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgBox.TabIndex = 0;
             this.imgBox.TabStop = false;
             // 
             // panel1
             // 
+            this.panel1.AutoSize = true;
             this.panel1.Controls.Add(this.imgBox);
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Name = "panel1";
@@ -396,6 +398,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
