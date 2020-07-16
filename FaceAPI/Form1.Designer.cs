@@ -60,12 +60,14 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.imgBox = new System.Windows.Forms.PictureBox();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -358,20 +360,28 @@
             // 
             // imgBox
             // 
-            this.imgBox.Location = new System.Drawing.Point(3, 1);
+            this.imgBox.Location = new System.Drawing.Point(3, 3);
             this.imgBox.Name = "imgBox";
-            this.imgBox.Size = new System.Drawing.Size(256, 261);
-            this.imgBox.TabIndex = 8;
+            this.imgBox.Size = new System.Drawing.Size(255, 255);
+            this.imgBox.TabIndex = 0;
             this.imgBox.TabStop = false;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.imgBox);
+            this.panel1.Location = new System.Drawing.Point(0, 1);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(261, 261);
+            this.panel1.TabIndex = 0;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(666, 456);
-            this.Controls.Add(this.imgBox);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.panel1);
             this.Name = "Form1";
             this.Text = "Phần Mềm Điểm Danh Lớp Học";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -384,6 +394,7 @@
             this.groupBox3.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).EndInit();
+            this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -420,6 +431,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Timer timer;
         private System.Windows.Forms.PictureBox imgBox;
+        private System.Windows.Forms.Panel panel1;
     }
 }
 
