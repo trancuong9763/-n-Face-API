@@ -57,7 +57,7 @@
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnDung = new System.Windows.Forms.Button();
             this.btnDiemDanh = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.imgBox2 = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.imgBox = new System.Windows.Forms.PictureBox();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -65,7 +65,7 @@
             this.groupBox2.SuspendLayout();
             this.panel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -188,7 +188,7 @@
             this.groupBox2.Controls.Add(this.btnThongKe);
             this.groupBox2.Controls.Add(this.btnDung);
             this.groupBox2.Controls.Add(this.btnDiemDanh);
-            this.groupBox2.Controls.Add(this.pictureBox1);
+            this.groupBox2.Controls.Add(this.imgBox2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.Color.Red;
             this.groupBox2.Location = new System.Drawing.Point(265, 1);
@@ -333,6 +333,7 @@
             this.btnDung.TabIndex = 2;
             this.btnDung.Text = "Dừng";
             this.btnDung.UseVisualStyleBackColor = true;
+            this.btnDung.Click += new System.EventHandler(this.btnDung_Click);
             // 
             // btnDiemDanh
             // 
@@ -345,13 +346,13 @@
             this.btnDiemDanh.UseVisualStyleBackColor = true;
             this.btnDiemDanh.Click += new System.EventHandler(this.btnDiemDanh_Click);
             // 
-            // pictureBox1
+            // imgBox2
             // 
-            this.pictureBox1.Location = new System.Drawing.Point(6, 19);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(117, 82);
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.imgBox2.Location = new System.Drawing.Point(6, 19);
+            this.imgBox2.Name = "imgBox2";
+            this.imgBox2.Size = new System.Drawing.Size(117, 82);
+            this.imgBox2.TabIndex = 0;
+            this.imgBox2.TabStop = false;
             // 
             // timer
             // 
@@ -394,7 +395,7 @@
             this.panel2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -423,7 +424,7 @@
         private System.Windows.Forms.Button btnThongKe;
         private System.Windows.Forms.Button btnDung;
         private System.Windows.Forms.Button btnDiemDanh;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox imgBox2;
         private System.Windows.Forms.Label lblVang;
         private System.Windows.Forms.Label lable8;
         private System.Windows.Forms.Label lblHienDien;
