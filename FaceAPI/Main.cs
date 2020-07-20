@@ -25,7 +25,7 @@ namespace FaceAPI
         //private VideoCaptureDevice cam;
 
         private Capture quayVideo = null;
-        static readonly CascadeClassifier cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_alt_tree.xml");
+        static readonly CascadeClassifier cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_alt.xml");
         Mat frame = new Mat();
         private bool facederection = false;//nhan diện khuôn mặt
         private bool addFace = false;// save khuôn mặt
@@ -105,11 +105,10 @@ namespace FaceAPI
                                 Directory.CreateDirectory(path);
                             Task.Factory.StartNew(() =>
                             {
-                                for (int i = 0; i < 10; i++)
-                                {
-                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtTen.Text + "_" + DateTime.Now.ToString("hh-mm-ss") + ".jpg");
+                                
+                                    resualtFace.Resize(200, 200, Inter.Cubic).Save(path + @"\" + txtTen.Text + "_" + DateTime.Now.ToString("hh-mm-ss") + ".jpg");
                                     Thread.Sleep(1000);
-                                }
+                                
                                 
                                
                             });
@@ -118,32 +117,32 @@ namespace FaceAPI
 
 
                         // Kết quả khuông mặt: grayFaceResult
-                        if (isTrained)
-                        {
-                            Image<Gray, Byte> grayFaceResult = resualtFace.Convert<Gray, Byte>().Resize(100, 100, Inter.Cubic);
-                            CvInvoke.EqualizeHist(grayFaceResult, grayFaceResult);
-                            var result = recognizer.Predict(grayFaceResult);
-                            imgBox.Image = grayFaceResult.Bitmap;
-                            imgBox2.Image = TrainedFaces[result.Label].Bitmap;
-                            imgBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+                        //if (isTrained)
+                        //{
+                        //    Image<Gray, Byte> grayFaceResult = resualtFace.Convert<Gray, Byte>().Resize(200, 200, Inter.Cubic);
+                        //    CvInvoke.EqualizeHist(grayFaceResult, grayFaceResult);
+                        //    var result = recognizer.Predict(grayFaceResult);
+                        //    imgBox.Image = grayFaceResult.Bitmap;
+                        //    imgBox2.Image = TrainedFaces[result.Label].Bitmap;
+                        //    imgBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                            //Here results found known faces
-                            if (result.Label != 0 && result.Distance < 2000)
-                            {
-                                CvInvoke.PutText(currentFrame, PersonsNames[result.Label], new Point(face.X - 2, face.Y - 2),
-                                            FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
-                                CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Green).MCvScalar, 2);
+                        //    //Here results found known faces
+                        //    if (result.Label != 0 && result.Distance < 2000)
+                        //    {
+                        //        CvInvoke.PutText(currentFrame, PersonsNames[result.Label], new Point(face.X - 2, face.Y - 2),
+                        //                    FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
+                        //        CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Green).MCvScalar, 2);
 
-                            }
-                            //here results did not found any know faces
-                            else
-                            {
-                                CvInvoke.PutText(currentFrame, "Unknown", new Point(face.X - 2, face.Y - 2),
-                                    FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
-                                CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
+                        //    }
+                        //    //here results did not found any know faces
+                        //    else
+                        //    {
+                        //        CvInvoke.PutText(currentFrame, "Unknown", new Point(face.X - 2, face.Y - 2),
+                        //            FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
+                        //        CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
 
-                            }
-                        }
+                        //    }
+                        //}
                     }
 
                 }
@@ -191,7 +190,7 @@ namespace FaceAPI
                 string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
                 foreach (var file in files)
                 {
-                    Image<Gray, Byte> trainedImage = new Image<Gray, Byte>(file).Resize(100, 100, Inter.Cubic);
+                    Image<Gray, Byte> trainedImage = new Image<Gray, Byte>(file).Resize(200, 200, Inter.Cubic);
                     CvInvoke.EqualizeHist(trainedImage, trainedImage);
                     TrainedFaces.Add(trainedImage);
                     PersonsLabes.Add(ImagesCount);
