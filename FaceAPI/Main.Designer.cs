@@ -1,6 +1,6 @@
 ﻿namespace FaceAPI
 {
-    partial class Form1
+    partial class Main
     {
         /// <summary>
         /// Required designer variable.
@@ -37,7 +37,7 @@
             this.textBox3 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtTen = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -79,7 +79,7 @@
             this.groupBox1.Controls.Add(this.textBox3);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtTen);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
@@ -116,6 +116,7 @@
             this.btnThem.TabIndex = 2;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
             // 
             // textBox4
             // 
@@ -147,12 +148,12 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Lớp:";
             // 
-            // textBox1
+            // txtTen
             // 
-            this.textBox1.Location = new System.Drawing.Point(78, 19);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtTen.Location = new System.Drawing.Point(78, 19);
+            this.txtTen.Name = "txtTen";
+            this.txtTen.Size = new System.Drawing.Size(174, 20);
+            this.txtTen.TabIndex = 2;
             // 
             // label3
             // 
@@ -208,15 +209,15 @@
             this.panel2.Controls.Add(this.lstDiHoc);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(6, 107);
+            this.panel2.Location = new System.Drawing.Point(6, 123);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(386, 341);
+            this.panel2.Size = new System.Drawing.Size(386, 325);
             this.panel2.TabIndex = 7;
             // 
             // lblVang
             // 
             this.lblVang.AutoSize = true;
-            this.lblVang.Location = new System.Drawing.Point(239, 311);
+            this.lblVang.Location = new System.Drawing.Point(238, 285);
             this.lblVang.Name = "lblVang";
             this.lblVang.Size = new System.Drawing.Size(21, 13);
             this.lblVang.TabIndex = 15;
@@ -225,7 +226,7 @@
             // lable8
             // 
             this.lable8.AutoSize = true;
-            this.lable8.Location = new System.Drawing.Point(192, 311);
+            this.lable8.Location = new System.Drawing.Point(192, 285);
             this.lable8.Name = "lable8";
             this.lable8.Size = new System.Drawing.Size(40, 13);
             this.lable8.TabIndex = 14;
@@ -234,7 +235,7 @@
             // lblHienDien
             // 
             this.lblHienDien.AutoSize = true;
-            this.lblHienDien.Location = new System.Drawing.Point(77, 311);
+            this.lblHienDien.Location = new System.Drawing.Point(76, 285);
             this.lblHienDien.Name = "lblHienDien";
             this.lblHienDien.Size = new System.Drawing.Size(21, 13);
             this.lblHienDien.TabIndex = 13;
@@ -243,7 +244,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 311);
+            this.label7.Location = new System.Drawing.Point(3, 285);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(67, 13);
             this.label7.TabIndex = 12;
@@ -254,7 +255,7 @@
             this.lstVang.FormattingEnabled = true;
             this.lstVang.Location = new System.Drawing.Point(195, 31);
             this.lstVang.Name = "lstVang";
-            this.lstVang.Size = new System.Drawing.Size(186, 264);
+            this.lstVang.Size = new System.Drawing.Size(186, 251);
             this.lstVang.TabIndex = 11;
             // 
             // lstDiHoc
@@ -262,7 +263,7 @@
             this.lstDiHoc.FormattingEnabled = true;
             this.lstDiHoc.Location = new System.Drawing.Point(3, 31);
             this.lstDiHoc.Name = "lstDiHoc";
-            this.lstDiHoc.Size = new System.Drawing.Size(186, 264);
+            this.lstDiHoc.Size = new System.Drawing.Size(186, 251);
             this.lstDiHoc.TabIndex = 10;
             // 
             // label6
@@ -289,7 +290,7 @@
             this.groupBox3.Controls.Add(this.lblGio);
             this.groupBox3.Location = new System.Drawing.Point(231, 11);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(161, 90);
+            this.groupBox3.Size = new System.Drawing.Size(161, 106);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thời Gian";
@@ -317,17 +318,18 @@
             // btnThongKe
             // 
             this.btnThongKe.ForeColor = System.Drawing.Color.Black;
-            this.btnThongKe.Location = new System.Drawing.Point(130, 78);
+            this.btnThongKe.Location = new System.Drawing.Point(130, 94);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(89, 23);
             this.btnThongKe.TabIndex = 3;
             this.btnThongKe.Text = "Thống Kê";
             this.btnThongKe.UseVisualStyleBackColor = true;
+            this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
             // btnDung
             // 
             this.btnDung.ForeColor = System.Drawing.Color.Black;
-            this.btnDung.Location = new System.Drawing.Point(129, 48);
+            this.btnDung.Location = new System.Drawing.Point(129, 57);
             this.btnDung.Name = "btnDung";
             this.btnDung.Size = new System.Drawing.Size(90, 23);
             this.btnDung.TabIndex = 2;
@@ -338,7 +340,7 @@
             // btnDiemDanh
             // 
             this.btnDiemDanh.ForeColor = System.Drawing.Color.Black;
-            this.btnDiemDanh.Location = new System.Drawing.Point(129, 19);
+            this.btnDiemDanh.Location = new System.Drawing.Point(128, 19);
             this.btnDiemDanh.Name = "btnDiemDanh";
             this.btnDiemDanh.Size = new System.Drawing.Size(90, 23);
             this.btnDiemDanh.TabIndex = 1;
@@ -350,7 +352,7 @@
             // 
             this.imgBox2.Location = new System.Drawing.Point(6, 19);
             this.imgBox2.Name = "imgBox2";
-            this.imgBox2.Size = new System.Drawing.Size(117, 82);
+            this.imgBox2.Size = new System.Drawing.Size(117, 98);
             this.imgBox2.TabIndex = 0;
             this.imgBox2.TabStop = false;
             // 
@@ -377,7 +379,7 @@
             this.panel1.Size = new System.Drawing.Size(261, 261);
             this.panel1.TabIndex = 0;
             // 
-            // Form1
+            // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -385,7 +387,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
-            this.Name = "Form1";
+            this.Name = "Main";
             this.Text = "Phần Mềm Điểm Danh Lớp Học";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -415,7 +417,7 @@
         private System.Windows.Forms.TextBox textBox3;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtTen;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.GroupBox groupBox3;
