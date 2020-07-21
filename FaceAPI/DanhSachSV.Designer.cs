@@ -44,11 +44,10 @@
             this.Ma_SV,
             this.Ten_SV,
             this.MaLop});
-            this.dgvDSSV.Location = new System.Drawing.Point(351, 11);
-            this.dgvDSSV.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dgvDSSV.Location = new System.Drawing.Point(470, 12);
             this.dgvDSSV.Name = "dgvDSSV";
             this.dgvDSSV.RowTemplate.Height = 24;
-            this.dgvDSSV.Size = new System.Drawing.Size(238, 288);
+            this.dgvDSSV.Size = new System.Drawing.Size(318, 354);
             this.dgvDSSV.TabIndex = 0;
             // 
             // STT_SV
@@ -77,11 +76,10 @@
             // 
             // DanhSachSV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 438);
+            this.ClientSize = new System.Drawing.Size(800, 539);
             this.Controls.Add(this.dgvDSSV);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DanhSachSV";
             this.Text = "DanhSachSV";
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).EndInit();
