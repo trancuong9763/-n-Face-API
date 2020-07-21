@@ -116,33 +116,33 @@ namespace FaceAPI
                         addFace = false;
 
 
-                        // Kết quả khuông mặt: grayFaceResult
-                        //if (isTrained)
-                        //{
-                        //    Image<Gray, Byte> grayFaceResult = resualtFace.Convert<Gray, Byte>().Resize(200, 200, Inter.Cubic);
-                        //    CvInvoke.EqualizeHist(grayFaceResult, grayFaceResult);
-                        //    var result = recognizer.Predict(grayFaceResult);
-                        //    imgBox.Image = grayFaceResult.Bitmap;
-                        //    imgBox2.Image = TrainedFaces[result.Label].Bitmap;
-                        //    imgBox2.SizeMode = PictureBoxSizeMode.StretchImage;
+                        //Kết quả khuông mặt: grayFaceResult
+                        if (isTrained)
+                        {
+                            Image<Gray, Byte> grayFaceResult = resualtFace.Convert<Gray, Byte>().Resize(200, 200, Inter.Cubic);
+                            CvInvoke.EqualizeHist(grayFaceResult, grayFaceResult);
+                            var result = recognizer.Predict(grayFaceResult);
+                            imgBox.Image = grayFaceResult.Bitmap;
+                            imgBox2.Image = TrainedFaces[result.Label].Bitmap;
+                            imgBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 
-                        //    //Here results found known faces
-                        //    if (result.Label != 0 && result.Distance < 2000)
-                        //    {
-                        //        CvInvoke.PutText(currentFrame, PersonsNames[result.Label], new Point(face.X - 2, face.Y - 2),
-                        //                    FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
-                        //        CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Green).MCvScalar, 2);
+                            //Here results found known faces
+                            if (result.Label != 0 && result.Distance < 2000)
+                            {
+                                CvInvoke.PutText(currentFrame, PersonsNames[result.Label], new Point(face.X - 2, face.Y - 2),
+                                            FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
+                                CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Green).MCvScalar, 2);
 
-                        //    }
-                        //    //here results did not found any know faces
-                        //    else
-                        //    {
-                        //        CvInvoke.PutText(currentFrame, "Unknown", new Point(face.X - 2, face.Y - 2),
-                        //            FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
-                        //        CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
+                            }
+                            //here results did not found any know faces
+                            else
+                            {
+                                CvInvoke.PutText(currentFrame, "Unknown", new Point(face.X - 2, face.Y - 2),
+                                    FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
+                                CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
 
-                        //    }
-                        //}
+                            }
+                        }
                     }
 
                 }

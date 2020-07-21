@@ -89,6 +89,18 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DangNhap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DangNhap.Designer.cs">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DanhSachSV.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DanhSachSV.Designer.cs">
+      <DependentUpon>DanhSachSV.cs</DependentUpon>
+    </Compile>
     <Compile Include="Main.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -97,6 +109,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="DangNhap.resx">
+      <DependentUpon>DangNhap.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DanhSachSV.resx">
+      <DependentUpon>DanhSachSV.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -125,14 +143,23 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="haarcascade_frontalface_alt_tree.xml">
+    <None Include="haarcascade_frontalface_alt.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="haarcascade_frontalface_alt.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{798e4c04-3ddc-4917-bada-8614a20c4716}</Project>
+      <Name>DAO</Name>
+    </ProjectReference>
+    <ProjectReference Include="BUS\BUS.csproj">
+      <Project>{7cd6a236-e288-45c1-85e1-7229f8f82418}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
+    <ProjectReference Include="DTO\DTO.csproj">
+      <Project>{4ff0da5b-99f9-4dfc-9716-55effeba9fb4}</Project>
+      <Name>DTO</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

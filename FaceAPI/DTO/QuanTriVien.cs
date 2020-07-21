@@ -1,0 +1,14 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DTO
+{
+    public class QuanTriVien
+    {
+        public String Ten_QTV { get; set; }
+        public String Mat_Khau { get; set; }
+    }
+}
