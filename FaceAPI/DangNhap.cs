@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
-using DAO;
+using BUS;
 namespace FaceAPI
 {
     public partial class DangNhap : Form
@@ -21,9 +21,9 @@ namespace FaceAPI
 
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
-            string tenDN = txtTenDN.Text;
+            string tenTK = txtTenDN.Text;
             string matKhau = txtMK.Text;
-            if(dangNhap(tenDN,matKhau))
+            if(TaiKhoanBUS.KTDangNhap(tenTK, matKhau))
             {
                 Main m = new Main();
                 this.Hide();
@@ -37,10 +37,7 @@ namespace FaceAPI
 
         }
 
-        bool dangNhap(string tenDN,string matKhau)
-        {
-            return DangNhapDAO.Instance.dangNhap(tenDN, matKhau);
-        }
+        
         private void btnThoat_Click(object sender, EventArgs e)
         {
             Application.Exit();

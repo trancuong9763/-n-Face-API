@@ -149,16 +149,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DAO\DAO.csproj">
-      <Project>{798e4c04-3ddc-4917-bada-8614a20c4716}</Project>
-      <Name>DAO</Name>
-    </ProjectReference>
-    <ProjectReference Include="DTO\DTO.csproj">
-      <Project>{4ff0da5b-99f9-4dfc-9716-55effeba9fb4}</Project>
-      <Name>DTO</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Resources\bg1.jpg" />
   </ItemGroup>
   <ItemGroup>
@@ -166,6 +156,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\user.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BUS\BUS.csproj">
+      <Project>{30c0e675-6459-4973-9d6f-c9f9d5342908}</Project>
+      <Name>BUS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

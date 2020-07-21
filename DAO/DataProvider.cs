@@ -10,110 +10,101 @@ namespace DAO
 {
     public class DataProvider
     {
-        private string connectionString = @"Data Source=LAPTOP-TQ34PGV2\MSSQLSERVER01;Initial Catalog=DiemDanh;Integrated Security=True";
-        private static DataProvider instance;
-        private DataProvider(){ } 
-        public static DataProvider Instance
+        private static SqlDataAdapter adapter = new SqlDataAdapter();
+        private static SqlConnection conn = new SqlConnection(@"Data Source = QUAN\SQLEXPRESS;Initial Catalog = DiemDanh; Integrated Security = True");
+
+        public DataProvider()
         {
-            get {  if (instance == null) instance = new DataProvider(); return DataProvider.instance; }
-            private set { DataProvider.instance = value; }
-        }
-        public DataTable ExecuteQuery(string query, object[] parameter = null)
-        {
-            DataTable data = new DataTable();
 
-            using (SqlConnection connection = new SqlConnection(connectionString))
-            {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand(query, connection);
-
-                if (parameter != null)
-                {
-                    string[] listPara = query.Split(' ');
-                    int i = 0;
-                    foreach (string item in listPara)
-                    {
-                        if (item.Contains('@'))
-                        {
-                            command.Parameters.AddWithValue(item, parameter[i]);
-                            i++;
-                        }
-                    }
-                }
-
-                SqlDataAdapter adapter = new SqlDataAdapter(command);
-
-                adapter.Fill(data);
-
-                connection.Close();
-            }
-
-            return data;
         }
 
-        public int ExecuteNonQuery(string query, object[] parameter = null)
+        private static SqlConnection OpenConnection()
         {
-            int data = 0;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            if (conn.State == ConnectionState.Closed || conn.State == ConnectionState.Broken)
             {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand(query, connection);
-
-                if (parameter != null)
-                {
-                    string[] listPara = query.Split(' ');
-                    int i = 0;
-                    foreach (string item in listPara)
-                    {
-                        if (item.Contains('@'))
-                        {
-                            command.Parameters.AddWithValue(item, parameter[i]);
-                            i++;
-                        }
-                    }
-                }
-
-                data = command.ExecuteNonQuery();
-
-                connection.Close();
+                conn.Open();
             }
-
-            return data;
+            return conn;
         }
 
-        public object ExecuteScalar(string query, object[] parameter = null)
+        public static DataTable ExecuteSelectQuery(string query, SqlParameter[] param)
         {
-            object data = 0;
-
-            using (SqlConnection connection = new SqlConnection(connectionString))
+            SqlCommand cmd = new SqlCommand();
+            DataTable dtbKetQua = new DataTable();
+            try
             {
-                connection.Open();
-
-                SqlCommand command = new SqlCommand(query, connection);
-
-                if (parameter != null)
-                {
-                    string[] listPara = query.Split(' ');
-                    int i = 0;
-                    foreach (string item in listPara)
-                    {
-                        if (item.Contains('@'))
-                        {
-                            command.Parameters.AddWithValue(item, parameter[i]);
-                            i++;
-                        }
-                    }
-                }
-
-                data = command.ExecuteScalar();
-
-                connection.Close();
+                cmd.Connection = OpenConnection();
+                cmd.CommandText = query;
+                cmd.Parameters.AddRange(param);
+                adapter.SelectCommand = cmd;
+                adapter.Fill(dtbKetQua);
+                conn.Close();
             }
+            catch (SqlException e)
+            {
+                return null;
+            }
+            return dtbKetQua;
+        }
 
-            return data;
+        public static int ExecuteInsertQuery(string query, SqlParameter[] param)
+        {
+            SqlCommand cmd = new SqlCommand();
+            int rowsAffected;
+            try
+            {
+                cmd.Connection = OpenConnection();
+                cmd.CommandText = query;
+                cmd.Parameters.AddRange(param);
+                adapter.InsertCommand = cmd;
+                rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (SqlException e)
+            {
+                return 0;
+            }
+            return rowsAffected;
+        }
+
+        public static int ExecuteUpdateQuery(string query, SqlParameter[] param)
+        {
+            SqlCommand cmd = new SqlCommand();
+            int rowsAffected;
+            try
+            {
+                cmd.Connection = OpenConnection();
+                cmd.CommandText = query;
+                cmd.Parameters.AddRange(param);
+                adapter.UpdateCommand = cmd;
+                rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (SqlException e)
+            {
+                return 0;
+            }
+            return rowsAffected;
+        }
+
+        public static int ExecuteDeleteQuery(string query, SqlParameter[] param)
+        {
+            SqlCommand cmd = new SqlCommand();
+            int rowsAffected;
+            try
+            {
+                cmd.Connection = OpenConnection();
+                cmd.CommandText = query;
+                cmd.Parameters.AddRange(param);
+                adapter.DeleteCommand = cmd;
+                rowsAffected = cmd.ExecuteNonQuery();
+                conn.Close();
+            }
+            catch (SqlException e)
+            {
+                return 0;
+            }
+            return rowsAffected;
         }
     }
 }
