@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{798E4C04-3DDC-4917-BADA-8614A20C4716}</ProjectGuid>
+    <ProjectGuid>{7B76D1EB-7975-42A7-99F8-27093CEA3D39}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DAO</RootNamespace>
-    <AssemblyName>DAO</AssemblyName>
+    <RootNamespace>BUS</RootNamespace>
+    <AssemblyName>BUS</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
@@ -41,14 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DangNhapDAO.cs" />
-    <Compile Include="DataProvider.cs" />
+    <Compile Include="DangNhapBUS.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\FaceAPI\DTO\DTO.csproj">
-      <Project>{4ff0da5b-99f9-4dfc-9716-55effeba9fb4}</Project>
-      <Name>DTO</Name>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{798e4c04-3ddc-4917-bada-8614a20c4716}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
