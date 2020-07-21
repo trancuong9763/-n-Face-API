@@ -149,9 +149,9 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\BUS\BUS.csproj">
-      <Project>{7b76d1eb-7975-42a7-99f8-27093cea3d39}</Project>
-      <Name>BUS</Name>
+    <ProjectReference Include="..\DAO\DAO.csproj">
+      <Project>{798e4c04-3ddc-4917-bada-8614a20c4716}</Project>
+      <Name>DAO</Name>
     </ProjectReference>
     <ProjectReference Include="DTO\DTO.csproj">
       <Project>{4ff0da5b-99f9-4dfc-9716-55effeba9fb4}</Project>
