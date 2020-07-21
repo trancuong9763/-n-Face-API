@@ -44,7 +44,7 @@
             this.lblTenDN.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTenDN.Location = new System.Drawing.Point(23, 143);
             this.lblTenDN.Name = "lblTenDN";
-            this.lblTenDN.Size = new System.Drawing.Size(124, 22);
+            this.lblTenDN.Size = new System.Drawing.Size(98, 19);
             this.lblTenDN.TabIndex = 0;
             this.lblTenDN.Text = "Tên đăng nhập";
             // 
@@ -54,7 +54,7 @@
             this.lblMatKhau.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblMatKhau.Location = new System.Drawing.Point(23, 223);
             this.lblMatKhau.Name = "lblMatKhau";
-            this.lblMatKhau.Size = new System.Drawing.Size(82, 22);
+            this.lblMatKhau.Size = new System.Drawing.Size(67, 19);
             this.lblMatKhau.TabIndex = 1;
             this.lblMatKhau.Text = "Mật khẩu";
             // 
@@ -73,9 +73,9 @@
             this.txtMK.Location = new System.Drawing.Point(153, 213);
             this.txtMK.Multiline = true;
             this.txtMK.Name = "txtMK";
+            this.txtMK.PasswordChar = '*';
             this.txtMK.Size = new System.Drawing.Size(187, 32);
             this.txtMK.TabIndex = 3;
-            this.txtMK.UseSystemPasswordChar = true;
             // 
             // btnDangNhap
             // 
@@ -113,7 +113,7 @@
             // 
             // DangNhap
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
