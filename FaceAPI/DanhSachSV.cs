@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DAO;
+
 
 namespace FaceAPI
 {
@@ -16,12 +16,7 @@ namespace FaceAPI
         public DanhSachSV()
         {
             InitializeComponent();
-            LoadDSSV();
         }
-        void LoadDSSV()
-        {
-            string query = "Select *  from ThongTinSV";
-            dgvDSSV.DataSource = DataProvider.Instance.ExecuteQuery(query);  
-        }
+       
     }
 }

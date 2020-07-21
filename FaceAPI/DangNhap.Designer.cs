@@ -73,9 +73,9 @@
             this.txtMK.Location = new System.Drawing.Point(153, 213);
             this.txtMK.Multiline = true;
             this.txtMK.Name = "txtMK";
+            this.txtMK.PasswordChar = '*';
             this.txtMK.Size = new System.Drawing.Size(187, 32);
             this.txtMK.TabIndex = 3;
-            this.txtMK.UseSystemPasswordChar = true;
             // 
             // btnDangNhap
             // 
@@ -128,6 +128,7 @@
             this.Font = new System.Drawing.Font("Times New Roman", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "DangNhap";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DangNhap";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
