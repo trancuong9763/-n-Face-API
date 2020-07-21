@@ -38,8 +38,8 @@ namespace FaceAPI
         List<int> PersonsLabes = new List<int>();
 
         //bool ktImg = false;
-        
-        
+
+
 
         public Main()
         {
@@ -67,7 +67,7 @@ namespace FaceAPI
             quayVideo.Start();
             facederection = true;
             //cam = new VideoCaptureDevice(camera[0].MonikerString);
-                
+
 
         }
 
@@ -81,10 +81,10 @@ namespace FaceAPI
             if (facederection)
             {
                 Mat grayImage = new Mat();
-                CvInvoke.CvtColor(currentFrame, grayImage,ColorConversion.Bgr2Gray);
+                CvInvoke.CvtColor(currentFrame, grayImage, ColorConversion.Bgr2Gray);
                 CvInvoke.EqualizeHist(grayImage, grayImage);
 
-                Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayImage, 1.2, 1);
+                Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayImage, 1.1, 3,Size.Empty,Size.Empty);
                 if (faces.Length > 0)
                 {
                     foreach (var face in faces)
@@ -105,12 +105,12 @@ namespace FaceAPI
                                 Directory.CreateDirectory(path);
                             Task.Factory.StartNew(() =>
                             {
-                                
-                                    resualtFace.Resize(200, 200, Inter.Cubic).Save(path + @"\" + txtTen.Text + "_" + DateTime.Now.ToString("hh-mm-ss") + ".jpg");
-                                    Thread.Sleep(1000);
-                                
-                                
-                               
+
+                                resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtTen.Text + "_" + DateTime.Now.ToString("hh-mm-ss") + ".jpg");
+                                Thread.Sleep(1000);
+
+
+
                             });
                         }
                         addFace = false;
@@ -119,7 +119,7 @@ namespace FaceAPI
                         //Kết quả khuông mặt: grayFaceResult
                         if (isTrained)
                         {
-                            Image<Gray, Byte> grayFaceResult = resualtFace.Convert<Gray, Byte>().Resize(200, 200, Inter.Cubic);
+                            Image<Gray, Byte> grayFaceResult = resualtFace.Convert<Gray, Byte>().Resize(100, 100, Inter.Cubic);
                             CvInvoke.EqualizeHist(grayFaceResult, grayFaceResult);
                             var result = recognizer.Predict(grayFaceResult);
                             imgBox.Image = grayFaceResult.Bitmap;
@@ -151,10 +151,10 @@ namespace FaceAPI
             imgBox.Image = currentFrame.Bitmap;
         }
 
-        
 
-        
-           
+
+
+
 
         private void btnDung_Click(object sender, EventArgs e)
         {
@@ -165,11 +165,11 @@ namespace FaceAPI
         private void btnThem_Click(object sender, EventArgs e)
         {
             addFace = true;
-            
+
 
         }
 
-   
+
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
@@ -190,7 +190,7 @@ namespace FaceAPI
                 string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
                 foreach (var file in files)
                 {
-                    Image<Gray, Byte> trainedImage = new Image<Gray, Byte>(file).Resize(200, 200, Inter.Cubic);
+                    Image<Gray, Byte> trainedImage = new Image<Gray, Byte>(file).Resize(100, 100, Inter.Cubic);
                     CvInvoke.EqualizeHist(trainedImage, trainedImage);
                     TrainedFaces.Add(trainedImage);
                     PersonsLabes.Add(ImagesCount);
@@ -203,7 +203,7 @@ namespace FaceAPI
                 }
                 if (TrainedFaces.Count() > 0)
                 {
-                    
+
                     recognizer = new EigenFaceRecognizer(ImagesCount, Threshold);
                     recognizer.Train(TrainedFaces.ToArray(), PersonsLabes.ToArray());
 
@@ -218,7 +218,7 @@ namespace FaceAPI
                     return false;
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 isTrained = false;
                 MessageBox.Show("Lỗi: " + ex.Message);
