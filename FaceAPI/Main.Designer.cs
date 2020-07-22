@@ -55,7 +55,7 @@
             this.lblNgay = new System.Windows.Forms.Label();
             this.lblGio = new System.Windows.Forms.Label();
             this.btnThongKe = new System.Windows.Forms.Button();
-            this.btnDung = new System.Windows.Forms.Button();
+            this.btnLuu = new System.Windows.Forms.Button();
             this.btnDiemDanh = new System.Windows.Forms.Button();
             this.imgBox2 = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
@@ -189,7 +189,7 @@
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.groupBox3);
             this.groupBox2.Controls.Add(this.btnThongKe);
-            this.groupBox2.Controls.Add(this.btnDung);
+            this.groupBox2.Controls.Add(this.btnLuu);
             this.groupBox2.Controls.Add(this.btnDiemDanh);
             this.groupBox2.Controls.Add(this.imgBox2);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -320,7 +320,7 @@
             // btnThongKe
             // 
             this.btnThongKe.ForeColor = System.Drawing.Color.Black;
-            this.btnThongKe.Location = new System.Drawing.Point(130, 94);
+            this.btnThongKe.Location = new System.Drawing.Point(129, 58);
             this.btnThongKe.Name = "btnThongKe";
             this.btnThongKe.Size = new System.Drawing.Size(89, 23);
             this.btnThongKe.TabIndex = 3;
@@ -328,16 +328,16 @@
             this.btnThongKe.UseVisualStyleBackColor = true;
             this.btnThongKe.Click += new System.EventHandler(this.btnThongKe_Click);
             // 
-            // btnDung
+            // btnLuu
             // 
-            this.btnDung.ForeColor = System.Drawing.Color.Black;
-            this.btnDung.Location = new System.Drawing.Point(129, 57);
-            this.btnDung.Name = "btnDung";
-            this.btnDung.Size = new System.Drawing.Size(90, 23);
-            this.btnDung.TabIndex = 2;
-            this.btnDung.Text = "Dừng";
-            this.btnDung.UseVisualStyleBackColor = true;
-            this.btnDung.Click += new System.EventHandler(this.btnDung_Click);
+            this.btnLuu.ForeColor = System.Drawing.Color.Black;
+            this.btnLuu.Location = new System.Drawing.Point(129, 94);
+            this.btnLuu.Name = "btnLuu";
+            this.btnLuu.Size = new System.Drawing.Size(90, 23);
+            this.btnLuu.TabIndex = 2;
+            this.btnLuu.Text = "Lưu";
+            this.btnLuu.UseVisualStyleBackColor = true;
+            this.btnLuu.Click += new System.EventHandler(this.btnDung_Click);
             // 
             // btnDiemDanh
             // 
@@ -426,7 +426,7 @@
         private System.Windows.Forms.Label lblNgay;
         private System.Windows.Forms.Label lblGio;
         private System.Windows.Forms.Button btnThongKe;
-        private System.Windows.Forms.Button btnDung;
+        private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnDiemDanh;
         private System.Windows.Forms.PictureBox imgBox2;
         private System.Windows.Forms.Label lblVang;

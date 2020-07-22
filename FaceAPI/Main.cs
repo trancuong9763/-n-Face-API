@@ -190,8 +190,11 @@ namespace FaceAPI
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-          
-            addFace = false;
+          for(int i =0; i<PersonsNames[0].Length; i++)
+            {
+                Debug.WriteLine(PersonsNames[i] + "test");
+            }
+            
         }
 
         private bool TrainImagesFromDir()// lấy hình ảnh trong file
