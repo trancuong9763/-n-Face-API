@@ -36,15 +36,19 @@ namespace FaceAPI
         List<string> PersonsNames = new List<string>();
         List<Image<Gray, Byte>> TrainedFaces = new List<Image<Gray, byte>>();
         List<int> PersonsLabes = new List<int>();
-
+        
         string names = null;
-        //bool ktImg = false;
-
+        bool ktThongKe = false;
+        int hienDien=0, vang=0;
 
 
         public Main()
         {
             InitializeComponent();
+            btnStop.Enabled = false;
+            btnDiemDanh.Enabled = false;
+            btnThongKe.Enabled = false;
+            btnLuu.Enabled = false;
             //camera = new FilterInfoCollection(FilterCategory.VideoInputDevice);
 
         }
@@ -63,9 +67,10 @@ namespace FaceAPI
 
         private void btnDiemDanh_Click(object sender, EventArgs e)
         {
-          
+            btnThongKe.Enabled = true;
             facederection = true;
             TrainImagesFromDir();
+            btnStart.Enabled = false;
             //cam = new VideoCaptureDevice(camera[0].MonikerString);
 
 
@@ -106,7 +111,7 @@ namespace FaceAPI
                             Task.Factory.StartNew(() =>
                             {
 
-                                resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtTen.Text + "_" + DateTime.Now.ToString("hh-mm-ss") + ".jpg");
+                                resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtTen.Text + "_" +txtMSSV.Text+ "_"+ DateTime.Now.ToString("dd-MM-yyyy") + ".jpg");
                                 Thread.Sleep(1000);
 
 
@@ -125,7 +130,6 @@ namespace FaceAPI
                             imgBox.Image = grayFaceResult.Bitmap;
                             //imgBox2.Image = TrainedFaces[result.Label].Bitmap;
                             imgBox2.SizeMode = PictureBoxSizeMode.StretchImage;
-
                             //Here results found known faces
                             if (result.Label != 0 && result.Distance < 2000)
                             {
@@ -135,10 +139,10 @@ namespace FaceAPI
                                 names = PersonsNames[result.Label];
                                 this.Invoke(new MethodInvoker(delegate ()
                                 {
-                                    int t = 0;
+                                    
                                     if (lstDiHoc.Items.Count == 0)
                                     {
-                                        lstDiHoc.Items.Add(names);
+                                        lstDiHoc.Items.Add(names + " " + lblNgay.Text);
                                     }
                                     if (lstDiHoc.FindString(PersonsNames[result.Label]) != -1)
                                     {
@@ -146,11 +150,13 @@ namespace FaceAPI
                                     }
                                     else
                                     {
-                                        lstDiHoc.Items.Add(names);
+                                        lstDiHoc.Items.Add(names + " " + lblNgay.Text);
                                     }
+                                    
+                                    
                                 }));
-
                             }
+
                             //here results did not found any know faces
                             else
                             {
@@ -159,7 +165,19 @@ namespace FaceAPI
                                 CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
 
                             }
+                            //this.Invoke(new MethodInvoker(delegate ()
+                            //{
+                            //    if(ktThongKe)
+                            //    {
+                                    
+                                   
+                            //    }
+                               
+                            //}));
+
+
                         }
+                      
                     }
 
                 }
@@ -175,7 +193,7 @@ namespace FaceAPI
 
         private void btnDung_Click(object sender, EventArgs e)
         {
-           
+            btnStart.Enabled = false;
 
         }
 
@@ -190,11 +208,43 @@ namespace FaceAPI
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-          for(int i =0; i<PersonsNames[0].Length; i++)
+            facederection = false;
+            btnStart.Enabled = false;
+            btnDiemDanh.Enabled = false;
+            imgBox2.Image= null;
+            btnLuu.Enabled = true;
+            if (lstDiHoc.Items.Count == 0)
             {
-                Debug.WriteLine(PersonsNames[i] + "test");
+                for (int i = 0; i < PersonsLabes.Count; i++)
+                {
+                    if(lstVang.Items.IndexOf(PersonsNames[i])!=-1)
+                    {
+
+                    }
+                    else
+                    {
+                        lstVang.Items.Add(PersonsNames[i]+" "+lblNgay.Text);
+                    }
+                    
+                }
             }
-            
+            else
+            {
+                for(int i=0;i<PersonsLabes.Count;i++)
+                {
+                    if(lstDiHoc.FindString(PersonsNames[i])!=-1)
+                    {
+                        //nếu trong list đi học tồn tại tên rồi thì không add
+                    }
+                    else
+                    {
+                        lstVang.Items.Add(PersonsNames[i] + " " + lblNgay.Text);
+                    }
+                }
+            }
+            lblHienDien.Text = lstDiHoc.Items.Count.ToString();
+            lblVang.Text = lstVang.Items.Count.ToString();
+
         }
 
         private bool TrainImagesFromDir()// lấy hình ảnh trong file
@@ -215,9 +265,11 @@ namespace FaceAPI
                     TrainedFaces.Add(trainedImage);
                     PersonsLabes.Add(ImagesCount);
                     string name = file.Split('\\').Last().Split('_')[0];
+                    string mssv = file.Split('\\').Last().Split('_')[1];
+
                     PersonsNames.Add(name);
                     ImagesCount++;
-                    Debug.WriteLine(ImagesCount + ". " + name);
+                    Debug.WriteLine(ImagesCount + ". " + name +" mssv: "+mssv);
 
 
                 }
@@ -251,10 +303,13 @@ namespace FaceAPI
             quayVideo = new Capture();
             quayVideo.ImageGrabbed += ProcessFrame;
             quayVideo.Start();
+            btnStop.Enabled = true;
+            btnDiemDanh.Enabled = true;
         }
 
         private void btnStop_Click(object sender, EventArgs e)
         {
+            btnStart.Enabled = true;
             quayVideo.Stop();
         }
     }

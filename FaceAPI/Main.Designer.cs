@@ -34,7 +34,7 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtMSSV = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtTen = new System.Windows.Forms.TextBox();
@@ -76,7 +76,7 @@
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.txtMSSV);
             this.groupBox1.Controls.Add(this.textBox2);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtTen);
@@ -127,12 +127,12 @@
             this.textBox4.Size = new System.Drawing.Size(174, 20);
             this.textBox4.TabIndex = 6;
             // 
-            // textBox3
+            // txtMSSV
             // 
-            this.textBox3.Location = new System.Drawing.Point(78, 71);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(174, 20);
-            this.textBox3.TabIndex = 5;
+            this.txtMSSV.Location = new System.Drawing.Point(78, 71);
+            this.txtMSSV.Name = "txtMSSV";
+            this.txtMSSV.Size = new System.Drawing.Size(174, 20);
+            this.txtMSSV.TabIndex = 5;
             // 
             // textBox2
             // 
@@ -390,6 +390,7 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);
             this.Name = "Main";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Phần Mềm Điểm Danh Lớp Học";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.groupBox1.ResumeLayout(false);
@@ -416,7 +417,7 @@
         private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtMSSV;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox txtTen;
