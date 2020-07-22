@@ -61,8 +61,7 @@ namespace FaceAPI
 
         private void btnXoa_Click(object sender, EventArgs e)
         {
-            TaiKhoanDTO tk = new TaiKhoanDTO();
-            tk.Ten_QTV = txtTaiKhoan.Text;
+            TaiKhoanDTO tk = TaiKhoanBUS.LayThongTinTaiKhoan(txtTaiKhoan.Text);
             tk.Mat_Khau = txtMatKhau.Text;
             if (TaiKhoanBUS.XoaTK(tk))
             {
@@ -84,6 +83,8 @@ namespace FaceAPI
         {
             if(dgvTaiKhoan.Rows[e.RowIndex].Cells[e.ColumnIndex].Value !=null)
             {
+                txtTaiKhoan.Enabled = false;
+                GiaoDienThem(false);
                 dgvTaiKhoan.CurrentRow.Selected = true;
                 txtTaiKhoan.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Ten_QTV"].FormattedValue.ToString();
                 txtMatKhau.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Mat_Khau"].FormattedValue.ToString();
@@ -93,11 +94,9 @@ namespace FaceAPI
         private void btnSua_Click(object sender, EventArgs e)
         {
             TaiKhoanDTO tk = TaiKhoanBUS.LayThongTinTaiKhoan(txtTaiKhoan.Text);
-            tk.Ten_QTV = txtTaiKhoan.Text;
-            if (txtMatKhau.Text != "")
-            {
-                tk.Mat_Khau = txtMatKhau.Text;
-            }
+            tk.Mat_Khau = txtMatKhau.Text;
+            txtTaiKhoan.Enabled = false ;
+
             if (TaiKhoanBUS.SuaTK(tk))
             {
                 XoaForm();

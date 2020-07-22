@@ -53,7 +53,7 @@ namespace DAO
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ten_QTV", tenTK);
             return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
-        }
+        }   
 
         public static bool ThemTK(TaiKhoanDTO tk)
         {
@@ -65,7 +65,7 @@ namespace DAO
         }
         public static bool SuaTK(TaiKhoanDTO tk)
         {
-            string query = "UPDATE QuanTriVien SET Ten_QTV=@Ten_QTV,Mat_Khau=@Mat_Khau";
+            string query = "UPDATE QuanTriVien SET Mat_Khau=@Mat_Khau WHERE Ten_QTV=@Ten_QTV";
             SqlParameter[] param = new SqlParameter[2];
             param[0] = new SqlParameter("@Ten_QTV", tk.Ten_QTV);
             param[1] = new SqlParameter("@Mat_Khau", tk.Mat_Khau);
