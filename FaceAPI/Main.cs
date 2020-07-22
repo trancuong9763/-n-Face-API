@@ -37,6 +37,7 @@ namespace FaceAPI
         List<Image<Gray, Byte>> TrainedFaces = new List<Image<Gray, byte>>();
         List<int> PersonsLabes = new List<int>();
 
+        string names = null;
         //bool ktImg = false;
 
 
@@ -62,10 +63,9 @@ namespace FaceAPI
 
         private void btnDiemDanh_Click(object sender, EventArgs e)
         {
-            quayVideo = new Capture();
-            quayVideo.ImageGrabbed += ProcessFrame;
-            quayVideo.Start();
+          
             facederection = true;
+            TrainImagesFromDir();
             //cam = new VideoCaptureDevice(camera[0].MonikerString);
 
 
@@ -123,7 +123,7 @@ namespace FaceAPI
                             CvInvoke.EqualizeHist(grayFaceResult, grayFaceResult);
                             var result = recognizer.Predict(grayFaceResult);
                             imgBox.Image = grayFaceResult.Bitmap;
-                            imgBox2.Image = TrainedFaces[result.Label].Bitmap;
+                            //imgBox2.Image = TrainedFaces[result.Label].Bitmap;
                             imgBox2.SizeMode = PictureBoxSizeMode.StretchImage;
 
                             //Here results found known faces
@@ -132,6 +132,23 @@ namespace FaceAPI
                                 CvInvoke.PutText(currentFrame, PersonsNames[result.Label], new Point(face.X - 2, face.Y - 2),
                                             FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
                                 CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Green).MCvScalar, 2);
+                                names = PersonsNames[result.Label];
+                                this.Invoke(new MethodInvoker(delegate ()
+                                {
+                                    int t = 0;
+                                    if (lstDiHoc.Items.Count == 0)
+                                    {
+                                        lstDiHoc.Items.Add(names);
+                                    }
+                                    if (lstDiHoc.FindString(PersonsNames[result.Label]) != -1)
+                                    {
+                                        names = "";
+                                    }
+                                    else
+                                    {
+                                        lstDiHoc.Items.Add(names);
+                                    }
+                                }));
 
                             }
                             //here results did not found any know faces
@@ -158,7 +175,7 @@ namespace FaceAPI
 
         private void btnDung_Click(object sender, EventArgs e)
         {
-            quayVideo.Stop();
+           
 
         }
 
@@ -173,7 +190,7 @@ namespace FaceAPI
 
         private void btnThongKe_Click(object sender, EventArgs e)
         {
-            TrainImagesFromDir();
+          
             addFace = false;
         }
 
@@ -224,6 +241,18 @@ namespace FaceAPI
                 MessageBox.Show("Lỗi: " + ex.Message);
                 return false;
             }
+        }
+
+        private void btnStart_Click(object sender, EventArgs e)
+        {
+            quayVideo = new Capture();
+            quayVideo.ImageGrabbed += ProcessFrame;
+            quayVideo.Start();
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            quayVideo.Stop();
         }
     }
 }
