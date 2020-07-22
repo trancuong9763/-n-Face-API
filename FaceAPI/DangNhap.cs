@@ -25,10 +25,9 @@ namespace FaceAPI
             string matKhau = txtMK.Text;
             if(TaiKhoanBUS.KTDangNhap(tenTK, matKhau))
             {
-                Main m = new Main();
+                Menu m = new Menu();
                 this.Hide();
                 m.ShowDialog();
-                this.Show();
             }
             else
             {
