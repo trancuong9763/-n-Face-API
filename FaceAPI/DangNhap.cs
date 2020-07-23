@@ -18,13 +18,14 @@ namespace FaceAPI
             
             InitializeComponent();
         }
-
+        public static string taiKhoan = "";
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             string tenTK = txtTenDN.Text;
             string matKhau = txtMK.Text;
             if(TaiKhoanBUS.KTDangNhap(tenTK, matKhau))
             {
+                taiKhoan = tenTK;
                 Menu m = new Menu();
                 this.Hide();
                 m.ShowDialog();

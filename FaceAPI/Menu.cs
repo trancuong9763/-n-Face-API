@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using DTO;
 
 namespace FaceAPI
 {
@@ -41,6 +42,12 @@ namespace FaceAPI
             QlTaiKhoan m = new QlTaiKhoan();
             m.ShowDialog();
             this.Show();
+        }
+        string taiKhoan = "";
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            taiKhoan = DangNhap.taiKhoan;
+            lblTenTK.Text = taiKhoan;
         }
     }
 }
