@@ -17,6 +17,10 @@ namespace FaceAPI
             InitializeComponent();
           
         }
-     
+
+        private void dgvDSSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

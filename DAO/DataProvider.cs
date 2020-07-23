@@ -14,6 +14,9 @@ namespace DAO
         //private static SqlConnection conn = new SqlConnection(@"Data Source = QUAN\SQLEXPRESS;Initial Catalog = DiemDanh; Integrated Security = True");//ket noi CSDL
         private static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-TQ34PGV2\MSSQLSERVER01;Initial Catalog=DiemDanh;Integrated Security=True");//ket noi CSDL
 
+        //private static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-TQ34PGV2\MSSQLSERVER01;Initial Catalog=DiemDanh;Integrated Security=True");//ket noi CSDL
+
+
         public DataProvider()
         {
 
