@@ -36,8 +36,10 @@ namespace FaceAPI
         List<string> PersonsNames = new List<string>();
         List<Image<Gray, Byte>> TrainedFaces = new List<Image<Gray, byte>>();
         List<int> PersonsLabes = new List<int>();
-        
-        string names = null;
+        List<string> PersonsMSSV = new List<string>();
+        List<string> PersonsLop = new List<string>();
+
+        string names = null,Mssv=null,Lop=null;
         bool ktThongKe = false;
         int hienDien=0, vang=0;
 
@@ -79,7 +81,7 @@ namespace FaceAPI
         private void ProcessFrame(object sender, EventArgs e)
         {
             quayVideo.Retrieve(frame, 0);
-            currentFrame = frame.ToImage<Bgr, Byte>().Resize(imgBox.Width, imgBox.Height, Inter.Cubic);
+            currentFrame = frame.ToImage<Bgr, Byte>().Resize(320, 240, Inter.Cubic);
 
 
             //nhận diện khuôn mặt: facederection
@@ -89,7 +91,7 @@ namespace FaceAPI
                 CvInvoke.CvtColor(currentFrame, grayImage, ColorConversion.Bgr2Gray);
                 CvInvoke.EqualizeHist(grayImage, grayImage);
 
-                Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayImage, 1.1, 3,Size.Empty,Size.Empty);
+                Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayImage, 1.2, 10,new Size(20,20));
                 if (faces.Length > 0)
                 {
                     foreach (var face in faces)
@@ -102,24 +104,6 @@ namespace FaceAPI
                         resualtFace.ROI = face;
                         imgBox2.SizeMode = PictureBoxSizeMode.StretchImage;// Chỉnh size cho imagebox;
                         imgBox2.Image = resualtFace.Bitmap;
-
-                        if (addFace)
-                        {
-                            string path = Directory.GetCurrentDirectory() + @"\TrainedImages";//Tạo thư mục Trained trong debug
-                            if (!Directory.Exists(path))
-                                Directory.CreateDirectory(path);
-                            Task.Factory.StartNew(() =>
-                            {
-
-                                resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtTen.Text + "_" +txtMSSV.Text+ "_"+ DateTime.Now.ToString("dd-MM-yyyy") + ".jpg");
-                                Thread.Sleep(1000);
-
-
-
-                            });
-                        }
-                        addFace = false;
-
 
                         //Kết quả khuông mặt: grayFaceResult
                         if (isTrained)
@@ -137,23 +121,34 @@ namespace FaceAPI
                                             FontFace.HersheyComplex, 1.0, new Bgr(Color.Orange).MCvScalar);
                                 CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Green).MCvScalar, 2);
                                 names = PersonsNames[result.Label];
+                                Mssv = PersonsMSSV[result.Label];
+                                Lop = PersonsLop[result.Label];
                                 this.Invoke(new MethodInvoker(delegate ()
                                 {
-                                    
+                                    //in sinh viên đi học
                                     if (lstDiHoc.Items.Count == 0)
                                     {
-                                        lstDiHoc.Items.Add(names + " " + lblNgay.Text);
-                                    }
-                                    if (lstDiHoc.FindString(PersonsNames[result.Label]) != -1)
-                                    {
-                                        names = "";
+                                        lstDiHoc.Items.Add(Mssv + " " +names );
+                                        
                                     }
                                     else
                                     {
-                                        lstDiHoc.Items.Add(names + " " + lblNgay.Text);
+                                        if (lstDiHoc.FindString(Mssv) != -1)
+                                        {
+                                            Debug.WriteLine(Mssv + "test2");
+                                        }
+                                        else
+                                        {
+                                            lstDiHoc.Items.Add(Mssv + " " + names);
+                                        }
+
+                                      
+
                                     }
-                                    
-                                    
+
+                                    lblHoten.Text = names;
+                                    lblLop.Text = Lop;
+                                    lblMSSV.Text = Mssv;
                                 }));
                             }
 
@@ -165,16 +160,7 @@ namespace FaceAPI
                                 CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
 
                             }
-                            //this.Invoke(new MethodInvoker(delegate ()
-                            //{
-                            //    if(ktThongKe)
-                            //    {
-                                    
-                                   
-                            //    }
-                               
-                            //}));
-
+                         
 
                         }
                       
@@ -197,12 +183,7 @@ namespace FaceAPI
 
         }
 
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            addFace = true;
-
-
-        }
+      
 
 
 
@@ -211,19 +192,22 @@ namespace FaceAPI
             facederection = false;
             btnStart.Enabled = false;
             btnDiemDanh.Enabled = false;
-            imgBox2.Image= null;
+            imgBox2.Dispose();
             btnLuu.Enabled = true;
+            lblHoten.Text = "";
+            lblLop.Text = "";
+            lblMSSV.Text = "";
             if (lstDiHoc.Items.Count == 0)
             {
                 for (int i = 0; i < PersonsLabes.Count; i++)
                 {
-                    if(lstVang.Items.IndexOf(PersonsNames[i])!=-1)
+                    if(lstVang.FindString(PersonsMSSV[i])!=-1)
                     {
 
                     }
                     else
                     {
-                        lstVang.Items.Add(PersonsNames[i]+" "+lblNgay.Text);
+                        lstVang.Items.Add(PersonsMSSV[i]+" "+PersonsNames[i]);
                     }
                     
                 }
@@ -232,19 +216,33 @@ namespace FaceAPI
             {
                 for(int i=0;i<PersonsLabes.Count;i++)
                 {
-                    if(lstDiHoc.FindString(PersonsNames[i])!=-1)
+                    if(lstDiHoc.FindString(PersonsMSSV[i])!=-1)
                     {
                         //nếu trong list đi học tồn tại tên rồi thì không add
                     }
                     else
                     {
-                        lstVang.Items.Add(PersonsNames[i] + " " + lblNgay.Text);
+                        if(lstVang.FindString(PersonsMSSV[i]) != -1)
+                        {
+
+                        }
+                        else
+                        {
+                            lstVang.Items.Add(PersonsMSSV[i] + " " + PersonsNames[i]);
+                        }
+                        
                     }
                 }
             }
             lblHienDien.Text = lstDiHoc.Items.Count.ToString();
             lblVang.Text = lstVang.Items.Count.ToString();
 
+        }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            
         }
 
         private bool TrainImagesFromDir()// lấy hình ảnh trong file
@@ -266,10 +264,12 @@ namespace FaceAPI
                     PersonsLabes.Add(ImagesCount);
                     string name = file.Split('\\').Last().Split('_')[0];
                     string mssv = file.Split('\\').Last().Split('_')[1];
-
+                    string lop = file.Split('\\').Last().Split('_')[2];
                     PersonsNames.Add(name);
+                    PersonsMSSV.Add(mssv);
+                    PersonsLop.Add(lop);
                     ImagesCount++;
-                    Debug.WriteLine(ImagesCount + ". " + name +" mssv: "+mssv);
+                    Debug.WriteLine(ImagesCount + ". " + name + " mssv: " + mssv + "Lớp: "+ lop);
 
 
                 }
@@ -310,6 +310,8 @@ namespace FaceAPI
         private void btnStop_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = true;
+            imgBox.Dispose();
+            imgBox2.Dispose();
             quayVideo.Stop();
         }
     }
