@@ -57,7 +57,6 @@
             this.dgvDSSV.RowTemplate.Height = 24;
             this.dgvDSSV.Size = new System.Drawing.Size(770, 242);
             this.dgvDSSV.TabIndex = 0;
-            this.dgvDSSV.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSV_CellContentClick);
             // 
             // groupBox1
             // 
