@@ -61,7 +61,7 @@ namespace FaceAPI
                         CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
 
                         //add khuôn mặt : resualtFace
-                        Image<Bgr, Byte> resualtFace = currentFrame.Convert<Bgr, Byte>();
+                        Image<Gray, Byte> resualtFace = currentFrame.Convert<Gray, Byte>();
                         resualtFace.ROI = face;
                         picBox2.SizeMode = PictureBoxSizeMode.StretchImage;// Chỉnh size cho imagebox;
                         picBox2.Image = resualtFace.Bitmap;
@@ -74,7 +74,7 @@ namespace FaceAPI
                             Task.Factory.StartNew(() =>
                             {
                                 
-                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtHoten.Text + "_" + txtMSSV.Text + "_" + txtLop.Text + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".jpg");
+                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtHoten.Text + "_" + txtMSSV.Text + "_" + txtLop.Text + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".bmp");
                                     Thread.Sleep(1000);
                       
                             });
