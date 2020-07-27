@@ -37,8 +37,38 @@ namespace FaceAPI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+
             
             addface = true;
+
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_SV = txtMSSV.Text.Trim();
+            sv.Ten_SV = System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", ""); //Ham cat khoang cach cua chuoi
+            sv.Ma_Lop = txtLop.Text.Trim(); ;
+            int dem = 0;
+            
+            if(dem ==0)
+            {
+                if (SinhVienBUS.ThemSV(sv))
+                {
+                    addface = true;
+                   
+                    LoadDSSV();
+                    GiaoDienThem(true);
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại");
+                }
+                dem = dem + 1;
+            }
+            else
+            {
+                addface = true;
+                XoaForm();
+            }
+           
+
         }
 
         private void StartFrame(object sender, EventArgs e)
