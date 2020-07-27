@@ -68,6 +68,15 @@ namespace DAO
             param[0] = new SqlParameter("@Ma_SV", maSV);
             return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
         }
+        public static bool UpdateChuyenCan(SinhVienDTO sv)
+        {
+            string query = "UPDATE ThongTinSV SET SoNgayHoc= SoNgayHoc+@SoNgayHoc,SoNgayVang=SoNgayVang+@SoNgayVang WHERE Ma_SV=@Ma_SV";
+            SqlParameter[] param = new SqlParameter[3];
+            param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
+            param[1] = new SqlParameter("@SoNgayHoc", sv.SoNgayHoc);
+            param[2] = new SqlParameter("@SoNgayVang", sv.SoNgayVang);
+            return DataProvider.ExecuteUpdateQuery(query, param) == 1;
+        }
         public static bool XoaSV(SinhVienDTO sv)
         {
             string query = "DELETE FROM ThongTinSV WHERE Ma_SV=@Ma_SV";
