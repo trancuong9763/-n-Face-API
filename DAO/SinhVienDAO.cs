@@ -61,11 +61,18 @@ namespace DAO
             param[4] = new SqlParameter("@SoNgayVang", sv.SoNgayVang);
             return DataProvider.ExecuteUpdateQuery(query, param) == 1;
         }
+        public static SinhVienDTO LayThongTinSV(string maSV)
+        {
+            string query = "SELECT * FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Ma_SV", maSV);
+            return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
+        }
         public static bool XoaSV(SinhVienDTO sv)
         {
             string query = "DELETE FROM ThongTinSV WHERE Ma_SV=@Ma_SV";
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@Ten_QTV", sv.Ma_SV);
+            param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
             return DataProvider.ExecuteDeleteQuery(query, param) == 1;
         }
     }

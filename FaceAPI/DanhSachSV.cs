@@ -14,6 +14,8 @@ using Emgu.CV.CvEnum;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
+using BUS;
+using DTO;
 namespace FaceAPI
 {
     public partial class DanhSachSV : Form
@@ -27,18 +29,62 @@ namespace FaceAPI
         public DanhSachSV()
         {
             InitializeComponent();
-          
+            LoadDSSV();
         }
 
         private void dgvDSSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
+        protected void LoadDSSV()
+        {
 
-        private void btnThem_Click(object sender, EventArgs e)
+            dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
+
+        }
+        protected void XoaForm()
         {
             
-            addface = true;
+            txtMSSV.Text = string.Empty;
+            txtHoten.Text = string.Empty;
+            txtLop.Text = string.Empty;
+        }
+        protected void GiaoDienThem(bool gd)
+        {
+            txtMSSV.Enabled = gd;
+            txtHoten.Enabled = gd;
+            txtLop.Enabled = gd;
+            btnThem.Enabled = gd;
+            
+        }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_SV = txtMSSV.Text.Trim();
+            sv.Ten_SV = System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", ""); //Ham cat khoang cach cua chuoi
+            sv.Ma_Lop = txtLop.Text.Trim(); ;
+            int dem = 0;
+            if(dem ==0)
+            {
+                if (SinhVienBUS.ThemSV(sv))
+                {
+                    addface = true;
+                   
+                    LoadDSSV();
+                    GiaoDienThem(true);
+                }
+                else
+                {
+                    MessageBox.Show("Thêm thất bại");
+                }
+                dem = dem + 1;
+            }
+            else
+            {
+                addface = true;
+                XoaForm();
+            }
+           
         }
 
         private void StartFrame(object sender, EventArgs e)
@@ -96,6 +142,34 @@ namespace FaceAPI
             quayVideo = new Capture();
             quayVideo.ImageGrabbed += StartFrame;
             quayVideo.Start();
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_SV = txtMSSV.Text;
+                if (SinhVienBUS.XoaSV(sv))
+            {
+                XoaForm();
+                LoadDSSV();
+            }
+            else
+            {
+                MessageBox.Show("Xóa Thất bại");
+            }
+        }
+
+        private void dgvDSSV_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvDSSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            {
+                txtMSSV.Enabled = false;
+                GiaoDienThem(false);
+                dgvDSSV.CurrentRow.Selected = true;
+                txtMSSV.Text = dgvDSSV.Rows[e.RowIndex].Cells["Ma_SV"].FormattedValue.ToString();
+                txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells["Ten_SV"].FormattedValue.ToString();
+                txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
+            }
         }
     }
 }

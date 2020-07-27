@@ -45,8 +45,8 @@ namespace FaceAPI
         private void btnThem_Click(object sender, EventArgs e)
         {
             TaiKhoanDTO tk = new TaiKhoanDTO();
-            tk.Ten_QTV = txtTaiKhoan.Text;
-            tk.Mat_Khau = txtMatKhau.Text;
+            tk.Ten_QTV = txtTaiKhoan.Text.Trim();
+            tk.Mat_Khau = txtMatKhau.Text.Trim();
             if (TaiKhoanBUS.ThemTK(tk))
             {
                 XoaForm();
@@ -62,7 +62,7 @@ namespace FaceAPI
         private void btnXoa_Click(object sender, EventArgs e)
         {
             TaiKhoanDTO tk = TaiKhoanBUS.LayThongTinTaiKhoan(txtTaiKhoan.Text);
-            tk.Mat_Khau = txtMatKhau.Text;
+           
             if (TaiKhoanBUS.XoaTK(tk))
             {
                 XoaForm();
