@@ -255,7 +255,7 @@ namespace FaceAPI
             try
             {
                 string path = Directory.GetCurrentDirectory() + @"\TrainedImages";
-                string[] files = Directory.GetFiles(path, "*.jpg", SearchOption.AllDirectories);
+                string[] files = Directory.GetFiles(path, "*.bmp", SearchOption.AllDirectories);
                 foreach (var file in files)
                 {
                     Image<Gray, Byte> trainedImage = new Image<Gray, Byte>(file).Resize(100, 100, Inter.Cubic);
