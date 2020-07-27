@@ -10,6 +10,18 @@ namespace BUS
 {
     public class SinhVienBUS
     {
+        public static bool CapNhatChuyenCan(SinhVienDTO sv)
+        {
+            if(SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+            {
+                return SinhVienDAO.UpdateChuyenCan(sv);
+            }
+            else
+            {
+                return false;
+            }
+        }
+
         public static List<SinhVienDTO> LayDSSV()
         {
             return SinhVienDAO.LayDSSV();

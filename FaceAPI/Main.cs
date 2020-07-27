@@ -272,6 +272,8 @@ namespace FaceAPI
             }
         }
 
+       
+
         private bool TrainImagesFromDir()// lấy hình ảnh trong file
         {
             double Threshold = 2000;
