@@ -16,7 +16,8 @@ using Emgu.CV.CvEnum;
 using System.IO;
 using System.Threading;
 using System.Diagnostics;
-
+using BUS;
+using DTO;
 namespace FaceAPI
 {
     public partial class Main : Form
@@ -42,6 +43,7 @@ namespace FaceAPI
         string names = null,Mssv=null,Lop=null;
         bool ktThongKe = false;
         int hienDien=0, vang=0;
+        List<String> mssvDiHoc = new List<string>();
 
 
         public Main()
@@ -129,7 +131,8 @@ namespace FaceAPI
                                     if (lstDiHoc.Items.Count == 0)
                                     {
                                         lstDiHoc.Items.Add(Mssv + " " +names );
-                                        
+                                        mssvDiHoc.Add(Mssv);
+
                                     }
                                     else
                                     {
@@ -177,11 +180,7 @@ namespace FaceAPI
 
 
 
-        private void btnDung_Click(object sender, EventArgs e)
-        {
-            btnStart.Enabled = false;
-
-        }
+       
 
       
 
@@ -243,6 +242,34 @@ namespace FaceAPI
         {
             this.Close();
             
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            
+            btnStart.Enabled = false;
+            sv.Ma_SV = mssvDiHoc.ToString();
+            sv.SoNgayHoc = 1;
+            DialogResult dialogResult = MessageBox.Show("Bạn Có Muốn Lưu Dữ Liệu ?", "Lưu Đữ Liệu ?", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
+            if (dialogResult == DialogResult.Yes)
+            {
+                
+                if (SinhVienBUS.CapNhatChuyenCan(sv))
+                {
+                    MessageBox.Show("Lưu thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Lưu không thành công");
+                    //hello
+                }
+               
+            }
+            else if (dialogResult == DialogResult.No)
+            {
+                //do something else
+            }
         }
 
         private bool TrainImagesFromDir()// lấy hình ảnh trong file
