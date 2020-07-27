@@ -21,5 +21,10 @@ namespace DTO
         public string Ma_Lop { get => ma_Lop; set => ma_Lop = value; }
         public int SoNgayHoc { get => soNgayHoc; set => soNgayHoc = value; }
         public int SoNgayVang { get => soNgayVang; set => soNgayVang = value; }
+        public SinhVienDTO()
+        {
+            SoNgayHoc = 0;
+            soNgayVang = 0;
+        }
     }
 }
