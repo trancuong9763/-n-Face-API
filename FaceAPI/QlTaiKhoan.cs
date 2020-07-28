@@ -20,6 +20,7 @@ namespace FaceAPI
         {
             InitializeComponent();
             LayDSTaiKhoan();
+            GiaoDienThem(true);
         }
 
         protected void LayDSTaiKhoan()
@@ -45,31 +46,36 @@ namespace FaceAPI
             txtTaiKhoan.Text = string.Empty;
             txtMatKhau.Text = string.Empty;
         }
-        static string EncodeMD5(string value)
-
+        protected static string MD5Hash(string input)
         {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
 
-            using (MD5CryptoServiceProvider md5 = new MD5CryptoServiceProvider())
+            for (int i = 0; i < bytes.Length; i++)
             {
-                UTF8Encoding utf8 = new UTF8Encoding();
-                byte[] data = md5.ComputeHash(utf8.GetBytes(value));
-                return Convert.ToBase64String(data);
+                hash.Append(bytes[i].ToString("x2"));
             }
-
+            return hash.ToString();
         }
+
 
         private void btnThem_Click(object sender, EventArgs e)
         {
           
             TaiKhoanDTO tk = new TaiKhoanDTO();
             tk.Ten_QTV = txtTaiKhoan.Text.Trim();
-            
-            tk.Mat_Khau = EncodeMD5(txtMatKhau.Text.Trim());
-            
+            string mkMH = MD5Hash(txtMatKhau.Text.Trim());
+            tk.Mat_Khau =  Convert.ToString(mkMH);
+
 
             if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "")
             {
                 MessageBox.Show("Thông tin không được để trống");
+            }
+            else if (txtMatKhau.Text.Length < 6)
+            {
+                MessageBox.Show("Mật khẩu phải tối thiểu 6 ký tự");
             }
             else
             {
@@ -77,6 +83,7 @@ namespace FaceAPI
                 {
                     XoaForm();
                     LayDSTaiKhoan();
+                    MessageBox.Show("Thêm thành công");
                     GiaoDienThem(true);
                 }
                 else
@@ -129,11 +136,12 @@ namespace FaceAPI
                     GiaoDienThem(false);
                     dgvTaiKhoan.CurrentRow.Selected = true;
                     txtTaiKhoan.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Ten_QTV"].FormattedValue.ToString();
-                    txtMatKhau.Text = "";
-                
-               
+                    txtMatKhau.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Mat_Khau"].FormattedValue.ToString();
+
+
+
             }
-           
+
 
         }
 
