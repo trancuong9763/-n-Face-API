@@ -58,7 +58,7 @@ namespace DAO
 
         public static bool ThemTK(TaiKhoanDTO tk)
         {
-            string query = "INSERT INTO QuanTriVien (Ten_QTV, Mat_Khau) VALUES (@Ten_QTV, @Mat_Khau)";
+            string query = "INSERT INTO QuanTriVien (Ten_QTV, Mat_Khau) VALUES (@Ten_QTV,@Mat_Khau)";
             SqlParameter[] param = new SqlParameter[2];
             param[0] = new SqlParameter("@Ten_QTV", tk.Ten_QTV);
             param[1] = new SqlParameter("@Mat_Khau", tk.Mat_Khau);

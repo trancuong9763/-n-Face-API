@@ -5,6 +5,7 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
     using System.Threading.Tasks;
     using System.Windows.Forms;
@@ -19,10 +20,22 @@ namespace FaceAPI
             InitializeComponent();
         }
         public static string taiKhoan = "";
+        protected static string MD5Hash(string input)
+        {
+            StringBuilder hash = new StringBuilder();
+            MD5CryptoServiceProvider md5provider = new MD5CryptoServiceProvider();
+            byte[] bytes = md5provider.ComputeHash(new UTF8Encoding().GetBytes(input));
+
+            for (int i = 0; i < bytes.Length; i++)
+            {
+                hash.Append(bytes[i].ToString("x2"));
+            }
+            return hash.ToString();
+        }
         private void btnDangNhap_Click(object sender, EventArgs e)
         {
             string tenTK = txtTenDN.Text;
-            string matKhau = txtMK.Text;
+            string matKhau = MD5Hash(txtMK.Text);
             if(TaiKhoanBUS.KTDangNhap(tenTK, matKhau))
             {
                 taiKhoan = tenTK;
