@@ -26,6 +26,7 @@ namespace FaceAPI
         private Image<Bgr, Byte> currentFrame = null;
         private bool addface = false;
         private bool facederection = false;
+        int dem = 1;
         public DanhSachSV()
         {
             InitializeComponent();
@@ -59,6 +60,7 @@ namespace FaceAPI
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
+            
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtMSSV.Text;
             sv.Ten_SV = txtHoten.Text;
@@ -71,20 +73,51 @@ namespace FaceAPI
             else
             {
                 
-                if (SinhVienBUS.ThemSV(sv))
+                if(dem == 1)
+                {
+                    if (SinhVienBUS.ThemSV(sv))
+                    {
+                        addface = true;
+                        MessageBox.Show("Bạn Hãy Thêm Vào 5 Khuôn Mặt");
+                        MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
+                        LoadDSSV();
+                        txtHoten.Enabled = false;
+                        txtLop.Enabled = false;
+                        txtMSSV.Enabled = false;
+                        dem++;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Sinh viên đã tồn tại");
+                    }             
+                }
+                else if (dem > 1 && dem<=5)
                 {
                     addface = true;
-                    MessageBox.Show("Thêm thành công");
-                    LoadDSSV();
+                    MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
+                    dem++;
+                    if(dem==6)
+                    {
+                        MessageBox.Show("Thêm sinh viên thành công");
+                        txtHoten.Enabled = true;
+                        txtLop.Enabled = true;
+                        txtMSSV.Enabled = true;
+                        txtHoten.Text = "";
+                        txtLop.Text = "";
+                        txtMSSV.Text = "";
+                        dem = 1;
+                    }
                     
                 }
                 else
                 {
-                    MessageBox.Show("Thêm thất bại");
+
+                    MessageBox.Show("Thêm sinh viên không thành công");
+
+                   
                 }
-                
-                
             }
+                
         }
            
            
