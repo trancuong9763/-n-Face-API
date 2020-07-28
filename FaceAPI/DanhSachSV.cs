@@ -45,9 +45,9 @@ namespace FaceAPI
         protected void XoaForm()
         {
             
-            txtMSSV.Text = string.Empty;
-            txtHoten.Text = string.Empty;
-            txtLop.Text = string.Empty;
+            txtMSSV.Text = "";
+            txtHoten.Text ="";
+            txtLop.Text = "" ;
         }
         protected void GiaoDienThem(bool gd)
         {
@@ -60,27 +60,30 @@ namespace FaceAPI
         private void btnThem_Click(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();
-            sv.Ma_SV = txtMSSV.Text.Trim();
-            sv.Ten_SV = txtHoten.Text.Trim(); //Ham cat khoang cach cua chuoi
-            sv.Ma_Lop = txtLop.Text.Trim();
-
+            sv.Ma_SV = txtMSSV.Text;
+            sv.Ten_SV = txtHoten.Text;
+            sv.Ma_Lop = txtLop.Text; ;
+            
             if (txtMSSV.Text == "" || txtHoten.Text == "" || txtLop.Text == "")
             {
                 MessageBox.Show("Thông tin không được để trống");
             }
             else
             {
+                
                 if (SinhVienBUS.ThemSV(sv))
                 {
                     addface = true;
-                    XoaForm();
+                    MessageBox.Show("Thêm thành công");
                     LoadDSSV();
-
+                    
                 }
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
                 }
+                
+                
             }
         }
            
@@ -121,7 +124,7 @@ namespace FaceAPI
                             Task.Factory.StartNew(() =>
                             {
                                 
-                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text + "_" + txtLop.Text + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".bmp");
+                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text.Trim() + "_" + txtLop.Text.Trim() + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".bmp");
                                     Thread.Sleep(1000);
                       
                             });
@@ -149,15 +152,23 @@ namespace FaceAPI
         {
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtMSSV.Text;
-           
+            DialogResult dialogResult = MessageBox.Show("Bạn có chắc là muốn xóa không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
                 if (SinhVienBUS.XoaSV(sv))
-            {
-                XoaForm();
-                LoadDSSV();
+                {
+                    XoaForm();
+                    MessageBox.Show("Xóa thành công");
+                    LoadDSSV();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa Thất bại");
+                }
             }
-            else
+            else if (dialogResult == DialogResult.No)
             {
-                MessageBox.Show("Xóa Thất bại");
+
             }
         }
 

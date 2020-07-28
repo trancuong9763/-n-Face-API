@@ -96,6 +96,7 @@ namespace FaceAPI
                 if (TaiKhoanBUS.XoaTK(tk))
                 {
                     XoaForm();
+                    MessageBox.Show("Xóa Thành công");
                     LayDSTaiKhoan();
                     GiaoDienThem(true);
                 }
@@ -128,7 +129,7 @@ namespace FaceAPI
                     GiaoDienThem(false);
                     dgvTaiKhoan.CurrentRow.Selected = true;
                     txtTaiKhoan.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Ten_QTV"].FormattedValue.ToString();
-                    txtMatKhau.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Mat_Khau"].FormattedValue.ToString();
+                    txtMatKhau.Text = "";
                 
                
             }
