@@ -39,6 +39,7 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.Ten_QTV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mat_Khau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -46,7 +47,8 @@
             // 
             this.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Ten_QTV});
+            this.Ten_QTV,
+            this.Mat_Khau});
             this.dgvTaiKhoan.Location = new System.Drawing.Point(403, 12);
             this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
@@ -148,6 +150,13 @@
             this.Ten_QTV.Name = "Ten_QTV";
             this.Ten_QTV.Width = 150;
             // 
+            // Mat_Khau
+            // 
+            this.Mat_Khau.DataPropertyName = "Mat_Khau";
+            this.Mat_Khau.HeaderText = "Column1";
+            this.Mat_Khau.Name = "Mat_Khau";
+            this.Mat_Khau.Visible = false;
+            // 
             // QlTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
@@ -188,5 +197,6 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_QTV;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Mat_Khau;
     }
 }
