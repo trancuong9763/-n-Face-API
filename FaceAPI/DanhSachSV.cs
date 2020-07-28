@@ -51,12 +51,6 @@ namespace FaceAPI
         }
         protected void GiaoDienThem(bool gd)
         {
-
-
-            
-            addface = true;
-
-
             txtMSSV.Enabled = gd;
             txtHoten.Enabled = gd;
             txtLop.Enabled = gd;
@@ -65,36 +59,34 @@ namespace FaceAPI
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtMSSV.Text.Trim();
-            sv.Ten_SV = System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", ""); //Ham cat khoang cach cua chuoi
-            sv.Ma_Lop = txtLop.Text.Trim(); ;
-            int dem = 0;
+            sv.Ten_SV = txtHoten.Text.Trim(); //Ham cat khoang cach cua chuoi
+            sv.Ma_Lop = txtLop.Text.Trim();
 
-            if(dem ==0)
+            if (txtMSSV.Text == "" || txtHoten.Text == "" || txtLop.Text == "")
+            {
+                MessageBox.Show("Thông tin không được để trống");
+            }
+            else
             {
                 if (SinhVienBUS.ThemSV(sv))
                 {
                     addface = true;
-                   
+                    XoaForm();
                     LoadDSSV();
-                    GiaoDienThem(true);
+
                 }
                 else
                 {
                     MessageBox.Show("Thêm thất bại");
                 }
-                dem = dem + 1;
             }
-            else
-            {
-                addface = true;
-                XoaForm();
-            }
-
-
         }
+           
+           
+           
+        
 
         private void StartFrame(object sender, EventArgs e)
         {
@@ -129,7 +121,7 @@ namespace FaceAPI
                             Task.Factory.StartNew(() =>
                             {
                                 
-                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + txtHoten.Text + "_" + txtMSSV.Text + "_" + txtLop.Text + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".bmp");
+                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text + "_" + txtLop.Text + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".bmp");
                                     Thread.Sleep(1000);
                       
                             });
@@ -157,6 +149,7 @@ namespace FaceAPI
         {
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtMSSV.Text;
+           
                 if (SinhVienBUS.XoaSV(sv))
             {
                 XoaForm();
@@ -170,15 +163,16 @@ namespace FaceAPI
 
         private void dgvDSSV_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (dgvDSSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
+            if (e.RowIndex > -1 && e.ColumnIndex > -1 && dgvDSSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                txtMSSV.Enabled = false;
-                GiaoDienThem(false);
+                
+               
                 dgvDSSV.CurrentRow.Selected = true;
                 txtMSSV.Text = dgvDSSV.Rows[e.RowIndex].Cells["Ma_SV"].FormattedValue.ToString();
                 txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells["Ten_SV"].FormattedValue.ToString();
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
             }
+            
         }
     }
 }
