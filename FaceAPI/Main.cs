@@ -40,10 +40,11 @@ namespace FaceAPI
         List<string> PersonsMSSV = new List<string>();
         List<string> PersonsLop = new List<string>();
 
-        string names = null,Mssv=null,Lop=null;
+        string names = null,Mssv=null,Lop=null,svHienDien=null,svVang=null;
         bool ktThongKe = false;
         int hienDien=0, vang=0;
-        List<String> mssvDiHoc = new List<string>();
+        List<string> mssvHienDien = new List<string>();
+
 
 
         public Main()
@@ -131,21 +132,24 @@ namespace FaceAPI
                                     if (lstDiHoc.Items.Count == 0)
                                     {
                                         lstDiHoc.Items.Add(Mssv + " " +names );
-                                        mssvDiHoc.Add(Mssv);
+                                        
+                                       
+                                        
 
                                     }
                                     else
                                     {
                                         if (lstDiHoc.FindString(Mssv) != -1)
                                         {
-                                            Debug.WriteLine(Mssv + "test2");
+                                           
                                         }
                                         else
                                         {
                                             lstDiHoc.Items.Add(Mssv + " " + names);
+                                            
                                         }
 
-                                      
+
 
                                     }
 
@@ -249,27 +253,69 @@ namespace FaceAPI
             SinhVienDTO sv = new SinhVienDTO();
             
             btnStart.Enabled = false;
-            sv.Ma_SV = mssvDiHoc.ToString();
-            sv.SoNgayHoc = 1;
             DialogResult dialogResult = MessageBox.Show("Bạn Có Muốn Lưu Dữ Liệu ?", "Lưu Đữ Liệu ?", MessageBoxButtons.YesNo,MessageBoxIcon.Question);
             if (dialogResult == DialogResult.Yes)
             {
-                
-                if (SinhVienBUS.CapNhatChuyenCan(sv))
+                //trường hợp cả lớp vắng
+                if(lstDiHoc.Items.Count==0)
                 {
-                    MessageBox.Show("Lưu thành công");
+                    for (int i = 0; i < lstVang.Items.Count; i++)
+                    {
+                        sv.SoNgayVang = 1;
+                        sv.Ma_SV = lstVang.Items[i].ToString().Split(' ')[0]; 
+                        sv.SoNgayHoc = 0;
+                        SinhVienBUS.CapNhatChuyenCan(sv);
+                    }
+                    
                 }
+                //trường hợp cả lớp đi học
+                else if(lstVang.Items.Count == 0)
+                {
+                    for (int i = 0; i < lstDiHoc.Items.Count; i++)
+                    {
+                        sv.SoNgayVang = 0;
+                        sv.Ma_SV = lstDiHoc.Items[i].ToString().Split(' ')[0];
+                        sv.SoNgayHoc = 1;
+                        SinhVienBUS.CapNhatChuyenCan(sv);
+                    }
+                  
+                }
+                //trường hợp có đi học có vắng
                 else
-                {
-                    MessageBox.Show("Lưu không thành công");
-                    //hello
+                {   
+                    for (int i = 0; i < lstVang.Items.Count; i++)
+                    {
+                        sv.SoNgayVang = 1;
+                        sv.Ma_SV = lstVang.Items[i].ToString().Split(' ')[0];
+                        sv.SoNgayHoc = 0;
+                        SinhVienBUS.CapNhatChuyenCan(sv);
+                    }
+
+                    for (int i = 0; i < lstDiHoc.Items.Count; i++)
+                    {
+                        sv.SoNgayVang = 0;
+                        sv.Ma_SV = lstDiHoc.Items[i].ToString().Split(' ')[0];
+                        sv.SoNgayHoc = 1;
+                        SinhVienBUS.CapNhatChuyenCan(sv);
+                    }
+
                 }
-               
+                MessageBox.Show("Lưu Thông Tin Thành Công");
+                lstDiHoc.Items.Clear();
+                lstVang.Items.Clear();
+
             }
             else if (dialogResult == DialogResult.No)
             {
-                //do something else
+                MessageBox.Show("Lưu Thông Tin Thất Bại");
             }
+            
+
+        }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+         
         }
 
         private bool TrainImagesFromDir()// lấy hình ảnh trong file

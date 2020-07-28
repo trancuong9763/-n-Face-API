@@ -70,7 +70,7 @@ namespace DAO
         }
         public static bool UpdateChuyenCan(SinhVienDTO sv)
         {
-            string query = "UPDATE ThongTinSV SET SoNgayHoc= SoNgayHoc+@SoNgayHoc,SoNgayVang=SoNgayVang+@SoNgayVang WHERE Ma_SV=@Ma_SV";
+            string query = "UPDATE ThongTinSV SET SoNgayHoc = SoNgayHoc + @SoNgayHoc,SoNgayVang = SoNgayVang + @SoNgayVang WHERE Ma_SV = @Ma_SV";
             SqlParameter[] param = new SqlParameter[3];
             param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
             param[1] = new SqlParameter("@SoNgayHoc", sv.SoNgayHoc);
