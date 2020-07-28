@@ -39,7 +39,6 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.Ten_QTV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mat_Khau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,8 +46,7 @@
             // 
             this.dgvTaiKhoan.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Ten_QTV,
-            this.Mat_Khau});
+            this.Ten_QTV});
             this.dgvTaiKhoan.Location = new System.Drawing.Point(403, 12);
             this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
@@ -68,6 +66,7 @@
             this.lblQLTK.TabIndex = 1;
             this.lblQLTK.Text = "Quản lý tài khoản";
             this.lblQLTK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblQLTK.Click += new System.EventHandler(this.lblQLTK_Click);
             // 
             // txtTaiKhoan
             // 
@@ -90,6 +89,7 @@
             // 
             this.txtMatKhau.Location = new System.Drawing.Point(181, 191);
             this.txtMatKhau.Name = "txtMatKhau";
+            this.txtMatKhau.PasswordChar = '*';
             this.txtMatKhau.Size = new System.Drawing.Size(212, 30);
             this.txtMatKhau.TabIndex = 4;
             // 
@@ -148,13 +148,6 @@
             this.Ten_QTV.Name = "Ten_QTV";
             this.Ten_QTV.Width = 150;
             // 
-            // Mat_Khau
-            // 
-            this.Mat_Khau.DataPropertyName = "Mat_Khau";
-            this.Mat_Khau.HeaderText = "Mật khẩu";
-            this.Mat_Khau.Name = "Mat_Khau";
-            this.Mat_Khau.Width = 150;
-            // 
             // QlTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
@@ -195,6 +188,5 @@
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_QTV;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mat_Khau;
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using DTO;
@@ -78,5 +79,6 @@ namespace DAO
             param[0] = new SqlParameter("@Ten_QTV", tk.Ten_QTV);
             return DataProvider.ExecuteDeleteQuery(query, param) == 1;
         }
+        
     }
 }
