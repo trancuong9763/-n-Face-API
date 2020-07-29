@@ -12,7 +12,7 @@ namespace DAO
     {
         public static SinhVienDTO ConvertToDTO(DataRow dr) {
             SinhVienDTO sv = new SinhVienDTO();
-            sv.STT = Convert.ToInt32(dr["STT_SV"]);
+     
             sv.Ma_SV = dr["Ma_SV"].ToString();
             sv.Ten_SV = dr["Ten_SV"].ToString();            
             sv.Ma_Lop = dr["MaLop"].ToString();
@@ -32,6 +32,7 @@ namespace DAO
             }
             return lstSinhVien;
         }
+        
         public static bool KTTKTonTai(string maSV)
         {
             string query = "SELECT COUNT(*) FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
@@ -67,6 +68,12 @@ namespace DAO
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ma_SV", maSV);
             return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
+        }
+        public static DataTable ChonLop(SinhVienDTO sv)
+        {
+            return DataProvider.table_Select("SELECT * FROM ThongTinhSV");
+            
+
         }
         public static bool UpdateChuyenCan(SinhVienDTO sv)
         {

@@ -55,5 +55,13 @@ namespace FaceAPI
         {
             Application.Exit();
         }
+
+        private void txtMK_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                btnDangNhap_Click(this, new EventArgs());
+            }
+        }
     }
 }

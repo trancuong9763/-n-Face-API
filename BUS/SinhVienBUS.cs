@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,7 +13,7 @@ namespace BUS
     {
         public static bool CapNhatChuyenCan(SinhVienDTO sv)
         {
-            if(SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV))
             {
                 return SinhVienDAO.UpdateChuyenCan(sv);
             }
@@ -26,9 +27,10 @@ namespace BUS
         {
             return SinhVienDAO.LayDSSV();
         }
+
         public static bool ThemSV(SinhVienDTO sv)
         {
-            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV)){
+            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV)) {
                 return false;
             }
             else
@@ -46,6 +48,12 @@ namespace BUS
             {
                 return SinhVienDAO.LayThongTinSV(maSV);
             }
+        }
+        public static DataTable ChonLop(SinhVienDTO sv)
+        {
+
+            return SinhVienDAO.ChonLop(sv);
+
         }
         public static bool SuaSV(SinhVienDTO sv)
         {

@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.dgvTaiKhoan = new System.Windows.Forms.DataGridView();
+            this.Ten_QTV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Mat_Khau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lblQLTK = new System.Windows.Forms.Label();
             this.txtTaiKhoan = new System.Windows.Forms.TextBox();
             this.btnThem = new System.Windows.Forms.Button();
@@ -38,8 +40,6 @@
             this.btnSua = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
-            this.Ten_QTV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mat_Khau = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).BeginInit();
             this.SuspendLayout();
             // 
@@ -53,10 +53,24 @@
             this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.RowTemplate.Height = 24;
-            this.dgvTaiKhoan.Size = new System.Drawing.Size(299, 388);
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(194, 388);
             this.dgvTaiKhoan.TabIndex = 0;
             this.dgvTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellClick);
             this.dgvTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellContentClick);
+            // 
+            // Ten_QTV
+            // 
+            this.Ten_QTV.DataPropertyName = "Ten_QTV";
+            this.Ten_QTV.HeaderText = "Tên tài khoản";
+            this.Ten_QTV.Name = "Ten_QTV";
+            this.Ten_QTV.Width = 150;
+            // 
+            // Mat_Khau
+            // 
+            this.Mat_Khau.DataPropertyName = "Mat_Khau";
+            this.Mat_Khau.HeaderText = "Column1";
+            this.Mat_Khau.Name = "Mat_Khau";
+            this.Mat_Khau.Visible = false;
             // 
             // lblQLTK
             // 
@@ -76,6 +90,7 @@
             this.txtTaiKhoan.Name = "txtTaiKhoan";
             this.txtTaiKhoan.Size = new System.Drawing.Size(212, 30);
             this.txtTaiKhoan.TabIndex = 2;
+            this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaiKhoan_KeyPress);
             // 
             // btnThem
             // 
@@ -143,25 +158,11 @@
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
-            // Ten_QTV
-            // 
-            this.Ten_QTV.DataPropertyName = "Ten_QTV";
-            this.Ten_QTV.HeaderText = "Tên tài khoản";
-            this.Ten_QTV.Name = "Ten_QTV";
-            this.Ten_QTV.Width = 150;
-            // 
-            // Mat_Khau
-            // 
-            this.Mat_Khau.DataPropertyName = "Mat_Khau";
-            this.Mat_Khau.HeaderText = "Column1";
-            this.Mat_Khau.Name = "Mat_Khau";
-            this.Mat_Khau.Visible = false;
-            // 
             // QlTaiKhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(716, 417);
+            this.ClientSize = new System.Drawing.Size(608, 417);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);

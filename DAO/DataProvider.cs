@@ -11,8 +11,8 @@ namespace DAO
     public class DataProvider
     {
         private static SqlDataAdapter adapter = new SqlDataAdapter();
-        //private static SqlConnection conn = new SqlConnection(@"Data Source = QUAN\SQLEXPRESS;Initial Catalog = DiemDanh; Integrated Security = True");//ket noi CSDL
-        private static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-TQ34PGV2\MSSQLSERVER01;Initial Catalog=DiemDanh;Integrated Security=True");//ket noi CSDL
+        private static SqlConnection conn = new SqlConnection(@"Data Source = QUAN\SQLEXPRESS;Initial Catalog = DiemDanh; Integrated Security = True");//ket noi CSDL
+        //private static SqlConnection conn = new SqlConnection(@"Data Source=LAPTOP-TQ34PGV2\MSSQLSERVER01;Initial Catalog=DiemDanh;Integrated Security=True");//ket noi CSDL
 
 
 
@@ -30,7 +30,12 @@ namespace DAO
             }
             return conn;
         }
-
+        public static DataTable table_Select(String sql)
+        {
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
         public static DataTable ExecuteSelectQuery(string query, SqlParameter[] param)
         {
             SqlCommand cmd = new SqlCommand();

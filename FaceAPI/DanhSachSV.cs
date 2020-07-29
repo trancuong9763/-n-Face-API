@@ -16,6 +16,8 @@ using System.Threading;
 using System.Diagnostics;
 using BUS;
 using DTO;
+using System.Data.SqlClient;
+
 namespace FaceAPI
 {
     public partial class DanhSachSV : Form
@@ -217,6 +219,42 @@ namespace FaceAPI
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
             }
             
+        }
+
+        private void txtMSSV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // ko cho phep nhap dau .
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') == -1))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void cbbTim_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
+        protected  void LoadDSLop()
+        {
+
+
+           
+
+        }
+
+        private void DanhSachSV_Load(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            cbbTim.DataSource = SinhVienBUS.ChonLop(sv);
+            cbbTim.DisplayMember = "MaLop";
+            cbbTim.ValueMember = "MaLop";
+
         }
     }
 }
