@@ -12,7 +12,6 @@ namespace DAO
     {
         public static SinhVienDTO ConvertToDTO(DataRow dr) {
             SinhVienDTO sv = new SinhVienDTO();
-            sv.STT = Convert.ToInt32(dr["STT_SV"]);
             sv.Ma_SV = dr["Ma_SV"].ToString();
             sv.Ten_SV = dr["Ten_SV"].ToString();            
             sv.Ma_Lop = dr["MaLop"].ToString();

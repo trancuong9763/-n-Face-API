@@ -157,7 +157,7 @@ namespace FaceAPI
                             Task.Factory.StartNew(() =>
                             {
                                 
-                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text.Trim() + "_" + txtLop.Text.Trim() + "_" + DateTime.Now.ToString("dd-mm-yyyy-hh-mm-ss") + ".bmp");
+                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text.Trim() + "_" + txtLop.Text.Trim() + "_" + dem + ".bmp");
                                     Thread.Sleep(1000);
                       
                             });
@@ -190,9 +190,21 @@ namespace FaceAPI
             {
                 if (SinhVienBUS.XoaSV(sv))
                 {
-                    XoaForm();
+                    for (int i = 1; i <= 5; i++)
+                    {
+
+                        string path = Directory.GetCurrentDirectory() + @"\TrainedImages";
+                        string[] files = Directory.GetFiles(path, txtHoten.Text + "_" + txtMSSV.Text + "_" + txtLop.Text + "_" + i + "*.bmp", SearchOption.AllDirectories);
+                        foreach (var file in files)
+                        {
+                            File.Delete(file);
+                           
+                        }
+                    }
                     MessageBox.Show("Xóa thành công");
+                    XoaForm();
                     LoadDSSV();
+
                 }
                 else
                 {
@@ -217,6 +229,21 @@ namespace FaceAPI
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
             }
             
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+           
+
+        }
+
+        private void btnStop_Click(object sender, EventArgs e)
+        {
+            if(quayVideo!=null)
+            {
+                quayVideo.Stop();
+            }
+           
         }
     }
 }
