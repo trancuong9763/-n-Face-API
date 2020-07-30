@@ -31,6 +31,7 @@ namespace DAO
             }
             return lstSinhVien;
         }
+        
         public static bool KTTKTonTai(string maSV)
         {
             string query = "SELECT COUNT(*) FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
@@ -66,6 +67,27 @@ namespace DAO
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ma_SV", maSV);
             return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
+        }
+        public static DataTable ChonLop(SinhVienDTO sv)
+        {
+            string query = "SELECT DISTINCT MaLop FROM ThongTinSV";
+            SqlParameter[] param = new SqlParameter[0];
+            return DataProvider.ExecuteSelectQuery(query, param);
+        }
+        public static SinhVienDTO TimKiemMaSV(string maSV)
+        {
+            string query = "SELECT * FROM ThongTinSV WHERE Ma_SV LIKE '%@Ma_SV'";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Ma_SV", maSV);
+            return ConvertToDTO(DataProvider.ExecuteSelectQuery(query,param).Rows[0]);
+        }
+        public static SinhVienDTO LayThongTinLop(string maLop)
+        {
+            string query = "SELECT *  FROM ThongTinSV Where MaLop=@Malop";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@MaLop",maLop);
+            return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
+
         }
         public static bool UpdateChuyenCan(SinhVienDTO sv)
         {

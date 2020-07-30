@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using BUS;
@@ -62,7 +63,7 @@ namespace FaceAPI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-          
+            Regex r = new Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
             TaiKhoanDTO tk = new TaiKhoanDTO();
             tk.Ten_QTV = txtTaiKhoan.Text.Trim();
             string mkMH = MD5Hash(txtMatKhau.Text.Trim());
@@ -76,6 +77,10 @@ namespace FaceAPI
             else if (txtMatKhau.Text.Length < 6)
             {
                 MessageBox.Show("Mật khẩu phải tối thiểu 6 ký tự");
+            }
+            else if (r.IsMatch(txtTaiKhoan.Text))
+            {
+                MessageBox.Show("Tài khoản không hợp lệ");
             }
             else
             {
@@ -137,7 +142,7 @@ namespace FaceAPI
                     dgvTaiKhoan.CurrentRow.Selected = true;
                     txtTaiKhoan.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Ten_QTV"].FormattedValue.ToString();
                     txtMatKhau.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Mat_Khau"].FormattedValue.ToString();
-
+                    txtMatKhau.Text = "";
 
 
             }
@@ -148,7 +153,8 @@ namespace FaceAPI
         private void btnSua_Click(object sender, EventArgs e)
         {
             TaiKhoanDTO tk = TaiKhoanBUS.LayThongTinTaiKhoan(txtTaiKhoan.Text);
-            tk.Mat_Khau = txtMatKhau.Text;
+            string mkMH = MD5Hash(txtMatKhau.Text.Trim());
+            tk.Mat_Khau = Convert.ToString(mkMH);
             txtTaiKhoan.Enabled = false ;
 
             if (TaiKhoanBUS.SuaTK(tk))
@@ -156,6 +162,7 @@ namespace FaceAPI
                 XoaForm();
                 LayDSTaiKhoan();
                 GiaoDienThem(true);
+                MessageBox.Show("Sửa thành công");
             }
             else
             {
@@ -168,7 +175,28 @@ namespace FaceAPI
 
         }
 
-        
-        
+        private void txtTaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+             if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+                
+            }
+
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtTaiKhoan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QlTaiKhoan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

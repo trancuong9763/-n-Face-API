@@ -67,12 +67,12 @@
             // 
             // lblTenTK
             // 
-            this.lblTenTK.AutoSize = true;
-            this.lblTenTK.Location = new System.Drawing.Point(237, 20);
+            this.lblTenTK.Location = new System.Drawing.Point(163, 14);
             this.lblTenTK.Name = "lblTenTK";
-            this.lblTenTK.Size = new System.Drawing.Size(33, 22);
+            this.lblTenTK.Size = new System.Drawing.Size(134, 22);
             this.lblTenTK.TabIndex = 4;
             this.lblTenTK.Text = "ten";
+            this.lblTenTK.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // btnThoat
             // 
@@ -103,7 +103,6 @@
             this.Text = "Menu";
             this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
