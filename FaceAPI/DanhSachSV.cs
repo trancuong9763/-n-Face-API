@@ -334,8 +334,9 @@ namespace FaceAPI
         private void btnTim_Click(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();
-            sv.Ma_SV = txtTim.Text.ToString();
+            sv.Ma_SV = txtTim.Text;
             dgvDSSV.DataSource = SinhVienBUS.TimKiemMaSV(sv.Ma_SV);
+            Debug.WriteLine(SinhVienBUS.TimKiemMaSV(sv.Ma_SV));
         }
     }
 }

@@ -74,12 +74,18 @@ namespace DAO
             SqlParameter[] param = new SqlParameter[0];
             return DataProvider.ExecuteSelectQuery(query, param);
         }
-        public static SinhVienDTO TimKiemMaSV(string maSV)
+        public static List<SinhVienDTO> TimKiemMaSV(string maSV)
         {
-            string query = "SELECT * FROM ThongTinSV WHERE Ma_SV LIKE '%@Ma_SV'";
+            string query = "SELECT * FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ma_SV", maSV);
-            return ConvertToDTO(DataProvider.ExecuteSelectQuery(query,param).Rows[0]);
+            DataTable dtbKetQua = DataProvider.ExecuteSelectQuery(query, param);
+            List<SinhVienDTO> lstSinhVien = new List<SinhVienDTO>();
+            foreach (DataRow dr in dtbKetQua.Rows)
+            {
+                lstSinhVien.Add(ConvertToDTO(dr));
+            }
+            return lstSinhVien;
         }
         public static SinhVienDTO LayThongTinLop(string maLop)
         {
