@@ -76,6 +76,7 @@
             this.txtMK.PasswordChar = '*';
             this.txtMK.Size = new System.Drawing.Size(219, 32);
             this.txtMK.TabIndex = 3;
+            this.txtMK.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtMK_KeyDown);
             // 
             // btnDangNhap
             // 

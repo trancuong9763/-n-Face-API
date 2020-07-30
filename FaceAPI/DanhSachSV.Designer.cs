@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.dgvDSSV = new System.Windows.Forms.DataGridView();
-            this.STT_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,6 +49,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.picBox2 = new System.Windows.Forms.PictureBox();
             this.picBox = new System.Windows.Forms.PictureBox();
+            this.txtTim = new System.Windows.Forms.TextBox();
+            this.cbbTim = new System.Windows.Forms.ComboBox();
+            this.btnTim = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -61,7 +63,6 @@
             // 
             this.dgvDSSV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDSSV.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.STT_SV,
             this.Ma_SV,
             this.Ten_SV,
             this.MaLop,
@@ -73,14 +74,10 @@
             this.dgvDSSV.Name = "dgvDSSV";
             this.dgvDSSV.RowTemplate.Height = 24;
             this.dgvDSSV.Size = new System.Drawing.Size(578, 197);
+
+            this.dgvDSSV.Size = new System.Drawing.Size(770, 204);
             this.dgvDSSV.TabIndex = 0;
             this.dgvDSSV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSV_CellClick);
-            // 
-            // STT_SV
-            // 
-            this.STT_SV.DataPropertyName = "STT";
-            this.STT_SV.HeaderText = "STT";
-            this.STT_SV.Name = "STT_SV";
             // 
             // Ma_SV
             // 
@@ -123,6 +120,12 @@
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.groupBox2.Size = new System.Drawing.Size(582, 214);
+
+            this.groupBox2.Location = new System.Drawing.Point(12, 330);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.groupBox2.Size = new System.Drawing.Size(776, 223);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh Sách Sinh Viên";
@@ -204,6 +207,7 @@
             this.txtLop.Name = "txtLop";
             this.txtLop.Size = new System.Drawing.Size(197, 20);
             this.txtLop.TabIndex = 8;
+            this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
             // 
             // txtMSSV
             // 
@@ -211,6 +215,7 @@
             this.txtMSSV.Name = "txtMSSV";
             this.txtMSSV.Size = new System.Drawing.Size(197, 20);
             this.txtMSSV.TabIndex = 7;
+            this.txtMSSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSSV_KeyPress);
             // 
             // txtHoten
             // 
@@ -263,17 +268,54 @@
             this.picBox.TabIndex = 4;
             this.picBox.TabStop = false;
             // 
+            // txtTim
+            // 
+            this.txtTim.Location = new System.Drawing.Point(169, 299);
+            this.txtTim.Multiline = true;
+            this.txtTim.Name = "txtTim";
+            this.txtTim.Size = new System.Drawing.Size(174, 24);
+            this.txtTim.TabIndex = 5;
+            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
+            // 
+            // cbbTim
+            // 
+            this.cbbTim.FormattingEnabled = true;
+            this.cbbTim.Location = new System.Drawing.Point(349, 299);
+            this.cbbTim.Name = "cbbTim";
+            this.cbbTim.Size = new System.Drawing.Size(144, 24);
+            this.cbbTim.TabIndex = 6;
+            this.cbbTim.SelectedIndexChanged += new System.EventHandler(this.cbbTim_SelectedIndexChanged);
+            this.cbbTim.SelectionChangeCommitted += new System.EventHandler(this.cbbTim_SelectionChangeCommitted);
+            this.cbbTim.Enter += new System.EventHandler(this.cbbTim_Enter);
+            this.cbbTim.Leave += new System.EventHandler(this.cbbTim_Leave);
+            // 
+            // btnTim
+            // 
+            this.btnTim.Location = new System.Drawing.Point(499, 296);
+            this.btnTim.Name = "btnTim";
+            this.btnTim.Size = new System.Drawing.Size(100, 29);
+            this.btnTim.TabIndex = 7;
+            this.btnTim.Text = "Tìm";
+            this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
+            // 
             // DanhSachSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 459);
+
+            this.ClientSize = new System.Drawing.Size(800, 565);
+            this.Controls.Add(this.btnTim);
+            this.Controls.Add(this.cbbTim);
+            this.Controls.Add(this.txtTim);
             this.Controls.Add(this.picBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "DanhSachSV";
             this.Text = "DanhSachSV";
+            this.Load += new System.EventHandler(this.DanhSachSV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -281,6 +323,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -302,11 +345,13 @@
         private System.Windows.Forms.PictureBox picBox;
         private System.Windows.Forms.Button btnStop;
         private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn STT_SV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_SV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_SV;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLop;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNgayHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNgayVang;
+        private System.Windows.Forms.TextBox txtTim;
+        private System.Windows.Forms.ComboBox cbbTim;
+        private System.Windows.Forms.Button btnTim;
     }
 }
