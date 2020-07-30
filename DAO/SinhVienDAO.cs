@@ -12,7 +12,6 @@ namespace DAO
     {
         public static SinhVienDTO ConvertToDTO(DataRow dr) {
             SinhVienDTO sv = new SinhVienDTO();
-     
             sv.Ma_SV = dr["Ma_SV"].ToString();
             sv.Ten_SV = dr["Ten_SV"].ToString();            
             sv.Ma_Lop = dr["MaLop"].ToString();
@@ -71,8 +70,23 @@ namespace DAO
         }
         public static DataTable ChonLop(SinhVienDTO sv)
         {
-            return DataProvider.table_Select("SELECT * FROM ThongTinhSV");
-            
+            string query = "SELECT DISTINCT MaLop FROM ThongTinSV";
+            SqlParameter[] param = new SqlParameter[0];
+            return DataProvider.ExecuteSelectQuery(query, param);
+        }
+        public static SinhVienDTO TimKiemMaSV(string maSV)
+        {
+            string query = "SELECT * FROM ThongTinSV WHERE Ma_SV LIKE '%@Ma_SV'";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Ma_SV", maSV);
+            return ConvertToDTO(DataProvider.ExecuteSelectQuery(query,param).Rows[0]);
+        }
+        public static SinhVienDTO LayThongTinLop(string maLop)
+        {
+            string query = "SELECT *  FROM ThongTinSV Where MaLop=@Malop";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@MaLop",maLop);
+            return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
 
         }
         public static bool UpdateChuyenCan(SinhVienDTO sv)

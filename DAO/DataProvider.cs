@@ -30,12 +30,7 @@ namespace DAO
             }
             return conn;
         }
-        public static DataTable table_Select(String sql)
-        {
-            DataTable dt = new DataTable();
-            adapter.Fill(dt);
-            return dt;
-        }
+       
         public static DataTable ExecuteSelectQuery(string query, SqlParameter[] param)
         {
             SqlCommand cmd = new SqlCommand();

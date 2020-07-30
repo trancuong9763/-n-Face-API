@@ -188,5 +188,15 @@ namespace FaceAPI
                 e.Handled = false;
             }
         }
+
+        private void txtTaiKhoan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void QlTaiKhoan_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -205,6 +205,7 @@
             this.txtLop.Name = "txtLop";
             this.txtLop.Size = new System.Drawing.Size(261, 22);
             this.txtLop.TabIndex = 8;
+            this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
             // 
             // txtMSSV
             // 
@@ -279,6 +280,7 @@
             this.txtTim.Name = "txtTim";
             this.txtTim.Size = new System.Drawing.Size(174, 24);
             this.txtTim.TabIndex = 5;
+            this.txtTim.TextChanged += new System.EventHandler(this.txtTim_TextChanged);
             // 
             // cbbTim
             // 
@@ -288,6 +290,9 @@
             this.cbbTim.Size = new System.Drawing.Size(144, 24);
             this.cbbTim.TabIndex = 6;
             this.cbbTim.SelectedIndexChanged += new System.EventHandler(this.cbbTim_SelectedIndexChanged);
+            this.cbbTim.SelectionChangeCommitted += new System.EventHandler(this.cbbTim_SelectionChangeCommitted);
+            this.cbbTim.Enter += new System.EventHandler(this.cbbTim_Enter);
+            this.cbbTim.Leave += new System.EventHandler(this.cbbTim_Leave);
             // 
             // btnTim
             // 
@@ -297,6 +302,7 @@
             this.btnTim.TabIndex = 7;
             this.btnTim.Text = "Tìm";
             this.btnTim.UseVisualStyleBackColor = true;
+            this.btnTim.Click += new System.EventHandler(this.btnTim_Click);
             // 
             // DanhSachSV
             // 

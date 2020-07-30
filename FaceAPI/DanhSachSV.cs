@@ -230,21 +230,26 @@ namespace FaceAPI
             }
 
             // ko cho phep nhap dau .
-            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') == -1))
+            else if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') == -1))
             {
                 e.Handled = true;
+            }
+
+            else if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+
+            }
+
+            else
+            {
+                e.Handled = false;
             }
         }
 
         private void cbbTim_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
-        }
-        protected  void LoadDSLop()
-        {
+            
 
-
-           
 
         }
 
@@ -252,9 +257,58 @@ namespace FaceAPI
         {
             SinhVienDTO sv = new SinhVienDTO();
             cbbTim.DataSource = SinhVienBUS.ChonLop(sv);
+           
             cbbTim.DisplayMember = "MaLop";
             cbbTim.ValueMember = "MaLop";
+            
 
+        }
+
+        private void txtLop_KeyPress(object sender, KeyPressEventArgs e)
+        {
+              if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') == -1))
+            {
+                e.Handled = true;
+            }
+            else if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+
+            }
+
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void cbbTim_Leave(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void cbbTim_Enter(object sender, EventArgs e)
+        {
+        }
+
+        private void cbbTim_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_Lop = cbbTim.SelectedValue.ToString();
+            
+            dgvDSSV.DataSource = SinhVienBUS.LayThongTinLop(sv.Ma_Lop);   
+
+        }
+        DataTable dt;
+        private void txtTim_TextChanged(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_SV = txtTim.Text.ToString();
+            dgvDSSV.DataSource = SinhVienBUS.TimKiemMaSV(sv.Ma_SV);
         }
     }
 }
