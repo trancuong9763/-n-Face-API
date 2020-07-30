@@ -16,6 +16,7 @@ using System.Threading;
 using System.Diagnostics;
 using BUS;
 using DTO;
+
 namespace FaceAPI
 {
     public partial class DanhSachSV : Form
@@ -31,6 +32,8 @@ namespace FaceAPI
         {
             InitializeComponent();
             LoadDSSV();
+            ChonLop();
+            
         }
 
         private void dgvDSSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -42,6 +45,14 @@ namespace FaceAPI
 
             dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
 
+        }
+        protected void ChonLop()
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            cboTim.DataSource = SinhVienBUS.ChonLop(sv);
+
+            cboTim.DisplayMember = "MaLop";
+            cboTim.ValueMember = "MaLop";
         }
         protected void XoaForm()
         {
@@ -69,6 +80,12 @@ namespace FaceAPI
             if (txtMSSV.Text == "" || txtHoten.Text == "" || txtLop.Text == "")
             {
                 MessageBox.Show("Thông tin không được để trống");
+            }
+
+            
+            else if (r.IsMatch(txtHoten.Text) || r.IsMatch(txtLop.Text) || r.IsMatch(txtMSSV.Text) )
+            {
+                MessageBox.Show("Thông tin không hợp lệ");
             }
             else
             {
@@ -244,6 +261,121 @@ namespace FaceAPI
                 quayVideo.Stop();
             }
            
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_Lop = cboTim.Text.ToString();
+            
+                dgvDSSV.DataSource = SinhVienBUS.LayDSLop(sv.Ma_Lop);
+            
+           
+        }
+
+        private void DanhSachSV_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTim_Click(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_SV = txtTim.Text.ToString();
+            if (txtTim.Text=="")
+            {
+                MessageBox.Show("Bạn chưa nhập thông tin cần tìm");
+            }
+
+
+           
+            else
+
+                dgvDSSV.DataSource = SinhVienBUS.TimKiemMaSV(sv.Ma_SV);
+
+        }
+        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
+        private void txtLop_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtLop_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
+            
+
+              if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+
+            }
+
+            else
+            {
+                e.Handled = false;
+            }
+
+        }
+
+        private void txtMSSV_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // ko cho phep nhap dau .
+            else if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') == -1))
+            {
+                e.Handled = true;
+            }
+            else if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+
+            }
+
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void txtTim_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+      (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // ko cho phep nhap dau .
+            else if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') == -1))
+            {
+                e.Handled = true;
+            }
+            else if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+
+            }
+
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
+        private void cboTim_TextChanged(object sender, EventArgs e)
+        {
+            if (cboTim.SelectedIndex < 0)
+            {
+                cboTim.Text = "";
+            }
+            else
+            {
+                cboTim.Text = cboTim.SelectedText;
+            }
         }
     }
 }

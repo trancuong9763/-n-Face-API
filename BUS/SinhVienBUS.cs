@@ -60,6 +60,10 @@ namespace BUS
                 return null;
             }
         }
+        public static List<SinhVienDTO> LayDSLop(string maLop)
+        {
+            return SinhVienDAO.LayDSLop(maLop);
+        }
         public static DataTable ChonLop(SinhVienDTO sv)
         {
 
