@@ -49,15 +49,15 @@ namespace BUS
                 return SinhVienDAO.LayThongTinSV(maSV);
             }
         }
-        public static SinhVienDTO TimKiemMaSV(string maSV)
+        public static List<SinhVienDTO> TimKiemMaSV(string maSV)
         {
-            if (!SinhVienDAO.KTTKTonTai(maSV))
+            if (SinhVienDAO.KTTKTonTai(maSV))
             {
-                return null;
+                return SinhVienDAO.TimKiemMaSV(maSV);
             }
             else
             {
-                return SinhVienDAO.TimKiemMaSV(maSV);
+                return null;
             }
         }
         public static DataTable ChonLop(SinhVienDTO sv)
