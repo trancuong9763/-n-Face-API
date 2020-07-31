@@ -31,7 +31,6 @@ namespace FaceAPI
         public DanhSachSV()
         {
             InitializeComponent();
-            LoadDSSV();
             ChonLop();
             
         }
@@ -363,6 +362,12 @@ namespace FaceAPI
             {
                 cboTim.Text = cboTim.SelectedText;
             }
+        }
+
+        private void DanhSachSV_Load(object sender, EventArgs e)
+        {
+            LoadDSSV();
+
         }
     }
 }

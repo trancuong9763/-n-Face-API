@@ -17,6 +17,8 @@ namespace DAO
             sv.Ma_Lop = dr["MaLop"].ToString();
             sv.SoNgayHoc = Convert.ToInt32(dr["SoNgayHoc"]);
             sv.SoNgayVang = Convert.ToInt32(dr["SoNgayVang"]);
+            sv.TrangThai = Convert.ToBoolean(dr["TrangThai"]);
+
             return sv;
          }
         public static List<SinhVienDTO> LayDSSV()
@@ -41,26 +43,27 @@ namespace DAO
         }
         public static bool ThemSV(SinhVienDTO sv)
         {
-            string query = "INSERT INTO ThongTinSV (Ma_SV, Ten_SV,MaLop,SoNgayHoc,SoNgayVang) VALUES (@Ma_SV, @Ten_SV,@MaLop,@SoNgayHoc,@SoNgayVang)";
-            SqlParameter[] param = new SqlParameter[5];
+            string query = "INSERT INTO ThongTinSV (Ma_SV, Ten_SV,MaLop,SoNgayHoc,SoNgayVang,TrangThai) VALUES (@Ma_SV, @Ten_SV,@MaLop,@SoNgayHoc,@SoNgayVang,@TrangThai)";
+            SqlParameter[] param = new SqlParameter[6];
             param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
             param[1] = new SqlParameter("@Ten_SV", sv.Ten_SV);
             param[2] = new SqlParameter("@MaLop", sv.Ma_Lop);
             param[3] = new SqlParameter("@SoNgayHoc", sv.SoNgayHoc);
             param[4] = new SqlParameter("@SoNgayVang", sv.SoNgayVang);
+            param[5] = new SqlParameter("@TrangThai", sv.TrangThai);
             return DataProvider.ExecuteInsertQuery(query, param) == 1;
         }
-        public static bool SuaSV(SinhVienDTO sv)
-        {
-            string query = "UPDATE ThongTinSV SET Ma_SV=@Ma_SV,Ten_SV=@Ten_SV,MaLop=@MaLop,SoNgayHoc=@SoNgayHoc,SoNgayVang=@SoNgayVang";
-            SqlParameter[] param = new SqlParameter[5];
-            param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
-            param[1] = new SqlParameter("@Ten_SV", sv.Ten_SV);
-            param[2] = new SqlParameter("@MaLop", sv.Ma_Lop);
-            param[3] = new SqlParameter("@SoNgayHoc", sv.SoNgayHoc);
-            param[4] = new SqlParameter("@SoNgayVang", sv.SoNgayVang);
-            return DataProvider.ExecuteUpdateQuery(query, param) == 1;
-        }
+        //public static bool SuaSV(SinhVienDTO sv)
+        //{
+        //    string query = "UPDATE ThongTinSV SET Ma_SV=@Ma_SV,Ten_SV=@Ten_SV,MaLop=@MaLop,SoNgayHoc=@SoNgayHoc,SoNgayVang=@SoNgayVang";
+        //    SqlParameter[] param = new SqlParameter[5];
+        //    param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
+        //    param[1] = new SqlParameter("@Ten_SV", sv.Ten_SV);
+        //    param[2] = new SqlParameter("@MaLop", sv.Ma_Lop);
+        //    param[3] = new SqlParameter("@SoNgayHoc", sv.SoNgayHoc);
+        //    param[4] = new SqlParameter("@SoNgayVang", sv.SoNgayVang);
+        //    return DataProvider.ExecuteUpdateQuery(query, param) == 1;
+        //}
         public static SinhVienDTO LayThongTinSV(string maSV)
         {
             string query = "SELECT * FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
@@ -123,6 +126,13 @@ namespace DAO
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
             return DataProvider.ExecuteDeleteQuery(query, param) == 1;
+        }
+        public static bool CapNhatTrangThai(string maSV)
+        {
+            string query = "UPDATE TaiKhoan SET TrangThai = 1 WHERE Ma_SV = @Ma_SV";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Ma_SV", maSV);
+            return DataProvider.ExecuteUpdateQuery(query, param) == 1;
         }
     }
 }
