@@ -49,14 +49,13 @@
             this.dgvTaiKhoan.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ten_QTV,
             this.Mat_Khau});
-            this.dgvTaiKhoan.Location = new System.Drawing.Point(403, 12);
-            this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.dgvTaiKhoan.Location = new System.Drawing.Point(330, 10);
+            this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.RowTemplate.Height = 24;
-            this.dgvTaiKhoan.Size = new System.Drawing.Size(194, 388);
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(159, 335);
             this.dgvTaiKhoan.TabIndex = 0;
             this.dgvTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellClick);
-            this.dgvTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellContentClick);
             // 
             // Ten_QTV
             // 
@@ -75,29 +74,29 @@
             // lblQLTK
             // 
             this.lblQLTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblQLTK.Location = new System.Drawing.Point(2, 12);
-            this.lblQLTK.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.lblQLTK.Location = new System.Drawing.Point(2, 10);
+            this.lblQLTK.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblQLTK.Name = "lblQLTK";
-            this.lblQLTK.Size = new System.Drawing.Size(391, 68);
+            this.lblQLTK.Size = new System.Drawing.Size(320, 59);
             this.lblQLTK.TabIndex = 1;
             this.lblQLTK.Text = "Quản lý tài khoản";
             this.lblQLTK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lblQLTK.Click += new System.EventHandler(this.lblQLTK_Click);
             // 
             // txtTaiKhoan
             // 
-            this.txtTaiKhoan.Location = new System.Drawing.Point(181, 133);
+            this.txtTaiKhoan.Location = new System.Drawing.Point(148, 115);
+            this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(212, 30);
+            this.txtTaiKhoan.Size = new System.Drawing.Size(174, 27);
             this.txtTaiKhoan.TabIndex = 2;
-            this.txtTaiKhoan.TextChanged += new System.EventHandler(this.txtTaiKhoan_TextChanged);
             this.txtTaiKhoan.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTaiKhoan_KeyPress);
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(45, 261);
+            this.btnThem.Location = new System.Drawing.Point(37, 225);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(103, 55);
+            this.btnThem.Size = new System.Drawing.Size(84, 48);
             this.btnThem.TabIndex = 3;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -105,35 +104,39 @@
             // 
             // txtMatKhau
             // 
-            this.txtMatKhau.Location = new System.Drawing.Point(181, 191);
+            this.txtMatKhau.Location = new System.Drawing.Point(148, 165);
+            this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
-            this.txtMatKhau.Size = new System.Drawing.Size(212, 30);
+            this.txtMatKhau.Size = new System.Drawing.Size(174, 27);
             this.txtMatKhau.TabIndex = 4;
             // 
             // lblTen
             // 
             this.lblTen.AutoSize = true;
-            this.lblTen.Location = new System.Drawing.Point(41, 141);
+            this.lblTen.Location = new System.Drawing.Point(34, 122);
+            this.lblTen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(116, 22);
+            this.lblTen.Size = new System.Drawing.Size(99, 19);
             this.lblTen.TabIndex = 5;
             this.lblTen.Text = "Tên tài khoản";
             // 
             // lblMK
             // 
             this.lblMK.AutoSize = true;
-            this.lblMK.Location = new System.Drawing.Point(41, 199);
+            this.lblMK.Location = new System.Drawing.Point(34, 172);
+            this.lblMK.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMK.Name = "lblMK";
-            this.lblMK.Size = new System.Drawing.Size(82, 22);
+            this.lblMK.Size = new System.Drawing.Size(71, 19);
             this.lblMK.TabIndex = 6;
             this.lblMK.Text = "Mật khẩu";
             // 
             // btnSua
             // 
-            this.btnSua.Location = new System.Drawing.Point(167, 261);
+            this.btnSua.Location = new System.Drawing.Point(137, 225);
+            this.btnSua.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnSua.Name = "btnSua";
-            this.btnSua.Size = new System.Drawing.Size(103, 55);
+            this.btnSua.Size = new System.Drawing.Size(84, 48);
             this.btnSua.TabIndex = 7;
             this.btnSua.Text = "Sửa";
             this.btnSua.UseVisualStyleBackColor = true;
@@ -141,9 +144,10 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(290, 261);
+            this.btnXoa.Location = new System.Drawing.Point(237, 225);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(103, 55);
+            this.btnXoa.Size = new System.Drawing.Size(84, 48);
             this.btnXoa.TabIndex = 8;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -151,9 +155,10 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(167, 345);
+            this.btnThoat.Location = new System.Drawing.Point(137, 298);
+            this.btnThoat.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(103, 55);
+            this.btnThoat.Size = new System.Drawing.Size(84, 48);
             this.btnThoat.TabIndex = 9;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
@@ -161,9 +166,10 @@
             // 
             // QlTaiKhoan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(608, 417);
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.ClientSize = new System.Drawing.Size(497, 360);
             this.Controls.Add(this.btnThoat);
             this.Controls.Add(this.btnXoa);
             this.Controls.Add(this.btnSua);
@@ -174,13 +180,12 @@
             this.Controls.Add(this.txtTaiKhoan);
             this.Controls.Add(this.lblQLTK);
             this.Controls.Add(this.dgvTaiKhoan);
-            this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(5, 4, 5, 4);
+            this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "QlTaiKhoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "QlTaiKhoan";
-            this.Load += new System.EventHandler(this.QlTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

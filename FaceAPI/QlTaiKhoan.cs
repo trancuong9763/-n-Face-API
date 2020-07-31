@@ -125,10 +125,7 @@ namespace FaceAPI
 
         }
 
-        private void dgvTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-           
-        }
+        
 
         private void dgvTaiKhoan_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -170,11 +167,7 @@ namespace FaceAPI
             }
         }
 
-        private void lblQLTK_Click(object sender, EventArgs e)
-        {
-
-        }
-
+       
         private void txtTaiKhoan_KeyPress(object sender, KeyPressEventArgs e)
         {
             
@@ -189,14 +182,6 @@ namespace FaceAPI
             }
         }
 
-        private void txtTaiKhoan_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void QlTaiKhoan_Load(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

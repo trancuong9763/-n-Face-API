@@ -29,11 +29,15 @@
         private void InitializeComponent()
         {
             this.dgvDSSV = new System.Windows.Forms.DataGridView();
+            this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNgayHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNgayVang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.txtLop = new System.Windows.Forms.TextBox();
@@ -43,16 +47,12 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.picBox2 = new System.Windows.Forms.PictureBox();
+            this.btnXuat = new System.Windows.Forms.Button();
             this.picBox = new System.Windows.Forms.PictureBox();
             this.txtTim = new System.Windows.Forms.TextBox();
             this.btnTim = new System.Windows.Forms.Button();
             this.cboTim = new System.Windows.Forms.ComboBox();
             this.lblNhapMSSV = new System.Windows.Forms.Label();
-            this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNgayHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNgayVang = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).BeginInit();
@@ -80,6 +80,41 @@
             this.dgvDSSV.TabIndex = 0;
             this.dgvDSSV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSV_CellClick);
             // 
+            // Ma_SV
+            // 
+            this.Ma_SV.DataPropertyName = "Ma_SV";
+            this.Ma_SV.HeaderText = "Mã SV";
+            this.Ma_SV.Name = "Ma_SV";
+            this.Ma_SV.Width = 200;
+            // 
+            // Ten_SV
+            // 
+            this.Ten_SV.DataPropertyName = "Ten_SV";
+            this.Ten_SV.HeaderText = "Tên SV";
+            this.Ten_SV.Name = "Ten_SV";
+            this.Ten_SV.Width = 200;
+            // 
+            // MaLop
+            // 
+            this.MaLop.DataPropertyName = "Ma_Lop";
+            this.MaLop.HeaderText = "Mã Lớp";
+            this.MaLop.Name = "MaLop";
+            this.MaLop.Width = 200;
+            // 
+            // SoNgayHoc
+            // 
+            this.SoNgayHoc.DataPropertyName = "SoNgayHoc";
+            this.SoNgayHoc.HeaderText = "Số Ngày Học";
+            this.SoNgayHoc.Name = "SoNgayHoc";
+            this.SoNgayHoc.Width = 120;
+            // 
+            // SoNgayVang
+            // 
+            this.SoNgayVang.DataPropertyName = "SoNgayVang";
+            this.SoNgayVang.HeaderText = "Số Ngày Vắng";
+            this.SoNgayVang.Name = "SoNgayVang";
+            this.SoNgayVang.Width = 120;
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvDSSV);
@@ -96,7 +131,6 @@
             // 
             this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnStart);
-            this.groupBox1.Controls.Add(this.button3);
             this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.btnThem);
             this.groupBox1.Controls.Add(this.txtLop);
@@ -107,9 +141,9 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.picBox2);
             this.groupBox1.Location = new System.Drawing.Point(495, 9);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
             this.groupBox1.Size = new System.Drawing.Size(391, 329);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
@@ -118,42 +152,31 @@
             // btnStop
             // 
             this.btnStop.Location = new System.Drawing.Point(173, 98);
-            this.btnStop.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnStop.Margin = new System.Windows.Forms.Padding(5);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(211, 54);
             this.btnStop.TabIndex = 13;
-            this.btnStop.Text = "Stop";
+            this.btnStop.Text = "Dừng";
             this.btnStop.UseVisualStyleBackColor = true;
             this.btnStop.Click += new System.EventHandler(this.btnStop_Click);
             // 
             // btnStart
             // 
             this.btnStart.Location = new System.Drawing.Point(173, 28);
-            this.btnStart.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnStart.Margin = new System.Windows.Forms.Padding(5);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(211, 54);
             this.btnStart.TabIndex = 12;
-            this.btnStart.Text = "Start Camera";
+            this.btnStart.Text = "Bật Camera";
             this.btnStart.UseVisualStyleBackColor = true;
             this.btnStart.Click += new System.EventHandler(this.btnStart_Click);
             // 
-            // button3
-            // 
-            this.button3.Location = new System.Drawing.Point(270, 286);
-            this.button3.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(113, 33);
-            this.button3.TabIndex = 11;
-            this.button3.Text = "Sửa";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.button3_Click);
-            // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(142, 286);
-            this.btnXoa.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnXoa.Location = new System.Drawing.Point(208, 276);
+            this.btnXoa.Margin = new System.Windows.Forms.Padding(5);
             this.btnXoa.Name = "btnXoa";
-            this.btnXoa.Size = new System.Drawing.Size(113, 33);
+            this.btnXoa.Size = new System.Drawing.Size(176, 43);
             this.btnXoa.TabIndex = 10;
             this.btnXoa.Text = "Xóa";
             this.btnXoa.UseVisualStyleBackColor = true;
@@ -161,10 +184,10 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(9, 286);
-            this.btnThem.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.btnThem.Location = new System.Drawing.Point(9, 276);
+            this.btnThem.Margin = new System.Windows.Forms.Padding(5);
             this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(113, 33);
+            this.btnThem.Size = new System.Drawing.Size(176, 43);
             this.btnThem.TabIndex = 9;
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
@@ -173,18 +196,17 @@
             // txtLop
             // 
             this.txtLop.Location = new System.Drawing.Point(86, 239);
-            this.txtLop.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtLop.Margin = new System.Windows.Forms.Padding(5);
             this.txtLop.MaxLength = 10;
             this.txtLop.Name = "txtLop";
             this.txtLop.Size = new System.Drawing.Size(294, 27);
             this.txtLop.TabIndex = 8;
-            this.txtLop.TextChanged += new System.EventHandler(this.txtLop_TextChanged);
             this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
             // 
             // txtMSSV
             // 
             this.txtMSSV.Location = new System.Drawing.Point(86, 201);
-            this.txtMSSV.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtMSSV.Margin = new System.Windows.Forms.Padding(5);
             this.txtMSSV.MaxLength = 10;
             this.txtMSSV.Name = "txtMSSV";
             this.txtMSSV.Size = new System.Drawing.Size(294, 27);
@@ -194,7 +216,7 @@
             // txtHoten
             // 
             this.txtHoten.Location = new System.Drawing.Point(86, 163);
-            this.txtHoten.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.txtHoten.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoten.Name = "txtHoten";
             this.txtHoten.Size = new System.Drawing.Size(294, 27);
             this.txtHoten.TabIndex = 6;
@@ -232,16 +254,26 @@
             // picBox2
             // 
             this.picBox2.Location = new System.Drawing.Point(9, 28);
-            this.picBox2.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.picBox2.Margin = new System.Windows.Forms.Padding(5);
             this.picBox2.Name = "picBox2";
             this.picBox2.Size = new System.Drawing.Size(155, 124);
             this.picBox2.TabIndex = 0;
             this.picBox2.TabStop = false;
             // 
+            // btnXuat
+            // 
+            this.btnXuat.Location = new System.Drawing.Point(740, 355);
+            this.btnXuat.Margin = new System.Windows.Forms.Padding(5);
+            this.btnXuat.Name = "btnXuat";
+            this.btnXuat.Size = new System.Drawing.Size(135, 46);
+            this.btnXuat.TabIndex = 11;
+            this.btnXuat.Text = "Xuất Excel";
+            this.btnXuat.UseVisualStyleBackColor = true;
+            // 
             // picBox
             // 
             this.picBox.Location = new System.Drawing.Point(13, 18);
-            this.picBox.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.picBox.Margin = new System.Windows.Forms.Padding(5);
             this.picBox.Name = "picBox";
             this.picBox.Size = new System.Drawing.Size(473, 320);
             this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -261,10 +293,10 @@
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(345, 364);
+            this.btnTim.Location = new System.Drawing.Point(345, 361);
             this.btnTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnTim.Name = "btnTim";
-            this.btnTim.Size = new System.Drawing.Size(111, 27);
+            this.btnTim.Size = new System.Drawing.Size(111, 33);
             this.btnTim.TabIndex = 6;
             this.btnTim.Text = "Tìm kiếm";
             this.btnTim.UseVisualStyleBackColor = true;
@@ -273,7 +305,7 @@
             // cboTim
             // 
             this.cboTim.FormattingEnabled = true;
-            this.cboTim.Location = new System.Drawing.Point(581, 364);
+            this.cboTim.Location = new System.Drawing.Point(577, 364);
             this.cboTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboTim.Name = "cboTim";
             this.cboTim.Size = new System.Drawing.Size(151, 27);
@@ -292,39 +324,6 @@
             this.lblNhapMSSV.Text = "Nhập MSSV:";
             this.lblNhapMSSV.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // Ma_SV
-            // 
-            this.Ma_SV.DataPropertyName = "Ma_SV";
-            this.Ma_SV.HeaderText = "Mã SV";
-            this.Ma_SV.Name = "Ma_SV";
-            this.Ma_SV.Width = 200;
-            // 
-            // Ten_SV
-            // 
-            this.Ten_SV.DataPropertyName = "Ten_SV";
-            this.Ten_SV.HeaderText = "Tên SV";
-            this.Ten_SV.Name = "Ten_SV";
-            this.Ten_SV.Width = 200;
-            // 
-            // MaLop
-            // 
-            this.MaLop.DataPropertyName = "Ma_Lop";
-            this.MaLop.HeaderText = "Mã Lớp";
-            this.MaLop.Name = "MaLop";
-            this.MaLop.Width = 200;
-            // 
-            // SoNgayHoc
-            // 
-            this.SoNgayHoc.DataPropertyName = "SoNgayHoc";
-            this.SoNgayHoc.HeaderText = "Số Ngày Học";
-            this.SoNgayHoc.Name = "SoNgayHoc";
-            // 
-            // SoNgayVang
-            // 
-            this.SoNgayVang.DataPropertyName = "SoNgayVang";
-            this.SoNgayVang.HeaderText = "Số Ngày Vắng";
-            this.SoNgayVang.Name = "SoNgayVang";
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -337,7 +336,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(500, 368);
+            this.label2.Location = new System.Drawing.Point(493, 368);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(76, 19);
@@ -352,6 +351,7 @@
             this.ClientSize = new System.Drawing.Size(900, 671);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnXuat);
             this.Controls.Add(this.lblNhapMSSV);
             this.Controls.Add(this.cboTim);
             this.Controls.Add(this.btnTim);
@@ -363,7 +363,6 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "DanhSachSV";
             this.Text = "DanhSachSV";
-            this.Load += new System.EventHandler(this.DanhSachSV_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
@@ -380,7 +379,7 @@
         private System.Windows.Forms.DataGridView dgvDSSV;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button btnXuat;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtLop;
@@ -396,13 +395,13 @@
         private System.Windows.Forms.TextBox txtTim;
         private System.Windows.Forms.Button btnTim;
         private System.Windows.Forms.ComboBox cboTim;
+        private System.Windows.Forms.Label lblNhapMSSV;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ma_SV;
         private System.Windows.Forms.DataGridViewTextBoxColumn Ten_SV;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaLop;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNgayHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNgayVang;
-        private System.Windows.Forms.Label lblNhapMSSV;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
     }
 }

@@ -36,10 +36,7 @@ namespace FaceAPI
             
         }
 
-        private void dgvDSSV_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+      
         protected void LoadDSSV()
         {
 
@@ -248,11 +245,7 @@ namespace FaceAPI
             
         }
 
-        private void button3_Click(object sender, EventArgs e)
-        {
-           
-
-        }
+        
 
         private void btnStop_Click(object sender, EventArgs e)
         {
@@ -273,10 +266,7 @@ namespace FaceAPI
            
         }
 
-        private void DanhSachSV_Load(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void btnTim_Click(object sender, EventArgs e)
         {
@@ -295,10 +285,7 @@ namespace FaceAPI
 
         }
         System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
-        private void txtLop_TextChanged(object sender, EventArgs e)
-        {
-
-        }
+       
 
         private void txtLop_KeyPress(object sender, KeyPressEventArgs e)
         {
