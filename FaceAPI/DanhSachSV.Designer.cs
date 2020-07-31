@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.dgvDSSV = new System.Windows.Forms.DataGridView();
+            this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNgayHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNgayVang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
@@ -51,12 +57,6 @@
             this.lblNhapMSSV = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnNhapEX = new System.Windows.Forms.Button();
-            this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNgayHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNgayVang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -75,13 +75,54 @@
             this.SoNgayVang,
             this.TrangThai});
             this.dgvDSSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDSSV.Location = new System.Drawing.Point(4, 19);
+            this.dgvDSSV.Location = new System.Drawing.Point(4, 23);
             this.dgvDSSV.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvDSSV.Name = "dgvDSSV";
             this.dgvDSSV.RowTemplate.Height = 24;
-            this.dgvDSSV.Size = new System.Drawing.Size(865, 222);
+            this.dgvDSSV.Size = new System.Drawing.Size(865, 218);
             this.dgvDSSV.TabIndex = 0;
             this.dgvDSSV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSV_CellClick);
+            // 
+            // Ma_SV
+            // 
+            this.Ma_SV.DataPropertyName = "Ma_SV";
+            this.Ma_SV.HeaderText = "Mã SV";
+            this.Ma_SV.Name = "Ma_SV";
+            this.Ma_SV.Width = 150;
+            // 
+            // Ten_SV
+            // 
+            this.Ten_SV.DataPropertyName = "Ten_SV";
+            this.Ten_SV.HeaderText = "Tên SV";
+            this.Ten_SV.Name = "Ten_SV";
+            this.Ten_SV.Width = 200;
+            // 
+            // MaLop
+            // 
+            this.MaLop.DataPropertyName = "Ma_Lop";
+            this.MaLop.HeaderText = "Mã Lớp";
+            this.MaLop.Name = "MaLop";
+            this.MaLop.Width = 150;
+            // 
+            // SoNgayHoc
+            // 
+            this.SoNgayHoc.DataPropertyName = "SoNgayHoc";
+            this.SoNgayHoc.HeaderText = "Số Ngày Học";
+            this.SoNgayHoc.Name = "SoNgayHoc";
+            this.SoNgayHoc.Width = 120;
+            // 
+            // SoNgayVang
+            // 
+            this.SoNgayVang.DataPropertyName = "SoNgayVang";
+            this.SoNgayVang.HeaderText = "Số Ngày Vắng";
+            this.SoNgayVang.Name = "SoNgayVang";
+            this.SoNgayVang.Width = 120;
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.Name = "TrangThai";
             // 
             // groupBox2
             // 
@@ -179,7 +220,7 @@
             this.txtLop.Margin = new System.Windows.Forms.Padding(5);
             this.txtLop.MaxLength = 10;
             this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(298, 23);
+            this.txtLop.Size = new System.Drawing.Size(298, 27);
             this.txtLop.TabIndex = 8;
             this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
             // 
@@ -189,7 +230,7 @@
             this.txtMSSV.Margin = new System.Windows.Forms.Padding(5);
             this.txtMSSV.MaxLength = 10;
             this.txtMSSV.Name = "txtMSSV";
-            this.txtMSSV.Size = new System.Drawing.Size(298, 23);
+            this.txtMSSV.Size = new System.Drawing.Size(298, 27);
             this.txtMSSV.TabIndex = 7;
             this.txtMSSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSSV_KeyPress);
             // 
@@ -198,7 +239,7 @@
             this.txtHoten.Location = new System.Drawing.Point(86, 163);
             this.txtHoten.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoten.Name = "txtHoten";
-            this.txtHoten.Size = new System.Drawing.Size(298, 23);
+            this.txtHoten.Size = new System.Drawing.Size(298, 27);
             this.txtHoten.TabIndex = 6;
             // 
             // label5
@@ -207,7 +248,7 @@
             this.label5.Location = new System.Drawing.Point(9, 250);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 16);
+            this.label5.Size = new System.Drawing.Size(36, 19);
             this.label5.TabIndex = 5;
             this.label5.Text = "Lớp";
             // 
@@ -217,7 +258,7 @@
             this.label4.Location = new System.Drawing.Point(9, 212);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 16);
+            this.label4.Size = new System.Drawing.Size(57, 19);
             this.label4.TabIndex = 4;
             this.label4.Text = "MSSV:";
             // 
@@ -227,7 +268,7 @@
             this.label3.Location = new System.Drawing.Point(9, 168);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 16);
+            this.label3.Size = new System.Drawing.Size(64, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Họ Tên:";
             // 
@@ -249,6 +290,7 @@
             this.btnXuatEX.TabIndex = 11;
             this.btnXuatEX.Text = "Xuất Excel";
             this.btnXuatEX.UseVisualStyleBackColor = true;
+            this.btnXuatEX.Click += new System.EventHandler(this.btnXuatEX_Click);
             // 
             // picBox
             // 
@@ -288,7 +330,7 @@
             this.cboTim.Location = new System.Drawing.Point(102, 377);
             this.cboTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboTim.Name = "cboTim";
-            this.cboTim.Size = new System.Drawing.Size(151, 24);
+            this.cboTim.Size = new System.Drawing.Size(151, 27);
             this.cboTim.TabIndex = 7;
             this.cboTim.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cboTim.TextChanged += new System.EventHandler(this.cboTim_TextChanged);
@@ -299,7 +341,7 @@
             this.lblNhapMSSV.Location = new System.Drawing.Point(14, 349);
             this.lblNhapMSSV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNhapMSSV.Name = "lblNhapMSSV";
-            this.lblNhapMSSV.Size = new System.Drawing.Size(81, 16);
+            this.lblNhapMSSV.Size = new System.Drawing.Size(96, 19);
             this.lblNhapMSSV.TabIndex = 8;
             this.lblNhapMSSV.Text = "Nhập MSSV:";
             this.lblNhapMSSV.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -310,7 +352,7 @@
             this.label2.Location = new System.Drawing.Point(13, 380);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(76, 19);
             this.label2.TabIndex = 10;
             this.label2.Text = "Chọn lớp:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -325,50 +367,9 @@
             this.btnNhapEX.Text = "Nhập Excel";
             this.btnNhapEX.UseVisualStyleBackColor = true;
             // 
-            // Ma_SV
-            // 
-            this.Ma_SV.DataPropertyName = "Ma_SV";
-            this.Ma_SV.HeaderText = "Mã SV";
-            this.Ma_SV.Name = "Ma_SV";
-            this.Ma_SV.Width = 150;
-            // 
-            // Ten_SV
-            // 
-            this.Ten_SV.DataPropertyName = "Ten_SV";
-            this.Ten_SV.HeaderText = "Tên SV";
-            this.Ten_SV.Name = "Ten_SV";
-            this.Ten_SV.Width = 200;
-            // 
-            // MaLop
-            // 
-            this.MaLop.DataPropertyName = "Ma_Lop";
-            this.MaLop.HeaderText = "Mã Lớp";
-            this.MaLop.Name = "MaLop";
-            this.MaLop.Width = 150;
-            // 
-            // SoNgayHoc
-            // 
-            this.SoNgayHoc.DataPropertyName = "SoNgayHoc";
-            this.SoNgayHoc.HeaderText = "Số Ngày Học";
-            this.SoNgayHoc.Name = "SoNgayHoc";
-            this.SoNgayHoc.Width = 120;
-            // 
-            // SoNgayVang
-            // 
-            this.SoNgayVang.DataPropertyName = "SoNgayVang";
-            this.SoNgayVang.HeaderText = "Số Ngày Vắng";
-            this.SoNgayVang.Name = "SoNgayVang";
-            this.SoNgayVang.Width = 120;
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.Name = "TrangThai";
-            // 
             // DanhSachSV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(900, 671);
             this.Controls.Add(this.btnNhapEX);
