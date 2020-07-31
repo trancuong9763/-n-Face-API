@@ -76,17 +76,17 @@ namespace BUS
             return SinhVienDAO.LayThongTinLop(maLop);
 
         }
-        public static bool SuaSV(SinhVienDTO sv)
-        {
-            if (!SinhVienDAO.KTTKTonTai(sv.Ma_SV))
-            {
-                return false;
-            }
-            else
-            {
-                return SinhVienDAO.SuaSV(sv);
-            }
-        }
+        //public static bool SuaSV(SinhVienDTO sv)
+        //{
+        //    if (!SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+        //    {
+        //        return false;
+        //    }
+        //    else
+        //    {
+        //        return SinhVienDAO.SuaSV(sv);
+        //    }
+        //}
 
         public static bool XoaSV(SinhVienDTO sv)
         {
@@ -97,6 +97,17 @@ namespace BUS
             else
             {
                 return SinhVienDAO.XoaSV(sv);
+            }
+        }
+        public static bool CapNhatKhuonMat(SinhVienDTO sv)
+        {
+            if (SinhVienDAO.KiemTraTrangThai(sv.Ma_SV)==false)
+            {
+                return SinhVienDAO.CapNhatTrangThai(sv.Ma_SV);
+            }
+            else
+            {
+                return true;
             }
         }
     }
