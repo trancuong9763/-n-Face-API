@@ -80,11 +80,11 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(4, 437);
+            this.groupBox1.Location = new System.Drawing.Point(5, 311);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(387, 228);
+            this.groupBox1.Size = new System.Drawing.Size(387, 206);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thêm Thông Tin";
@@ -118,7 +118,7 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(140, 169);
+            this.btnStop.Location = new System.Drawing.Point(140, 151);
             this.btnStop.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStop.Name = "btnStop";
             this.btnStop.Size = new System.Drawing.Size(112, 33);
@@ -129,7 +129,7 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(9, 169);
+            this.btnStart.Location = new System.Drawing.Point(9, 151);
             this.btnStart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnStart.Name = "btnStart";
             this.btnStart.Size = new System.Drawing.Size(112, 33);
@@ -140,7 +140,7 @@
             // 
             // btnThoat
             // 
-            this.btnThoat.Location = new System.Drawing.Point(271, 169);
+            this.btnThoat.Location = new System.Drawing.Point(271, 151);
             this.btnThoat.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(112, 33);
@@ -194,7 +194,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox2.Size = new System.Drawing.Size(597, 664);
+            this.groupBox2.Size = new System.Drawing.Size(499, 516);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Bảng Thông Tin";
@@ -221,16 +221,17 @@
             this.panel2.Controls.Add(this.lstDiHoc);
             this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.label5);
-            this.panel2.Location = new System.Drawing.Point(9, 198);
+            this.panel2.Location = new System.Drawing.Point(3, 199);
             this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(579, 456);
+            this.panel2.Size = new System.Drawing.Size(496, 306);
             this.panel2.TabIndex = 7;
+            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // lblVang
             // 
             this.lblVang.AutoSize = true;
-            this.lblVang.Location = new System.Drawing.Point(357, 417);
+            this.lblVang.Location = new System.Drawing.Point(325, 275);
             this.lblVang.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVang.Name = "lblVang";
             this.lblVang.Size = new System.Drawing.Size(26, 17);
@@ -240,7 +241,7 @@
             // lable8
             // 
             this.lable8.AutoSize = true;
-            this.lable8.Location = new System.Drawing.Point(288, 417);
+            this.lable8.Location = new System.Drawing.Point(256, 275);
             this.lable8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lable8.Name = "lable8";
             this.lable8.Size = new System.Drawing.Size(50, 17);
@@ -250,7 +251,7 @@
             // lblHienDien
             // 
             this.lblHienDien.AutoSize = true;
-            this.lblHienDien.Location = new System.Drawing.Point(114, 417);
+            this.lblHienDien.Location = new System.Drawing.Point(114, 275);
             this.lblHienDien.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblHienDien.Name = "lblHienDien";
             this.lblHienDien.Size = new System.Drawing.Size(26, 17);
@@ -260,7 +261,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 417);
+            this.label7.Location = new System.Drawing.Point(4, 275);
             this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(84, 17);
@@ -271,26 +272,28 @@
             // 
             this.lstVang.FormattingEnabled = true;
             this.lstVang.ItemHeight = 17;
-            this.lstVang.Location = new System.Drawing.Point(292, 45);
+            this.lstVang.Location = new System.Drawing.Point(259, 45);
             this.lstVang.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lstVang.Name = "lstVang";
-            this.lstVang.Size = new System.Drawing.Size(277, 361);
+            this.lstVang.Size = new System.Drawing.Size(232, 225);
             this.lstVang.TabIndex = 11;
+            this.lstVang.SelectedIndexChanged += new System.EventHandler(this.lstVang_SelectedIndexChanged);
             // 
             // lstDiHoc
             // 
             this.lstDiHoc.FormattingEnabled = true;
             this.lstDiHoc.ItemHeight = 17;
-            this.lstDiHoc.Location = new System.Drawing.Point(4, 45);
+            this.lstDiHoc.Location = new System.Drawing.Point(7, 45);
             this.lstDiHoc.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.lstDiHoc.Name = "lstDiHoc";
-            this.lstDiHoc.Size = new System.Drawing.Size(277, 361);
+            this.lstDiHoc.Size = new System.Drawing.Size(235, 225);
             this.lstDiHoc.TabIndex = 10;
+            this.lstDiHoc.SelectedIndexChanged += new System.EventHandler(this.lstDiHoc_SelectedIndexChanged);
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(346, 14);
+            this.label6.Location = new System.Drawing.Point(301, 14);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(148, 17);
@@ -300,7 +303,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(57, 14);
+            this.label5.Location = new System.Drawing.Point(58, 14);
             this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(130, 17);
@@ -315,7 +318,7 @@
             this.groupBox3.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox3.Size = new System.Drawing.Size(242, 172);
+            this.groupBox3.Size = new System.Drawing.Size(145, 172);
             this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Thời Gian";
@@ -323,22 +326,22 @@
             // lblNgay
             // 
             this.lblNgay.AutoSize = true;
-            this.lblNgay.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNgay.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblNgay.Location = new System.Drawing.Point(9, 69);
             this.lblNgay.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNgay.Name = "lblNgay";
-            this.lblNgay.Size = new System.Drawing.Size(133, 17);
+            this.lblNgay.Size = new System.Drawing.Size(133, 19);
             this.lblNgay.TabIndex = 6;
             this.lblNgay.Text = "Ngày Tháng Năm";
             // 
             // lblGio
             // 
             this.lblGio.AutoSize = true;
-            this.lblGio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblGio.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblGio.Location = new System.Drawing.Point(9, 26);
             this.lblGio.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblGio.Name = "lblGio";
-            this.lblGio.Size = new System.Drawing.Size(79, 17);
+            this.lblGio.Size = new System.Drawing.Size(84, 19);
             this.lblGio.TabIndex = 5;
             this.lblGio.Text = "Thời Gian";
             // 
@@ -380,7 +383,7 @@
             // 
             // imgBox2
             // 
-            this.imgBox2.Location = new System.Drawing.Point(9, 27);
+            this.imgBox2.Location = new System.Drawing.Point(15, 27);
             this.imgBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.imgBox2.Name = "imgBox2";
             this.imgBox2.Size = new System.Drawing.Size(176, 160);
@@ -397,7 +400,7 @@
             this.imgBox.Location = new System.Drawing.Point(4, 5);
             this.imgBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.imgBox.Name = "imgBox";
-            this.imgBox.Size = new System.Drawing.Size(382, 423);
+            this.imgBox.Size = new System.Drawing.Size(382, 295);
             this.imgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.imgBox.TabIndex = 0;
             this.imgBox.TabStop = false;
@@ -409,14 +412,14 @@
             this.panel1.Location = new System.Drawing.Point(0, 1);
             this.panel1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(392, 433);
+            this.panel1.Size = new System.Drawing.Size(392, 305);
             this.panel1.TabIndex = 0;
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(999, 666);
+            this.ClientSize = new System.Drawing.Size(899, 521);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.panel1);

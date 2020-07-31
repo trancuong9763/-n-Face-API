@@ -248,6 +248,21 @@ namespace FaceAPI
             
         }
 
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void lstVang_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void lstDiHoc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();
