@@ -29,6 +29,12 @@
         private void InitializeComponent()
         {
             this.dgvDSSV = new System.Windows.Forms.DataGridView();
+            this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNgayHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.SoNgayVang = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TrangThai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnCapNhat = new System.Windows.Forms.Button();
@@ -51,12 +57,6 @@
             this.lblNhapMSSV = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnNhapEX = new System.Windows.Forms.Button();
-            this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.MaLop = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNgayHoc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.SoNgayVang = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.TrangThai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -82,6 +82,47 @@
             this.dgvDSSV.Size = new System.Drawing.Size(865, 222);
             this.dgvDSSV.TabIndex = 0;
             this.dgvDSSV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSV_CellClick);
+            // 
+            // Ma_SV
+            // 
+            this.Ma_SV.DataPropertyName = "Ma_SV";
+            this.Ma_SV.HeaderText = "Mã SV";
+            this.Ma_SV.Name = "Ma_SV";
+            this.Ma_SV.Width = 150;
+            // 
+            // Ten_SV
+            // 
+            this.Ten_SV.DataPropertyName = "Ten_SV";
+            this.Ten_SV.HeaderText = "Tên SV";
+            this.Ten_SV.Name = "Ten_SV";
+            this.Ten_SV.Width = 200;
+            // 
+            // MaLop
+            // 
+            this.MaLop.DataPropertyName = "Ma_Lop";
+            this.MaLop.HeaderText = "Mã Lớp";
+            this.MaLop.Name = "MaLop";
+            this.MaLop.Width = 150;
+            // 
+            // SoNgayHoc
+            // 
+            this.SoNgayHoc.DataPropertyName = "SoNgayHoc";
+            this.SoNgayHoc.HeaderText = "Số Ngày Học";
+            this.SoNgayHoc.Name = "SoNgayHoc";
+            this.SoNgayHoc.Width = 120;
+            // 
+            // SoNgayVang
+            // 
+            this.SoNgayVang.DataPropertyName = "SoNgayVang";
+            this.SoNgayVang.HeaderText = "Số Ngày Vắng";
+            this.SoNgayVang.Name = "SoNgayVang";
+            this.SoNgayVang.Width = 120;
+            // 
+            // TrangThai
+            // 
+            this.TrangThai.DataPropertyName = "TrangThai";
+            this.TrangThai.HeaderText = "Trạng Thái";
+            this.TrangThai.Name = "TrangThai";
             // 
             // groupBox2
             // 
@@ -325,52 +366,11 @@
             this.btnNhapEX.Text = "Nhập Excel";
             this.btnNhapEX.UseVisualStyleBackColor = true;
             // 
-            // Ma_SV
-            // 
-            this.Ma_SV.DataPropertyName = "Ma_SV";
-            this.Ma_SV.HeaderText = "Mã SV";
-            this.Ma_SV.Name = "Ma_SV";
-            this.Ma_SV.Width = 150;
-            // 
-            // Ten_SV
-            // 
-            this.Ten_SV.DataPropertyName = "Ten_SV";
-            this.Ten_SV.HeaderText = "Tên SV";
-            this.Ten_SV.Name = "Ten_SV";
-            this.Ten_SV.Width = 200;
-            // 
-            // MaLop
-            // 
-            this.MaLop.DataPropertyName = "Ma_Lop";
-            this.MaLop.HeaderText = "Mã Lớp";
-            this.MaLop.Name = "MaLop";
-            this.MaLop.Width = 150;
-            // 
-            // SoNgayHoc
-            // 
-            this.SoNgayHoc.DataPropertyName = "SoNgayHoc";
-            this.SoNgayHoc.HeaderText = "Số Ngày Học";
-            this.SoNgayHoc.Name = "SoNgayHoc";
-            this.SoNgayHoc.Width = 120;
-            // 
-            // SoNgayVang
-            // 
-            this.SoNgayVang.DataPropertyName = "SoNgayVang";
-            this.SoNgayVang.HeaderText = "Số Ngày Vắng";
-            this.SoNgayVang.Name = "SoNgayVang";
-            this.SoNgayVang.Width = 120;
-            // 
-            // TrangThai
-            // 
-            this.TrangThai.DataPropertyName = "TrangThai";
-            this.TrangThai.HeaderText = "Trạng Thái";
-            this.TrangThai.Name = "TrangThai";
-            // 
             // DanhSachSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(900, 671);
+            this.ClientSize = new System.Drawing.Size(889, 671);
             this.Controls.Add(this.btnNhapEX);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnXuatEX);
@@ -385,6 +385,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "DanhSachSV";
             this.Text = "DanhSachSV";
+            this.Load += new System.EventHandler(this.DanhSachSV_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

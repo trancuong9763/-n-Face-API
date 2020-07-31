@@ -364,33 +364,32 @@ namespace FaceAPI
             }
         }
 
-        private void DanhSachSV_Load(object sender, EventArgs e)
-        {
-            LoadDSSV();
-
-        }
+       
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
             addface = true;
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtMSSV.Text;
-            sv.TrangThai = true;
+
             if (dem == 1)
             {
-             
+                if (SinhVienBUS.CapNhatTrangThai(sv))
+                {
                     addface = true;
                     MessageBox.Show("Bạn Hãy Thêm Vào 5 Khuôn Mặt");
                     MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
-                    sv.TrangThai = true;
-                     SinhVienBUS.KiemTraTrangThai(sv);
                     LoadDSSV();
                     txtHoten.Enabled = false;
                     txtLop.Enabled = false;
                     txtMSSV.Enabled = false;
                     dem++;
-               
-                
+
+                }
+                else
+                {
+                    MessageBox.Show("Sinh viên đã có hình ảnh");
+                }
             }
             else if (dem > 1 && dem <= 5)
             {
@@ -415,6 +414,16 @@ namespace FaceAPI
                 MessageBox.Show("Thêm sinh viên không thành công");
 
             }
+            
+           
+            LoadDSSV();
+               
+            
+        }
+
+        private void DanhSachSV_Load_1(object sender, EventArgs e)
+        {
+            LoadDSSV();
         }
     }
 }

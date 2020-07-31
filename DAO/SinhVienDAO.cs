@@ -79,7 +79,7 @@ namespace DAO
         }
         public static List<SinhVienDTO> TimKiemMaSV(string maSV)
         {
-            string query = "SELECT * FROM ThongTinSV WHERE Ma_SV LIKE @Ma_SV";
+            string query = "SELECT * FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ma_SV", maSV);
             DataTable dtbKetQua = DataProvider.ExecuteSelectQuery(query, param);
@@ -127,14 +127,13 @@ namespace DAO
             param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
             return DataProvider.ExecuteDeleteQuery(query, param) == 1;
         }
-        public static bool CapNhatTrangThai(SinhVienDTO sv)
+        public static bool LayTrangThai(SinhVienDTO sv)
         {
-            string query = "UPDATE ThongTinSV SET TrangThai = @TrangThai WHERE Ma_SV = @Ma_SV";
+            string query = "UPDATE ThongTinSV SET TrangThai = 1 WHERE Ma_SV = @Ma_SV AND TrangThai = 0";
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
-            param[1] = new SqlParameter("@TrangThai", sv.TrangThai);
             return DataProvider.ExecuteUpdateQuery(query, param) == 1;
+
         }
-    
     }
 }
