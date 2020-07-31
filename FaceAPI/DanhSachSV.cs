@@ -369,5 +369,52 @@ namespace FaceAPI
             LoadDSSV();
 
         }
+
+        private void btnCapNhat_Click(object sender, EventArgs e)
+        {
+            addface = true;
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_SV = txtMSSV.Text;
+            sv.TrangThai = true;
+            if (dem == 1)
+            {
+             
+                    addface = true;
+                    MessageBox.Show("Bạn Hãy Thêm Vào 5 Khuôn Mặt");
+                    MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
+                    sv.TrangThai = true;
+                     SinhVienBUS.KiemTraTrangThai(sv);
+                    LoadDSSV();
+                    txtHoten.Enabled = false;
+                    txtLop.Enabled = false;
+                    txtMSSV.Enabled = false;
+                    dem++;
+               
+                
+            }
+            else if (dem > 1 && dem <= 5)
+            {
+                addface = true;
+                MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
+                dem++;
+                if (dem == 6)
+                {
+                    MessageBox.Show("Thêm sinh viên thành công");
+                    txtHoten.Enabled = true;
+                    txtLop.Enabled = true;
+                    txtMSSV.Enabled = true;
+                    txtHoten.Text = "";
+                    txtLop.Text = "";
+                    txtMSSV.Text = "";
+                    dem = 1;
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Thêm sinh viên không thành công");
+
+            }
+        }
     }
 }

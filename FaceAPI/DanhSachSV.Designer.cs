@@ -31,6 +31,7 @@
             this.dgvDSSV = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
@@ -49,7 +50,6 @@
             this.cboTim = new System.Windows.Forms.ComboBox();
             this.lblNhapMSSV = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnNhapEX = new System.Windows.Forms.Button();
             this.Ma_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Ten_SV = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -117,6 +117,17 @@
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thêm Sinh Viên";
+            // 
+            // btnCapNhat
+            // 
+            this.btnCapNhat.Location = new System.Drawing.Point(279, 276);
+            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(5);
+            this.btnCapNhat.Name = "btnCapNhat";
+            this.btnCapNhat.Size = new System.Drawing.Size(106, 43);
+            this.btnCapNhat.TabIndex = 14;
+            this.btnCapNhat.Text = "Cập Nhật Khuôn Mặt";
+            this.btnCapNhat.UseVisualStyleBackColor = true;
+            this.btnCapNhat.Click += new System.EventHandler(this.btnCapNhat_Click);
             // 
             // btnStop
             // 
@@ -304,16 +315,6 @@
             this.label2.Text = "Chọn lớp:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
-            // btnCapNhat
-            // 
-            this.btnCapNhat.Location = new System.Drawing.Point(279, 276);
-            this.btnCapNhat.Margin = new System.Windows.Forms.Padding(5);
-            this.btnCapNhat.Name = "btnCapNhat";
-            this.btnCapNhat.Size = new System.Drawing.Size(106, 43);
-            this.btnCapNhat.TabIndex = 14;
-            this.btnCapNhat.Text = "Cập Nhật Khuôn Mặt";
-            this.btnCapNhat.UseVisualStyleBackColor = true;
-            // 
             // btnNhapEX
             // 
             this.btnNhapEX.Location = new System.Drawing.Point(495, 355);
@@ -329,7 +330,7 @@
             this.Ma_SV.DataPropertyName = "Ma_SV";
             this.Ma_SV.HeaderText = "Mã SV";
             this.Ma_SV.Name = "Ma_SV";
-            this.Ma_SV.Width = 200;
+            this.Ma_SV.Width = 150;
             // 
             // Ten_SV
             // 
@@ -343,7 +344,7 @@
             this.MaLop.DataPropertyName = "Ma_Lop";
             this.MaLop.HeaderText = "Mã Lớp";
             this.MaLop.Name = "MaLop";
-            this.MaLop.Width = 200;
+            this.MaLop.Width = 150;
             // 
             // SoNgayHoc
             // 
@@ -361,6 +362,7 @@
             // 
             // TrangThai
             // 
+            this.TrangThai.DataPropertyName = "TrangThai";
             this.TrangThai.HeaderText = "Trạng Thái";
             this.TrangThai.Name = "TrangThai";
             // 
