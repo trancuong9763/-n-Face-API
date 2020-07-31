@@ -99,5 +99,16 @@ namespace BUS
                 return SinhVienDAO.XoaSV(sv);
             }
         }
+        public static bool CapNhatKhuonMat(SinhVienDTO sv)
+        {
+            if (SinhVienDAO.KiemTraTrangThai(sv.Ma_SV)==false)
+            {
+                return SinhVienDAO.CapNhatTrangThai(sv.Ma_SV);
+            }
+            else
+            {
+                return true;
+            }
+        }
     }
 }

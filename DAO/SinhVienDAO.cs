@@ -129,10 +129,17 @@ namespace DAO
         }
         public static bool CapNhatTrangThai(string maSV)
         {
-            string query = "UPDATE TaiKhoan SET TrangThai = 1 WHERE Ma_SV = @Ma_SV";
+            string query = "UPDATE ThongTinSV SET TrangThai = 1 WHERE Ma_SV = @Ma_SV";
             SqlParameter[] param = new SqlParameter[1];
             param[0] = new SqlParameter("@Ma_SV", maSV);
             return DataProvider.ExecuteUpdateQuery(query, param) == 1;
+        }
+        public static bool KiemTraTrangThai(string maSV)
+        {
+            string query = "SELECT TrangThai FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Ma_SV", maSV);
+            return Convert.ToInt32(DataProvider.ExecuteSelectQuery(query, param).Rows[0][0]) == 1;
         }
     }
 }
