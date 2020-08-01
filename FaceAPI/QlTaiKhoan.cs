@@ -105,13 +105,18 @@ namespace FaceAPI
             TaiKhoanDTO tk = TaiKhoanBUS.LayThongTinTaiKhoan(txtTaiKhoan.Text);
             if (dialogResult == DialogResult.Yes)
             {
-                if (TaiKhoanBUS.XoaTK(tk))
+                if (txtTaiKhoan.Text == "admin")
+                {
+                    MessageBox.Show("Tài khoản này không thể xóa");
+                }
+                else if (TaiKhoanBUS.XoaTK(tk))
                 {
                     XoaForm();
                     MessageBox.Show("Xóa Thành công");
                     LayDSTaiKhoan();
                     GiaoDienThem(true);
                 }
+                
                 else
                 {
                     MessageBox.Show("Xóa Thất bại");
@@ -143,7 +148,7 @@ namespace FaceAPI
 
 
             }
-
+           
 
         }
 
@@ -182,6 +187,9 @@ namespace FaceAPI
             }
         }
 
-        
+        private void dgvTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
