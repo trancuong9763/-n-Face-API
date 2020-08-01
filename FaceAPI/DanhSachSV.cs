@@ -476,7 +476,8 @@ namespace FaceAPI
 
             oSheet = (Excel_12.Worksheet)oSheetsColl.get_Item("Sheet1");
             oSheet.Name = "DanhSach";
-
+            
+            
 
 
 
@@ -486,8 +487,10 @@ namespace FaceAPI
             {
 
                 oRange = (Excel_12.Range)oSheet.Cells[1, j + 1];
-
                 oRange.Value2 = myDataGridViewQuantity.Columns[j].HeaderText;
+                oRange.Style.Font.Name = "Times New Roman";
+                oRange.Style.Font.Size = 14;
+                oRange.EntireColumn.AutoFit();
 
             }
 
@@ -499,8 +502,10 @@ namespace FaceAPI
                 for (int j = 0; j < myDataGridViewQuantity.Columns.Count-1; j++)
                 {
                     oRange = (Excel_12.Range)oSheet.Cells[i + 2, j + 1];
-
+                    oRange.Style.Font.Name = "Times New Roman";
+                    oRange.Style.Font.Size = 14;
                     oRange.Value2 = myDataGridViewQuantity[j, i].Value;
+                    oRange.EntireColumn.AutoFit();
 
                 }
 

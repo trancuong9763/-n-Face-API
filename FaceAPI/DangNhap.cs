@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Security.Cryptography;
@@ -36,6 +37,8 @@ namespace FaceAPI
         {
             string tenTK = txtTenDN.Text;
             string matKhau = MD5Hash(txtMK.Text);
+
+
             if(TaiKhoanBUS.KTDangNhap(tenTK, matKhau))
             {
                 taiKhoan = tenTK;
@@ -60,7 +63,7 @@ namespace FaceAPI
         {
             if (e.KeyCode == Keys.Enter)
             {
-                btnDangNhap_Click(this, new EventArgs());
+                btnDangNhap.PerformClick();
             }
         }
     }
