@@ -69,7 +69,6 @@ namespace FaceAPI
         private void btnThem_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = false;
-            btnStop.Enabled = false;
             btnXoa.Enabled = false;
             btnCapNhat.Enabled = false;
             txtHoten.Enabled = false;
@@ -115,9 +114,9 @@ namespace FaceAPI
                     else
                     {
                         MessageBox.Show("Sinh viên đã tồn tại");
-                        txtHoten.Enabled = false;
-                        txtLop.Enabled = false;
-                        txtMSSV.Enabled = false;
+                        txtHoten.Enabled = true;
+                        txtLop.Enabled = true;
+                        txtMSSV.Enabled = true;
                         txtHoten.Text = "";
                         txtLop.Text = "";
                         txtMSSV.Text = "";
@@ -212,12 +211,16 @@ namespace FaceAPI
             btnStart.Enabled = false;
             btnStop.Enabled = true;
             btnThem.Enabled = true;
-
-
-            quayVideo = new Capture();
-            quayVideo.ImageGrabbed += StartFrame;
-            quayVideo.Start();
-
+            txtHoten.Enabled = true;
+            txtLop.Enabled = true;
+            txtMSSV.Enabled = true;
+            if (quayVideo == null)
+            {
+                quayVideo = new Capture();
+                quayVideo.ImageGrabbed += StartFrame;
+                quayVideo.Start();
+                
+            }
 
         }
 
@@ -269,7 +272,12 @@ namespace FaceAPI
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
             }
             btnXoa.Enabled = true;
-            
+            btnCapNhat.Enabled = true;
+            txtHoten.Enabled = false;
+            txtLop.Enabled = false;
+            txtMSSV.Enabled = false;
+           
+
             //if (picBox.Image!=null)
             //{
             //    btnCapNhat.Enabled = true;
@@ -281,7 +289,7 @@ namespace FaceAPI
             //}
         }
 
-        
+
 
         private void btnStop_Click(object sender, EventArgs e)
         {
