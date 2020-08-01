@@ -353,6 +353,7 @@ namespace FaceAPI
             lblHoten.Text = "";
             lblLop.Text = "";
             lblMSSV.Text = "";
+            txtDiemDanhTC.Text = "";
             
         }
 
