@@ -263,6 +263,24 @@ namespace FaceAPI
 
         }
 
+        private void btnDiemDanhTC_Click(object sender, EventArgs e)
+        {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_SV = txtDiemDanhTC.Text;
+            sv.SoNgayHoc = 1;
+            sv.SoNgayVang = 0;
+            if(SinhVienBUS.CapNhatChuyenCan(sv))
+            {
+                MessageBox.Show("Điểm danh thành công");
+                txtDiemDanhTC.Text = "";
+            }
+            else
+            {
+                MessageBox.Show("Sinh viên không tồn tại");
+                txtDiemDanhTC.Text = "";
+            }
+        }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();
@@ -330,7 +348,12 @@ namespace FaceAPI
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
-         
+            lstDiHoc.Items.Clear();
+            lstVang.Items.Clear();
+            lblHoten.Text = "";
+            lblLop.Text = "";
+            lblMSSV.Text = "";
+            
         }
 
         private bool TrainImagesFromDir()// lấy hình ảnh trong file

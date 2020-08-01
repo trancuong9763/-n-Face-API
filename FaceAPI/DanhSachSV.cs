@@ -68,12 +68,23 @@ namespace FaceAPI
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            
+            btnStart.Enabled = false;
+            btnStop.Enabled = false;
+            btnXoa.Enabled = false;
+            btnCapNhat.Enabled = false;
+            txtHoten.Enabled = false;
+            txtMSSV.Enabled = false;
+            txtLop.Enabled = false;
+            txtTim.Enabled = false;
+            btnTim.Enabled = false;
+            cboTim.Enabled = false;
+
+
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtMSSV.Text;
             sv.Ten_SV = txtHoten.Text;
             sv.Ma_Lop = txtLop.Text; ;
-            
+            sv.TrangThai = true;
             if (txtMSSV.Text == "" || txtHoten.Text == "" || txtLop.Text == "")
             {
                 MessageBox.Show("Thông tin không được để trống");
@@ -92,6 +103,7 @@ namespace FaceAPI
                     if (SinhVienBUS.ThemSV(sv))
                     {
                         addface = true;
+                        
                         MessageBox.Show("Bạn Hãy Thêm Vào 5 Khuôn Mặt");
                         MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
                         LoadDSSV();
@@ -103,6 +115,13 @@ namespace FaceAPI
                     else
                     {
                         MessageBox.Show("Sinh viên đã tồn tại");
+                        txtHoten.Enabled = false;
+                        txtLop.Enabled = false;
+                        txtMSSV.Enabled = false;
+                        txtHoten.Text = "";
+                        txtLop.Text = "";
+                        txtMSSV.Text = "";
+
                     }             
                 }
                 else if (dem > 1 && dem<=5)
@@ -177,12 +196,12 @@ namespace FaceAPI
                             });
                         }
                         addface = false;
-                        if (btnThem.InvokeRequired)
-                        {
-                            btnThem.Invoke(new ThreadStart(delegate {
-                                btnThem.Enabled = true;
-                            }));
-                        }
+                        //if (btnThem.InvokeRequired)
+                        //{
+                        //    btnThem.Invoke(new ThreadStart(delegate {
+                        //        btnThem.Enabled = true;
+                        //    }));
+                        //}
                     }  
                 }
             picBox.Image = currentFrame.Bitmap;
@@ -190,9 +209,16 @@ namespace FaceAPI
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+            btnStart.Enabled = false;
+            btnStop.Enabled = true;
+            btnThem.Enabled = true;
+
+
             quayVideo = new Capture();
             quayVideo.ImageGrabbed += StartFrame;
             quayVideo.Start();
+
+
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -242,7 +268,17 @@ namespace FaceAPI
                 txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells["Ten_SV"].FormattedValue.ToString();
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
             }
+            btnXoa.Enabled = true;
             
+            //if (picBox.Image!=null)
+            //{
+            //    btnCapNhat.Enabled = true;
+            //    btnThem.Enabled = false;
+            //}
+            //else
+            //{
+            //    btnCapNhat.Enabled = false;
+            //}
         }
 
         
@@ -425,6 +461,15 @@ namespace FaceAPI
         private void DanhSachSV_Load_1(object sender, EventArgs e)
         {
             LoadDSSV();
+
+           
+            btnStop.Enabled = false;
+            btnXoa.Enabled = false;
+            btnCapNhat.Enabled = false;
+            txtHoten.Enabled = false;
+            txtMSSV.Enabled = false;
+            txtLop.Enabled = false;
+            btnThem.Enabled = false;
         }
         public static void ExportDataGridViewTo_Excel12(DataGridView myDataGridViewQuantity)
         {
