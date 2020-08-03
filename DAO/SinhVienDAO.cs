@@ -135,5 +135,17 @@ namespace DAO
             return DataProvider.ExecuteUpdateQuery(query, param) == 1;
 
         }
+        public static bool ThemSVExcel(SinhVienDTO sv)
+        {
+            string query = "INSERT INTO ThongTinSV (Ma_SV, Ten_SV,MaLop,SoNgayHoc,SoNgayVang,TrangThai) VALUES (@Ma_SV, @Ten_SV,@MaLop,@SoNgayHoc,@SoNgayVang,@TrangThai)";
+            SqlParameter[] param = new SqlParameter[6];
+            param[0] = new SqlParameter("@Ma_SV", sv.Ma_SV);
+            param[1] = new SqlParameter("@Ten_SV", sv.Ten_SV);
+            param[2] = new SqlParameter("@MaLop", sv.Ma_Lop);
+            param[3] = new SqlParameter("@SoNgayHoc", sv.SoNgayHoc);
+            param[4] = new SqlParameter("@SoNgayVang", sv.SoNgayVang);
+            param[5] = new SqlParameter("@TrangThai", sv.TrangThai);
+            return DataProvider.ExecuteInsertQuery(query, param) == 1;
+        }
     }
 }

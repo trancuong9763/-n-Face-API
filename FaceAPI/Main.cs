@@ -281,6 +281,30 @@ namespace FaceAPI
             }
         }
 
+        private void txtDiemDanhTC_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+       (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // ko cho phep nhap dau .
+            else if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') == -1))
+            {
+                e.Handled = true;
+            }
+            else if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+
+            }
+
+            else
+            {
+                e.Handled = false;
+            }
+        }
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();

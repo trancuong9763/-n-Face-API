@@ -158,17 +158,26 @@ namespace FaceAPI
             string mkMH = MD5Hash(txtMatKhau.Text.Trim());
             tk.Mat_Khau = Convert.ToString(mkMH);
             txtTaiKhoan.Enabled = false ;
-
-            if (TaiKhoanBUS.SuaTK(tk))
+            if (taiKhoan == txtTaiKhoan.Text)
             {
-                XoaForm();
-                LayDSTaiKhoan();
-                GiaoDienThem(true);
-                MessageBox.Show("Sửa thành công");
+                btnSua.Enabled = true;
+                if (TaiKhoanBUS.SuaTK(tk))
+                {
+                    XoaForm();
+                    LayDSTaiKhoan();
+                    GiaoDienThem(true);
+                    MessageBox.Show("Thay đổi mật khẩu thành công");
+                }
+                else
+                {
+                    MessageBox.Show("Thay đổi mật khẩu thất bại");
+                }
+
             }
             else
             {
-                MessageBox.Show("Sửa Thất bại");
+                btnSua.Enabled = false;
+                MessageBox.Show("Thay đổi mật khẩu thất bại");
             }
         }
 
@@ -189,6 +198,12 @@ namespace FaceAPI
 
         private void dgvTaiKhoan_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+
+        }
+        string taiKhoan = "";
+        private void QlTaiKhoan_Load(object sender, EventArgs e)
+        {
+            taiKhoan = DangNhap.taiKhoan;
 
         }
     }

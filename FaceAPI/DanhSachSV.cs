@@ -16,8 +16,10 @@ using System.Threading;
 using System.Diagnostics;
 using BUS;
 using DTO;
-using Office_12 = Microsoft.Office.Core;
-using Excel_12 = Microsoft.Office.Interop.Excel;
+using   Microsoft.Office.Core;
+using xls = Microsoft.Office.Interop.Excel;
+using System.Data.OleDb;
+
 namespace FaceAPI
 {
     public partial class DanhSachSV : Form
@@ -474,22 +476,22 @@ namespace FaceAPI
         public static void ExportDataGridViewTo_Excel12(DataGridView myDataGridViewQuantity)
         {
 
-            Excel_12.Application oExcel_12 = null; //Excel_12 Application 
+            xls.Application oExcel_12 = null; //Excel_12 Application 
 
-            Excel_12.Workbook oBook = null; // Excel_12 Workbook 
+            xls.Workbook oBook = null; // Excel_12 Workbook 
 
-            Excel_12.Sheets oSheetsColl = null; // Excel_12 Worksheets collection 
+            xls.Sheets oSheetsColl = null; // Excel_12 Worksheets collection 
 
-            Excel_12.Worksheet oSheet = null; // Excel_12 Worksheet 
+            xls.Worksheet oSheet = null; // Excel_12 Worksheet 
 
-            Excel_12.Range oRange = null; // Cell or Range in worksheet 
+            xls.Range oRange = null; // Cell or Range in worksheet 
 
             Object oMissing = System.Reflection.Missing.Value;
 
 
             // Create an instance of Excel_12. 
 
-            oExcel_12 = new Excel_12.Application();
+            oExcel_12 = new xls.Application();
 
 
             // Make Excel_12 visible to the user. 
@@ -519,7 +521,7 @@ namespace FaceAPI
 
             // Get Worksheet "Sheet1" 
 
-            oSheet = (Excel_12.Worksheet)oSheetsColl.get_Item("Sheet1");
+            oSheet = (xls.Worksheet)oSheetsColl.get_Item("Sheet1");
             oSheet.Name = "DanhSach";
             
             
@@ -531,7 +533,7 @@ namespace FaceAPI
             for (int j = 0; j < myDataGridViewQuantity.Columns.Count-1; j++)
             {
 
-                oRange = (Excel_12.Range)oSheet.Cells[1, j + 1];
+                oRange = (xls.Range)oSheet.Cells[1, j + 1];
                 oRange.Value2 = myDataGridViewQuantity.Columns[j].HeaderText;
                 oRange.Style.Font.Name = "Times New Roman";
                 oRange.Style.Font.Size = 14;
@@ -546,7 +548,7 @@ namespace FaceAPI
 
                 for (int j = 0; j < myDataGridViewQuantity.Columns.Count-1; j++)
                 {
-                    oRange = (Excel_12.Range)oSheet.Cells[i + 2, j + 1];
+                    oRange = (xls.Range)oSheet.Cells[i + 2, j + 1];
                     oRange.Style.Font.Name = "Times New Roman";
                     oRange.Style.Font.Size = 14;
                     oRange.Value2 = myDataGridViewQuantity[j, i].Value;
@@ -575,5 +577,63 @@ namespace FaceAPI
 
 
         }
-    }
+
+
+
+        public DataTable ReadExcel(string fileName, string fileExt)
+        {
+            string conn = string.Empty;
+            DataTable dtexcel = new DataTable();
+            if (fileExt.CompareTo(".xls") == 0)
+                conn = @"provider=Microsoft.Jet.OLEDB.4.0;Data Source=" + fileName + ";Extended Properties='Excel 8.0;HRD=Yes;IMEX=1';"; //for below excel 2007  
+            else
+                conn = @"Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" + fileName + ";Extended Properties='Excel 12.0;HDR=NO';"; //for above excel 2007  
+            using (OleDbConnection con = new OleDbConnection(conn))
+            {
+                try
+                {
+                    OleDbDataAdapter oleAdpt = new OleDbDataAdapter("select * from [Sheet1$]", con); //here we read data from sheet1  
+                    oleAdpt.Fill(dtexcel); //fill excel data into dataTable  
+                }
+                catch (Exception e)
+                {
+                    MessageBox.Show(e.Message);
+                }
+
+            }
+            return dtexcel;
+
+        }
+        private void btnNhapEX_Click(object sender, EventArgs e)
+        {
+            string filePath = string.Empty;
+            string fileExt = string.Empty;
+            OpenFileDialog file = new OpenFileDialog(); //open dialog to choose file  
+            if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK) //if there is a file choosen by the user  
+            {
+                filePath = file.FileName; //get the path of the file  
+                fileExt = Path.GetExtension(filePath); //get the file extension  
+                if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xlsx") == 0)
+                {
+                    try
+                    {
+                        DataTable dtExcel = new DataTable();
+                        dtExcel = ReadExcel(filePath, fileExt);
+                        dgvDSSV.Visible = true;
+                        dgvDSSV.DataSource = dtExcel;
+                        Debug.WriteLine(dtExcel);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message.ToString());
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
+                }
+            }
+        }
+            }
 }
