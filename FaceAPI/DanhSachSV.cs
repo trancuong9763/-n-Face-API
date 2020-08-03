@@ -604,36 +604,82 @@ namespace FaceAPI
             return dtexcel;
 
         }
+        int click = 0;
+        
         private void btnNhapEX_Click(object sender, EventArgs e)
         {
+            SinhVienDTO sv = new SinhVienDTO();
             string filePath = string.Empty;
             string fileExt = string.Empty;
             OpenFileDialog file = new OpenFileDialog(); //open dialog to choose file  
-            if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK) //if there is a file choosen by the user  
-            {
-                filePath = file.FileName; //get the path of the file  
-                fileExt = Path.GetExtension(filePath); //get the file extension  
-                if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xlsx") == 0)
+            click++;
+            if (click == 1)
+                if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK) //if there is a file choosen by the user  
+                {
+                    filePath = file.FileName; //get the path of the file  
+                    fileExt = Path.GetExtension(filePath); //get the file extension  
+                    if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xlsx") == 0)
+                    {
+                        try
+                        {
+                            DataTable dtExcel = new DataTable();
+                            dtExcel = ReadExcel(filePath, fileExt);
+                            dgvDSSV.Visible = true;
+                            dgvDSSV.DataSource = dtExcel;
+                            click++;
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+                       
+                    }
+                    else
+                    {
+                        MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
+                    }
+                    Debug.WriteLine(click);
+                }
+             if(click==2)
                 {
                     try
-                    {
-                        DataTable dtExcel = new DataTable();
-                        dtExcel = ReadExcel(filePath, fileExt);
-                        dgvDSSV.Visible = true;
-                        dgvDSSV.DataSource = dtExcel;
-                        Debug.WriteLine(dtExcel);
+                    {                 
+                            if (dgvDSSV.Rows.Count < 1)
+                            {
+                                MessageBox.Show("Vui lòng chọn file excel để nhập !", "Thông Báo", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                DialogResult dr;
+                                dr = MessageBox.Show(" Nhập danh sách này vào CSDL", "Thông Báo", MessageBoxButtons.OKCancel);
+                                if (dr == DialogResult.OK)
+                                {
+                                    for (int i = 0; i < dgvDSSV.Rows.Count; i++)
+                                    {
+                                        sv.Ma_SV=dgvDSSV.Rows[i].Cells[0].Value.ToString();
+                                        sv.Ten_SV = dgvDSSV.Rows[i].Cells[1].Value.ToString();
+                                        sv.Ma_Lop = dgvDSSV.Rows[i].Cells[2].Value.ToString();
+                                        sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
+                                        sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
+                                        sv.TrangThai = Convert.ToBoolean(null);
+                       
+                                        SinhVienBUS.ThemSVExcel(sv);
+                                        LoadDSSV();
+                                    }
+                                    MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+
+                            }
+
+                        click = 0;
                     }
-                    catch (Exception ex)
+                    catch(Exception ex)
                     {
-                        MessageBox.Show(ex.Message.ToString());
-                    }
                     
-                }
-                else
-                {
-                    MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
+                        MessageBox.Show("\tKiểm Tra Lại !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
-            }
+            
 }
