@@ -330,13 +330,8 @@ namespace FaceAPI
             {
                 MessageBox.Show("Bạn chưa nhập thông tin cần tìm");
             }
-
-
-           
             else
-
                 dgvDSSV.DataSource = SinhVienBUS.TimKiemMaSV(sv.Ma_SV);
-
         }
         System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
        
@@ -620,36 +615,85 @@ namespace FaceAPI
             return dtexcel;
 
         }
+        int click = 0;
+        
         private void btnNhapEX_Click(object sender, EventArgs e)
         {
+            SinhVienDTO sv = new SinhVienDTO();
             string filePath = string.Empty;
             string fileExt = string.Empty;
             OpenFileDialog file = new OpenFileDialog(); //open dialog to choose file  
-            if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK) //if there is a file choosen by the user  
-            {
-                filePath = file.FileName; //get the path of the file  
-                fileExt = Path.GetExtension(filePath); //get the file extension  
-                if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xlsx") == 0)
+            click++;
+            if (click == 1)
+                if (file.ShowDialog() == System.Windows.Forms.DialogResult.OK) //if there is a file choosen by the user  
                 {
-                    try
+                    filePath = file.FileName; //get the path of the file  
+                    fileExt = Path.GetExtension(filePath); //get the file extension  
+                    if (fileExt.CompareTo(".xls") == 0 || fileExt.CompareTo(".xlsx") == 0)
                     {
-                        DataTable dtExcel = new DataTable();
-                        dtExcel = ReadExcel(filePath, fileExt);
-                        dgvDSSV.Visible = true;
-                        dgvDSSV.DataSource = dtExcel;
-                        Debug.WriteLine(dtExcel);
+                        try
+                        {
+                            DataTable dtExcel = new DataTable();
+                            dtExcel = ReadExcel(filePath, fileExt);
+                            dgvDSSV.Visible = true;
+                            dgvDSSV.DataSource = dtExcel;
+                            click++;
+                            
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message.ToString());
+                        }
+                       
                     }
-                    catch (Exception ex)
+                    else
                     {
-                        MessageBox.Show(ex.Message.ToString());
+                        MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
                     }
-                    
+                    Debug.WriteLine(click);
                 }
-                else
+             if(click==2)
                 {
-                    MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
+                try
+                {
+                    if (dgvDSSV.Rows.Count < 1)
+                            {
+                                MessageBox.Show("Vui lòng chọn file excel để nhập !", "Thông Báo", MessageBoxButtons.OK);
+                            }
+                            else
+                            {
+                                DialogResult dr;
+                                dr = MessageBox.Show(" Nhập danh sách này vào CSDL", "Thông Báo", MessageBoxButtons.OKCancel);
+                                if (dr == DialogResult.OK)
+                                {
+                                    for (int i = 0; i < dgvDSSV.Rows.Count-1; i++)
+                                    {
+                                        sv.Ma_SV=Convert.ToString(dgvDSSV.Rows[i].Cells[0].Value);
+                                        sv.Ten_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[1].Value);
+                                        sv.Ma_Lop = Convert.ToString(dgvDSSV.Rows[i].Cells[2].Value);
+                                        sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
+                                        sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
+                                        sv.TrangThai = Convert.ToBoolean(null);
+                       
+                                        SinhVienBUS.ThemSVExcel(sv);
+                                       
+                                    }
+                                    dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
+
+                                    MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                }
+
+                            }
+
+                        click = 0;
                 }
+                catch (Exception ex)
+                {
+
+                    MessageBox.Show(ex.Message);
+                }
+            }
             }
         }
-            }
+            
 }
