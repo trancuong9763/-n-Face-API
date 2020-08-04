@@ -272,11 +272,18 @@ namespace FaceAPI
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
             }
             btnXoa.Enabled = true;
-            btnCapNhat.Enabled = true;
+           
             txtHoten.Enabled = false;
             txtLop.Enabled = false;
             txtMSSV.Enabled = false;
-           
+           if(quayVideo!=null)
+            {
+                btnCapNhat.Enabled = true;
+            }
+            else
+            {
+                btnCapNhat.Enabled = false;
+            }
 
             //if (picBox.Image!=null)
             //{
@@ -297,6 +304,7 @@ namespace FaceAPI
             {
                 quayVideo.Stop();
             }
+            btnThem.Enabled = false;
            
         }
 
