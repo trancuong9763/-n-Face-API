@@ -110,5 +110,16 @@ namespace BUS
                 return false;
             }
         }
+        public static bool ThemSVExcel(SinhVienDTO sv)
+        {
+            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+            {
+                return false;
+            }
+            else
+            {
+                return SinhVienDAO.ThemSVExcel(sv);
+            }
+        }
     }
 }

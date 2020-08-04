@@ -57,11 +57,13 @@
             this.lblNhapMSSV = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnNhapEX = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDSSV
@@ -294,10 +296,10 @@
             // 
             // picBox
             // 
-            this.picBox.Location = new System.Drawing.Point(13, 18);
+            this.picBox.Location = new System.Drawing.Point(8, 25);
             this.picBox.Margin = new System.Windows.Forms.Padding(5);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(473, 320);
+            this.picBox.Size = new System.Drawing.Size(459, 283);
             this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBox.TabIndex = 4;
             this.picBox.TabStop = false;
@@ -366,12 +368,24 @@
             this.btnNhapEX.TabIndex = 12;
             this.btnNhapEX.Text = "Nhập Excel";
             this.btnNhapEX.UseVisualStyleBackColor = true;
+            this.btnNhapEX.Click += new System.EventHandler(this.btnNhapEX_Click);
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.picBox);
+            this.groupBox3.Location = new System.Drawing.Point(12, 12);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(475, 316);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Camera";
             // 
             // DanhSachSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(889, 671);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnNhapEX);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.btnXuatEX);
@@ -379,7 +393,6 @@
             this.Controls.Add(this.cboTim);
             this.Controls.Add(this.btnTim);
             this.Controls.Add(this.txtTim);
-            this.Controls.Add(this.picBox);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -393,6 +406,7 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
+            this.groupBox3.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -429,5 +443,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNgayHoc;
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNgayVang;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TrangThai;
+        private System.Windows.Forms.GroupBox groupBox3;
     }
 }
