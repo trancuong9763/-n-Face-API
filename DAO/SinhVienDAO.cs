@@ -10,31 +10,32 @@ namespace DAO
 {
     public class SinhVienDAO
     {
-        public static SinhVienDTO ConvertToDTO(DataRow dr) {
+        public static SinhVienDTO ConvertToDTO(DataRow dr)
+        {
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = dr["Ma_SV"].ToString();
-            sv.Ten_SV = dr["Ten_SV"].ToString();            
+            sv.Ten_SV = dr["Ten_SV"].ToString();
             sv.Ma_Lop = dr["MaLop"].ToString();
             sv.SoNgayHoc = Convert.ToInt32(dr["SoNgayHoc"]);
             sv.SoNgayVang = Convert.ToInt32(dr["SoNgayVang"]);
             sv.TrangThai = Convert.ToBoolean(dr["TrangThai"]);
 
             return sv;
-         }
+        }
         public static List<SinhVienDTO> LayDSSV()
         {
             string query = " SELECT * FROM ThongTinSV";
             SqlParameter[] param = new SqlParameter[0];
-            DataTable dtbKetQua = DataProvider.ExecuteSelectQuery(query,param);
+            DataTable dtbKetQua = DataProvider.ExecuteSelectQuery(query, param);
             List<SinhVienDTO> lstSinhVien = new List<SinhVienDTO>();
-            foreach(DataRow dr in dtbKetQua.Rows)
+            foreach (DataRow dr in dtbKetQua.Rows)
             {
                 lstSinhVien.Add(ConvertToDTO(dr));
             }
             return lstSinhVien;
         }
-        
-        public static bool KTTKTonTai(string maSV)
+
+        public static bool KTSVTonTai(string maSV)
         {
             string query = "SELECT COUNT(*) FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
             SqlParameter[] param = new SqlParameter[1];
@@ -107,7 +108,7 @@ namespace DAO
         {
             string query = "SELECT *  FROM ThongTinSV Where MaLop=@Malop";
             SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@MaLop",maLop);
+            param[0] = new SqlParameter("@MaLop", maLop);
             return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
 
         }
@@ -147,6 +148,20 @@ namespace DAO
             param[5] = new SqlParameter("@TrangThai", sv.TrangThai);
             return DataProvider.ExecuteInsertQuery(query, param) == 1;
         }
-       
+        public static bool KTLopTonTai(string maLop)
+        {
+            string query = "SELECT COUNT(*) FROM ThongTinSV WHERE MaLop = @MaLop";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@MaLop", maLop);
+            return Convert.ToInt32(DataProvider.ExecuteSelectQuery(query, param).Rows[0][0]) == 1;
+        }
+        public static bool LamMoiDanhSach(SinhVienDTO sv)
+        {
+            string query = "DELETE FROM ThongTinSV WHERE MaLop=@MaLop";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@MaLop", sv.Ma_Lop);
+            return DataProvider.ExecuteDeleteQuery(query, param) == 1;
+        }
+
     }
 }
