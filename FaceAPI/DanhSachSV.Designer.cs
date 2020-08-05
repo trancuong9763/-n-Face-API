@@ -83,11 +83,11 @@
             this.SoNgayVang,
             this.TrangThai});
             this.dgvDSSV.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDSSV.Location = new System.Drawing.Point(4, 19);
+            this.dgvDSSV.Location = new System.Drawing.Point(4, 23);
             this.dgvDSSV.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvDSSV.Name = "dgvDSSV";
             this.dgvDSSV.RowTemplate.Height = 24;
-            this.dgvDSSV.Size = new System.Drawing.Size(811, 199);
+            this.dgvDSSV.Size = new System.Drawing.Size(811, 195);
             this.dgvDSSV.TabIndex = 0;
             this.dgvDSSV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSV_CellClick);
             // 
@@ -238,7 +238,7 @@
             this.txtLop.Margin = new System.Windows.Forms.Padding(5);
             this.txtLop.MaxLength = 10;
             this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(260, 23);
+            this.txtLop.Size = new System.Drawing.Size(260, 27);
             this.txtLop.TabIndex = 8;
             this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
             // 
@@ -248,7 +248,7 @@
             this.txtMSSV.Margin = new System.Windows.Forms.Padding(5);
             this.txtMSSV.MaxLength = 10;
             this.txtMSSV.Name = "txtMSSV";
-            this.txtMSSV.Size = new System.Drawing.Size(260, 23);
+            this.txtMSSV.Size = new System.Drawing.Size(260, 27);
             this.txtMSSV.TabIndex = 7;
             this.txtMSSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSSV_KeyPress);
             // 
@@ -257,7 +257,7 @@
             this.txtHoten.Location = new System.Drawing.Point(86, 163);
             this.txtHoten.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoten.Name = "txtHoten";
-            this.txtHoten.Size = new System.Drawing.Size(260, 23);
+            this.txtHoten.Size = new System.Drawing.Size(260, 27);
             this.txtHoten.TabIndex = 6;
             // 
             // label5
@@ -266,7 +266,7 @@
             this.label5.Location = new System.Drawing.Point(10, 231);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(33, 16);
+            this.label5.Size = new System.Drawing.Size(41, 19);
             this.label5.TabIndex = 5;
             this.label5.Text = "Lớp:";
             // 
@@ -276,7 +276,7 @@
             this.label4.Location = new System.Drawing.Point(10, 198);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(47, 16);
+            this.label4.Size = new System.Drawing.Size(57, 19);
             this.label4.TabIndex = 4;
             this.label4.Text = "MSSV:";
             // 
@@ -286,7 +286,7 @@
             this.label3.Location = new System.Drawing.Point(9, 168);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(53, 16);
+            this.label3.Size = new System.Drawing.Size(64, 19);
             this.label3.TabIndex = 3;
             this.label3.Text = "Họ Tên:";
             // 
@@ -348,7 +348,7 @@
             this.cboTim.Location = new System.Drawing.Point(107, 70);
             this.cboTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboTim.Name = "cboTim";
-            this.cboTim.Size = new System.Drawing.Size(217, 24);
+            this.cboTim.Size = new System.Drawing.Size(217, 27);
             this.cboTim.TabIndex = 7;
             this.cboTim.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cboTim.TextChanged += new System.EventHandler(this.cboTim_TextChanged);
@@ -359,7 +359,7 @@
             this.lblNhapMSSV.Location = new System.Drawing.Point(8, 39);
             this.lblNhapMSSV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNhapMSSV.Name = "lblNhapMSSV";
-            this.lblNhapMSSV.Size = new System.Drawing.Size(81, 16);
+            this.lblNhapMSSV.Size = new System.Drawing.Size(96, 19);
             this.lblNhapMSSV.TabIndex = 8;
             this.lblNhapMSSV.Text = "Nhập MSSV:";
             this.lblNhapMSSV.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -370,7 +370,7 @@
             this.label2.Location = new System.Drawing.Point(8, 73);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(62, 16);
+            this.label2.Size = new System.Drawing.Size(76, 19);
             this.label2.TabIndex = 10;
             this.label2.Text = "Chọn lớp:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -433,7 +433,7 @@
             // 
             // DanhSachSV
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(836, 671);
             this.Controls.Add(this.groupBox4);
