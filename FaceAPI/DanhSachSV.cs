@@ -31,6 +31,8 @@ namespace FaceAPI
         private bool addface = false;
         private bool facederection = false;
         int dem = 1;
+        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
+
         public DanhSachSV()
         {
             InitializeComponent();
@@ -333,7 +335,6 @@ namespace FaceAPI
             else
                 dgvDSSV.DataSource = SinhVienBUS.TimKiemMaSV(sv.Ma_SV);
         }
-        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
        
 
         private void txtLop_KeyPress(object sender, KeyPressEventArgs e)
@@ -703,6 +704,14 @@ namespace FaceAPI
                 }
             }
             }
+
+        private void btnLamMoi_Click(object sender, EventArgs e)
+        {
+
         }
+    }
+
+        
+    
             
 }
