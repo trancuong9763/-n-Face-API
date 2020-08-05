@@ -16,7 +16,7 @@ using System.Threading;
 using System.Diagnostics;
 using BUS;
 using DTO;
-using   Microsoft.Office.Core;
+using Microsoft.Office.Core;
 using xls = Microsoft.Office.Interop.Excel;
 using System.Data.OleDb;
 
@@ -52,7 +52,7 @@ namespace FaceAPI
 
             cboTim.DisplayMember = "MaLop";
             cboTim.ValueMember = "MaLop";
-          
+
         }
         protected void XoaForm()
         {
@@ -475,7 +475,7 @@ namespace FaceAPI
         private void DanhSachSV_Load_1(object sender, EventArgs e)
         {
             LoadDSSV();
-            
+
 
             btnStop.Enabled = false;
             btnXoa.Enabled = false;
@@ -651,14 +651,14 @@ namespace FaceAPI
                     else
                     {
                         MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
-                        
+
                     }
                     Debug.WriteLine(click);
                 }
-             else
-             {
-               click = 0;
-             }
+                else
+                {
+                    click = 0;
+                }
             if (click == 2)
             {
                 try
@@ -697,13 +697,13 @@ namespace FaceAPI
 
                             MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             LoadDSSV();
-                           
-                          
+
+
                         }
-                        else if(dr==DialogResult.No)
+                        else if (dr == DialogResult.No)
                         {
                             click = 0;
-                           
+
                         }
                     }
 
@@ -723,7 +723,7 @@ namespace FaceAPI
             sv.Ma_Lop = cboTim.Text.ToString();
             Debug.WriteLine(cboTim.Text.ToString());
 
-            if (cboTim.Text.ToString()!="")
+            if (cboTim.Text.ToString() != "")
             {
                 DialogResult dialogResult = MessageBox.Show("Bạn có chắc là làm mới danh sách sinh viên lớp " + sv.Ma_Lop + " ?", "Thông báo", MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -736,16 +736,16 @@ namespace FaceAPI
             }
             else
             {
-                MessageBox.Show("Bạn Chưa Chọn Lớp !!","Thông Báo");
+                MessageBox.Show("Bạn Chưa Chọn Lớp !!", "Thông Báo");
             }
-          
+
         }
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        //hello
+        //hello world
     }
-            
+
 }
