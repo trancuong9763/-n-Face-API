@@ -48,14 +48,6 @@ namespace FaceAPI
         {
             taiKhoan = DangNhap.taiKhoan;
             lblTenTK.Text = taiKhoan;
-            if(lblTenTK.Text == "admin")
-            {
-                btnTaiKhoan.Enabled = true;
-            }
-            else
-            {
-                btnTaiKhoan.Enabled = false;
-            }
         }
     }
 }

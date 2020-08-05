@@ -23,8 +23,6 @@ namespace FaceAPI
             LayDSTaiKhoan();
             GiaoDienThem(true);
         }
-        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
-        System.Text.RegularExpressions.Regex rEMail = new System.Text.RegularExpressions.Regex(@"^[a-zA-Z][\w\.-]*[a-zA-Z0-9]@[a-zA-Z0-9][\w\.-]*[a-zA-Z0-9]\.[a-zA-Z][a-zA-Z\.]*[a-zA-Z]$");
 
         protected void LayDSTaiKhoan()
         {
@@ -48,10 +46,6 @@ namespace FaceAPI
         {
             txtTaiKhoan.Text = string.Empty;
             txtMatKhau.Text = string.Empty;
-            txtSDT.Text = string.Empty;
-            txtTenGV.Text = string.Empty;
-            txtDiaChi.Text = string.Empty;
-            txtEmail.Text = string.Empty;
         }
         protected static string MD5Hash(string input)
         {
@@ -69,38 +63,25 @@ namespace FaceAPI
 
         private void btnThem_Click(object sender, EventArgs e)
         {
-
-
+            Regex r = new Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
             TaiKhoanDTO tk = new TaiKhoanDTO();
             tk.Ten_QTV = txtTaiKhoan.Text.Trim();
             string mkMH = MD5Hash(txtMatKhau.Text.Trim());
             tk.Mat_Khau =  Convert.ToString(mkMH);
-            tk.SDT = txtSDT.Text.Trim();
-            tk.Ten_GV = txtTenGV.Text.Trim();
-            tk.Email = txtEmail.Text.Trim();
-            tk.DiaChi = txtDiaChi.Text.Trim();
 
 
-            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "" || txtSDT.Text == "" || txtTenGV.Text == "" || txtDiaChi.Text == "" || txtEmail.Text == "")
+            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "")
             {
                 MessageBox.Show("Thông tin không được để trống");
-            }
-            else if (!rEMail.IsMatch(txtEmail.Text))
-
-            {
-
-                MessageBox.Show("Sai định dạng Email");
-
             }
             else if (txtMatKhau.Text.Length < 6)
             {
                 MessageBox.Show("Mật khẩu phải tối thiểu 6 ký tự");
             }
-            else if (r.IsMatch(txtTaiKhoan.Text) || r.IsMatch(txtTenGV.Text) || r.IsMatch(txtSDT.Text))
+            else if (r.IsMatch(txtTaiKhoan.Text))
             {
-                MessageBox.Show("Thông tin không hợp lệ");
+                MessageBox.Show("Tài khoản không hợp lệ");
             }
-
             else
             {
                 if (TaiKhoanBUS.ThemTK(tk))
@@ -163,10 +144,6 @@ namespace FaceAPI
                     dgvTaiKhoan.CurrentRow.Selected = true;
                     txtTaiKhoan.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Ten_QTV"].FormattedValue.ToString();
                     txtMatKhau.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Mat_Khau"].FormattedValue.ToString();
-                    txtSDT.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["SDT"].FormattedValue.ToString();
-                    txtTenGV.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Ten_GV"].FormattedValue.ToString();
-                    txtDiaChi.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["DiaChi"].FormattedValue.ToString();
-                    txtEmail.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Email"].FormattedValue.ToString();
                     txtMatKhau.Text = "";
 
 
@@ -177,48 +154,30 @@ namespace FaceAPI
 
         private void btnSua_Click(object sender, EventArgs e)
         {
-            txtTaiKhoan.Enabled = false;
             TaiKhoanDTO tk = TaiKhoanBUS.LayThongTinTaiKhoan(txtTaiKhoan.Text);
             string mkMH = MD5Hash(txtMatKhau.Text.Trim());
             tk.Mat_Khau = Convert.ToString(mkMH);
-            tk.SDT = txtSDT.Text.Trim();
-            tk.Ten_GV = txtTenGV.Text.Trim();
-            tk.Email = txtEmail.Text.Trim();
-            tk.DiaChi = txtDiaChi.Text.Trim();
-            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "" || txtSDT.Text == "" || txtTenGV.Text == "" || txtDiaChi.Text == "" || txtEmail.Text == "")
+            txtTaiKhoan.Enabled = false ;
+            if (taiKhoan == txtTaiKhoan.Text)
             {
-                MessageBox.Show("Thông tin không được để trống");
-            }
-            else if (!rEMail.IsMatch(txtEmail.Text))
-
-            {
-
-                MessageBox.Show("Sai định dạng Email");
-
-            }
-            else if (txtMatKhau.Text.Length < 6)
-            {
-                MessageBox.Show("Mật khẩu phải tối thiểu 6 ký tự");
-            }
-            else if (r.IsMatch(txtTaiKhoan.Text) || r.IsMatch(txtTenGV.Text) || r.IsMatch(txtSDT.Text))
-            {
-                MessageBox.Show("Thông tin không hợp lệ");
-            }
-
-            else
-            {
+                btnSua.Enabled = true;
                 if (TaiKhoanBUS.SuaTK(tk))
                 {
                     XoaForm();
                     LayDSTaiKhoan();
                     GiaoDienThem(true);
-                    MessageBox.Show("Thay đổi thành công");
+                    MessageBox.Show("Thay đổi mật khẩu thành công");
                 }
                 else
                 {
-                    MessageBox.Show("Thay đổi thất bại");
+                    MessageBox.Show("Thay đổi mật khẩu thất bại");
                 }
 
+            }
+            else
+            {
+                btnSua.Enabled = false;
+                MessageBox.Show("Thay đổi mật khẩu thất bại");
             }
         }
 
@@ -241,33 +200,11 @@ namespace FaceAPI
         {
 
         }
+        string taiKhoan = "";
         private void QlTaiKhoan_Load(object sender, EventArgs e)
         {
+            taiKhoan = DangNhap.taiKhoan;
 
-        }
-
-        private void txtSDT_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
-      (e.KeyChar != '.'))
-            {
-                e.Handled = true;
-            }
-
-            // ko cho phep nhap dau .
-            else if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') == -1))
-            {
-                e.Handled = true;
-            }
-            else if (e.Handled = (e.KeyChar == (char)Keys.Space))
-            {
-
-            }
-
-            else
-            {
-                e.Handled = false;
-            }
         }
     }
 }
