@@ -34,7 +34,7 @@ namespace DAO
             return lstSinhVien;
         }
         
-        public static bool KTSVTonTai(string maSV)
+        public static bool KTTKTonTai(string maSV)
         {
             string query = "SELECT COUNT(*) FROM ThongTinSV WHERE Ma_SV = @Ma_SV";
             SqlParameter[] param = new SqlParameter[1];
@@ -147,20 +147,6 @@ namespace DAO
             param[5] = new SqlParameter("@TrangThai", sv.TrangThai);
             return DataProvider.ExecuteInsertQuery(query, param) == 1;
         }
-        public static bool KTLopTonTai(string maLop)
-        {
-            string query = "SELECT COUNT(*) FROM ThongTinSV WHERE MaLop = @MaLop";
-            SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@MaLop", maLop);
-            return Convert.ToInt32(DataProvider.ExecuteSelectQuery(query, param).Rows[0][0]) == 1;
-        }
-        public static bool LamMoiDanhSach(SinhVienDTO sv)
-        {
-            string query = "DELETE FROM ThongTinSV WHERE MaLop=@MaLop";
-            SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@MaLop", sv.Ma_Lop);
-            return DataProvider.ExecuteDeleteQuery(query, param) == 1;
-        }
-
+       
     }
 }
