@@ -147,5 +147,6 @@ namespace DAO
             param[5] = new SqlParameter("@TrangThai", sv.TrangThai);
             return DataProvider.ExecuteInsertQuery(query, param) == 1;
         }
+       
     }
 }
