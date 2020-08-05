@@ -176,6 +176,7 @@
             this.btnThoat.TabIndex = 16;
             this.btnThoat.Text = "Thoát";
             this.btnThoat.UseVisualStyleBackColor = true;
+            this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
             // btnCapNhat
             // 
@@ -345,6 +346,8 @@
             // cboTim
             // 
             this.cboTim.FormattingEnabled = true;
+            this.cboTim.Items.AddRange(new object[] {
+            "Tất Cả"});
             this.cboTim.Location = new System.Drawing.Point(107, 70);
             this.cboTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboTim.Name = "cboTim";
@@ -419,6 +422,7 @@
             this.btnLamMoi.TabIndex = 11;
             this.btnLamMoi.Text = "Làm Mới";
             this.btnLamMoi.UseVisualStyleBackColor = true;
+            this.btnLamMoi.Click += new System.EventHandler(this.btnLamMoi_Click);
             // 
             // groupBox4
             // 
@@ -445,7 +449,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "DanhSachSV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DanhSachSV";
+            this.Text = "Danh Sách Sinh Viên";
             this.Load += new System.EventHandler(this.DanhSachSV_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).EndInit();
             this.groupBox2.ResumeLayout(false);
