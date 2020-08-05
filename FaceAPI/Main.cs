@@ -305,6 +305,8 @@ namespace FaceAPI
             }
         }
 
+       
+
         private void btnLuu_Click(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();
