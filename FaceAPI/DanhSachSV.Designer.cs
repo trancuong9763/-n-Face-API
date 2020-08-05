@@ -37,6 +37,7 @@
             this.TrangThai = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnThoat = new System.Windows.Forms.Button();
             this.btnCapNhat = new System.Windows.Forms.Button();
             this.btnStop = new System.Windows.Forms.Button();
             this.btnStart = new System.Windows.Forms.Button();
@@ -58,12 +59,17 @@
             this.label2 = new System.Windows.Forms.Label();
             this.btnNhapEX = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnLamMoi = new System.Windows.Forms.Button();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
             this.SuspendLayout();
             // 
             // dgvDSSV
@@ -81,7 +87,7 @@
             this.dgvDSSV.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvDSSV.Name = "dgvDSSV";
             this.dgvDSSV.RowTemplate.Height = 24;
-            this.dgvDSSV.Size = new System.Drawing.Size(865, 222);
+            this.dgvDSSV.Size = new System.Drawing.Size(811, 199);
             this.dgvDSSV.TabIndex = 0;
             this.dgvDSSV.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvDSSV_CellClick);
             // 
@@ -129,17 +135,18 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvDSSV);
-            this.groupBox2.Location = new System.Drawing.Point(13, 412);
+            this.groupBox2.Location = new System.Drawing.Point(9, 448);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4, 3, 4, 3);
-            this.groupBox2.Size = new System.Drawing.Size(873, 244);
+            this.groupBox2.Size = new System.Drawing.Size(819, 221);
             this.groupBox2.TabIndex = 2;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Danh Sách Sinh Viên";
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnThoat);
             this.groupBox1.Controls.Add(this.btnCapNhat);
             this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnStart);
@@ -152,18 +159,27 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.picBox2);
-            this.groupBox1.Location = new System.Drawing.Point(495, 9);
+            this.groupBox1.Location = new System.Drawing.Point(470, 9);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(5);
-            this.groupBox1.Size = new System.Drawing.Size(391, 329);
+            this.groupBox1.Size = new System.Drawing.Size(358, 317);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Thêm Sinh Viên";
             // 
+            // btnThoat
+            // 
+            this.btnThoat.Location = new System.Drawing.Point(172, 114);
+            this.btnThoat.Name = "btnThoat";
+            this.btnThoat.Size = new System.Drawing.Size(175, 40);
+            this.btnThoat.TabIndex = 16;
+            this.btnThoat.Text = "Thoát";
+            this.btnThoat.UseVisualStyleBackColor = true;
+            // 
             // btnCapNhat
             // 
-            this.btnCapNhat.Location = new System.Drawing.Point(279, 276);
+            this.btnCapNhat.Location = new System.Drawing.Point(241, 264);
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(5);
             this.btnCapNhat.Name = "btnCapNhat";
             this.btnCapNhat.Size = new System.Drawing.Size(106, 43);
@@ -174,10 +190,10 @@
             // 
             // btnStop
             // 
-            this.btnStop.Location = new System.Drawing.Point(173, 98);
+            this.btnStop.Location = new System.Drawing.Point(172, 66);
             this.btnStop.Margin = new System.Windows.Forms.Padding(5);
             this.btnStop.Name = "btnStop";
-            this.btnStop.Size = new System.Drawing.Size(211, 54);
+            this.btnStop.Size = new System.Drawing.Size(174, 40);
             this.btnStop.TabIndex = 13;
             this.btnStop.Text = "Dừng";
             this.btnStop.UseVisualStyleBackColor = true;
@@ -185,10 +201,10 @@
             // 
             // btnStart
             // 
-            this.btnStart.Location = new System.Drawing.Point(173, 28);
+            this.btnStart.Location = new System.Drawing.Point(172, 20);
             this.btnStart.Margin = new System.Windows.Forms.Padding(5);
             this.btnStart.Name = "btnStart";
-            this.btnStart.Size = new System.Drawing.Size(211, 54);
+            this.btnStart.Size = new System.Drawing.Size(175, 39);
             this.btnStart.TabIndex = 12;
             this.btnStart.Text = "Bật Camera";
             this.btnStart.UseVisualStyleBackColor = true;
@@ -196,7 +212,7 @@
             // 
             // btnXoa
             // 
-            this.btnXoa.Location = new System.Drawing.Point(144, 276);
+            this.btnXoa.Location = new System.Drawing.Point(125, 264);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(5);
             this.btnXoa.Name = "btnXoa";
             this.btnXoa.Size = new System.Drawing.Size(106, 43);
@@ -207,7 +223,7 @@
             // 
             // btnThem
             // 
-            this.btnThem.Location = new System.Drawing.Point(9, 276);
+            this.btnThem.Location = new System.Drawing.Point(9, 265);
             this.btnThem.Margin = new System.Windows.Forms.Padding(5);
             this.btnThem.Name = "btnThem";
             this.btnThem.Size = new System.Drawing.Size(106, 43);
@@ -218,21 +234,21 @@
             // 
             // txtLop
             // 
-            this.txtLop.Location = new System.Drawing.Point(86, 239);
+            this.txtLop.Location = new System.Drawing.Point(87, 228);
             this.txtLop.Margin = new System.Windows.Forms.Padding(5);
             this.txtLop.MaxLength = 10;
             this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(298, 23);
+            this.txtLop.Size = new System.Drawing.Size(260, 23);
             this.txtLop.TabIndex = 8;
             this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
             // 
             // txtMSSV
             // 
-            this.txtMSSV.Location = new System.Drawing.Point(86, 201);
+            this.txtMSSV.Location = new System.Drawing.Point(87, 195);
             this.txtMSSV.Margin = new System.Windows.Forms.Padding(5);
             this.txtMSSV.MaxLength = 10;
             this.txtMSSV.Name = "txtMSSV";
-            this.txtMSSV.Size = new System.Drawing.Size(298, 23);
+            this.txtMSSV.Size = new System.Drawing.Size(260, 23);
             this.txtMSSV.TabIndex = 7;
             this.txtMSSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSSV_KeyPress);
             // 
@@ -241,23 +257,23 @@
             this.txtHoten.Location = new System.Drawing.Point(86, 163);
             this.txtHoten.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoten.Name = "txtHoten";
-            this.txtHoten.Size = new System.Drawing.Size(298, 23);
+            this.txtHoten.Size = new System.Drawing.Size(260, 23);
             this.txtHoten.TabIndex = 6;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(9, 250);
+            this.label5.Location = new System.Drawing.Point(10, 231);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(30, 16);
+            this.label5.Size = new System.Drawing.Size(33, 16);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Lớp";
+            this.label5.Text = "Lớp:";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(9, 212);
+            this.label4.Location = new System.Drawing.Point(10, 198);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(47, 16);
@@ -276,19 +292,19 @@
             // 
             // picBox2
             // 
-            this.picBox2.Location = new System.Drawing.Point(9, 28);
+            this.picBox2.Location = new System.Drawing.Point(9, 21);
             this.picBox2.Margin = new System.Windows.Forms.Padding(5);
             this.picBox2.Name = "picBox2";
-            this.picBox2.Size = new System.Drawing.Size(155, 124);
+            this.picBox2.Size = new System.Drawing.Size(155, 132);
             this.picBox2.TabIndex = 0;
             this.picBox2.TabStop = false;
             // 
             // btnXuatEX
             // 
-            this.btnXuatEX.Location = new System.Drawing.Point(698, 355);
+            this.btnXuatEX.Location = new System.Drawing.Point(180, 34);
             this.btnXuatEX.Margin = new System.Windows.Forms.Padding(5);
             this.btnXuatEX.Name = "btnXuatEX";
-            this.btnXuatEX.Size = new System.Drawing.Size(188, 46);
+            this.btnXuatEX.Size = new System.Drawing.Size(170, 55);
             this.btnXuatEX.TabIndex = 11;
             this.btnXuatEX.Text = "Xuất Excel";
             this.btnXuatEX.UseVisualStyleBackColor = true;
@@ -296,28 +312,28 @@
             // 
             // picBox
             // 
-            this.picBox.Location = new System.Drawing.Point(8, 25);
+            this.picBox.Location = new System.Drawing.Point(8, 24);
             this.picBox.Margin = new System.Windows.Forms.Padding(5);
             this.picBox.Name = "picBox";
-            this.picBox.Size = new System.Drawing.Size(459, 283);
+            this.picBox.Size = new System.Drawing.Size(437, 283);
             this.picBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picBox.TabIndex = 4;
             this.picBox.TabStop = false;
             // 
             // txtTim
             // 
-            this.txtTim.Location = new System.Drawing.Point(102, 344);
+            this.txtTim.Location = new System.Drawing.Point(107, 36);
             this.txtTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.txtTim.MaxLength = 10;
             this.txtTim.Multiline = true;
             this.txtTim.Name = "txtTim";
-            this.txtTim.Size = new System.Drawing.Size(198, 27);
+            this.txtTim.Size = new System.Drawing.Size(217, 27);
             this.txtTim.TabIndex = 5;
             this.txtTim.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtTim_KeyPress);
             // 
             // btnTim
             // 
-            this.btnTim.Location = new System.Drawing.Point(308, 342);
+            this.btnTim.Location = new System.Drawing.Point(332, 34);
             this.btnTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnTim.Name = "btnTim";
             this.btnTim.Size = new System.Drawing.Size(111, 30);
@@ -329,10 +345,10 @@
             // cboTim
             // 
             this.cboTim.FormattingEnabled = true;
-            this.cboTim.Location = new System.Drawing.Point(102, 377);
+            this.cboTim.Location = new System.Drawing.Point(107, 70);
             this.cboTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboTim.Name = "cboTim";
-            this.cboTim.Size = new System.Drawing.Size(151, 24);
+            this.cboTim.Size = new System.Drawing.Size(217, 24);
             this.cboTim.TabIndex = 7;
             this.cboTim.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cboTim.TextChanged += new System.EventHandler(this.cboTim_TextChanged);
@@ -340,7 +356,7 @@
             // lblNhapMSSV
             // 
             this.lblNhapMSSV.AutoSize = true;
-            this.lblNhapMSSV.Location = new System.Drawing.Point(14, 349);
+            this.lblNhapMSSV.Location = new System.Drawing.Point(8, 39);
             this.lblNhapMSSV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNhapMSSV.Name = "lblNhapMSSV";
             this.lblNhapMSSV.Size = new System.Drawing.Size(81, 16);
@@ -351,7 +367,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(13, 380);
+            this.label2.Location = new System.Drawing.Point(8, 73);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(62, 16);
@@ -361,10 +377,10 @@
             // 
             // btnNhapEX
             // 
-            this.btnNhapEX.Location = new System.Drawing.Point(495, 355);
+            this.btnNhapEX.Location = new System.Drawing.Point(6, 34);
             this.btnNhapEX.Margin = new System.Windows.Forms.Padding(5);
             this.btnNhapEX.Name = "btnNhapEX";
-            this.btnNhapEX.Size = new System.Drawing.Size(193, 46);
+            this.btnNhapEX.Size = new System.Drawing.Size(170, 55);
             this.btnNhapEX.TabIndex = 12;
             this.btnNhapEX.Text = "Nhập Excel";
             this.btnNhapEX.UseVisualStyleBackColor = true;
@@ -373,31 +389,62 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.picBox);
-            this.groupBox3.Location = new System.Drawing.Point(12, 9);
+            this.groupBox3.Location = new System.Drawing.Point(9, 9);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(475, 329);
+            this.groupBox3.Size = new System.Drawing.Size(453, 317);
             this.groupBox3.TabIndex = 13;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Camera";
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnLamMoi);
+            this.groupBox5.Controls.Add(this.txtTim);
+            this.groupBox5.Controls.Add(this.btnTim);
+            this.groupBox5.Controls.Add(this.cboTim);
+            this.groupBox5.Controls.Add(this.label2);
+            this.groupBox5.Controls.Add(this.lblNhapMSSV);
+            this.groupBox5.Location = new System.Drawing.Point(9, 333);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(453, 109);
+            this.groupBox5.TabIndex = 15;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Tìm Kiếm Và Làm Mới Danh Sách";
+            // 
+            // btnLamMoi
+            // 
+            this.btnLamMoi.Location = new System.Drawing.Point(332, 70);
+            this.btnLamMoi.Name = "btnLamMoi";
+            this.btnLamMoi.Size = new System.Drawing.Size(111, 25);
+            this.btnLamMoi.TabIndex = 11;
+            this.btnLamMoi.Text = "Làm Mới";
+            this.btnLamMoi.UseVisualStyleBackColor = true;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnNhapEX);
+            this.groupBox4.Controls.Add(this.btnXuatEX);
+            this.groupBox4.Location = new System.Drawing.Point(470, 333);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(358, 109);
+            this.groupBox4.TabIndex = 15;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Nhập Xuất File Excel";
             // 
             // DanhSachSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(889, 671);
+            this.ClientSize = new System.Drawing.Size(836, 671);
+            this.Controls.Add(this.groupBox4);
+            this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.btnNhapEX);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnXuatEX);
-            this.Controls.Add(this.lblNhapMSSV);
-            this.Controls.Add(this.cboTim);
-            this.Controls.Add(this.btnTim);
-            this.Controls.Add(this.txtTim);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
             this.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "DanhSachSV";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DanhSachSV";
             this.Load += new System.EventHandler(this.DanhSachSV_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).EndInit();
@@ -407,8 +454,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.picBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picBox)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox4.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -444,5 +493,9 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn SoNgayVang;
         private System.Windows.Forms.DataGridViewCheckBoxColumn TrangThai;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Button btnLamMoi;
+        private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Button btnThoat;
     }
 }
