@@ -745,7 +745,6 @@ namespace FaceAPI
         {
             this.Close();
         }
-        //hello
     }
             
 }
