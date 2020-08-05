@@ -16,7 +16,7 @@ using System.Threading;
 using System.Diagnostics;
 using BUS;
 using DTO;
-using   Microsoft.Office.Core;
+using Microsoft.Office.Core;
 using xls = Microsoft.Office.Interop.Excel;
 using System.Data.OleDb;
 
@@ -31,16 +31,14 @@ namespace FaceAPI
         private bool addface = false;
         private bool facederection = false;
         int dem = 1;
-        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
-
         public DanhSachSV()
         {
             InitializeComponent();
             ChonLop();
-            
+
         }
 
-      
+
         protected void LoadDSSV()
         {
 
@@ -54,13 +52,14 @@ namespace FaceAPI
 
             cboTim.DisplayMember = "MaLop";
             cboTim.ValueMember = "MaLop";
+
         }
         protected void XoaForm()
         {
-            
+
             txtMSSV.Text = "";
-            txtHoten.Text ="";
-            txtLop.Text = "" ;
+            txtHoten.Text = "";
+            txtLop.Text = "";
         }
         protected void GiaoDienThem(bool gd)
         {
@@ -68,7 +67,7 @@ namespace FaceAPI
             txtHoten.Enabled = gd;
             txtLop.Enabled = gd;
             btnThem.Enabled = gd;
-            
+
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -93,20 +92,20 @@ namespace FaceAPI
                 MessageBox.Show("Thông tin không được để trống");
             }
 
-            
-            else if (r.IsMatch(txtHoten.Text) || r.IsMatch(txtLop.Text) || r.IsMatch(txtMSSV.Text) )
+
+            else if (r.IsMatch(txtHoten.Text) || r.IsMatch(txtLop.Text) || r.IsMatch(txtMSSV.Text))
             {
                 MessageBox.Show("Thông tin không hợp lệ");
             }
             else
             {
-                
-                if(dem == 1)
+
+                if (dem == 1)
                 {
                     if (SinhVienBUS.ThemSV(sv))
                     {
                         addface = true;
-                        
+
                         MessageBox.Show("Bạn Hãy Thêm Vào 5 Khuôn Mặt");
                         MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
                         LoadDSSV();
@@ -125,14 +124,14 @@ namespace FaceAPI
                         txtLop.Text = "";
                         txtMSSV.Text = "";
 
-                    }             
+                    }
                 }
-                else if (dem > 1 && dem<=5)
+                else if (dem > 1 && dem <= 5)
                 {
                     addface = true;
                     MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
                     dem++;
-                    if(dem==6)
+                    if (dem == 6)
                     {
                         MessageBox.Show("Thêm sinh viên thành công");
                         txtHoten.Enabled = true;
@@ -143,70 +142,70 @@ namespace FaceAPI
                         txtMSSV.Text = "";
                         dem = 1;
                     }
-                    
+
                 }
                 else
                 {
 
                     MessageBox.Show("Thêm sinh viên không thành công");
 
-                   
+
                 }
             }
-                
+
         }
-           
-           
-           
-        
+
+
+
+
 
         private void StartFrame(object sender, EventArgs e)
         {
 
             quayVideo.Retrieve(frame, 0);
-            currentFrame = frame.ToImage<Bgr, Byte>().Resize(320,240, Inter.Cubic);
-       
+            currentFrame = frame.ToImage<Bgr, Byte>().Resize(320, 240, Inter.Cubic);
+
             Mat grayImage = new Mat();
             CvInvoke.CvtColor(currentFrame, grayImage, ColorConversion.Bgr2Gray);
             CvInvoke.EqualizeHist(grayImage, grayImage);
-            System.Drawing.Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayImage, 1.2, 10, new Size(20,20));
+            System.Drawing.Rectangle[] faces = cascadeClassifier.DetectMultiScale(grayImage, 1.2, 10, new Size(20, 20));
 
 
-                if (faces.Length > 0)
+            if (faces.Length > 0)
+            {
+                foreach (var face in faces)
                 {
-                    foreach (var face in faces)
+                    // vẽ hình vuông vào mặt
+                    CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
+
+                    //add khuôn mặt : resualtFace
+                    Image<Gray, Byte> resualtFace = currentFrame.Convert<Gray, Byte>();
+                    resualtFace.ROI = face;
+                    picBox2.SizeMode = PictureBoxSizeMode.StretchImage;// Chỉnh size cho imagebox;
+                    picBox2.Image = resualtFace.Bitmap;
+
+                    if (addface)
                     {
-                        // vẽ hình vuông vào mặt
-                        CvInvoke.Rectangle(currentFrame, face, new Bgr(Color.Red).MCvScalar, 2);
-
-                        //add khuôn mặt : resualtFace
-                        Image<Gray, Byte> resualtFace = currentFrame.Convert<Gray, Byte>();
-                        resualtFace.ROI = face;
-                        picBox2.SizeMode = PictureBoxSizeMode.StretchImage;// Chỉnh size cho imagebox;
-                        picBox2.Image = resualtFace.Bitmap;
-
-                        if (addface)
+                        string path = Directory.GetCurrentDirectory() + @"\TrainedImages";//Tạo thư mục Trained trong debug
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+                        Task.Factory.StartNew(() =>
                         {
-                            string path = Directory.GetCurrentDirectory() + @"\TrainedImages";//Tạo thư mục Trained trong debug
-                            if (!Directory.Exists(path))
-                                Directory.CreateDirectory(path);
-                            Task.Factory.StartNew(() =>
-                            {
-                                
-                                    resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text.Trim() + "_" + txtLop.Text.Trim() + "_" + dem + ".bmp");
-                                    Thread.Sleep(1000);
-                      
-                            });
-                        }
-                        addface = false;
-                        //if (btnThem.InvokeRequired)
-                        //{
-                        //    btnThem.Invoke(new ThreadStart(delegate {
-                        //        btnThem.Enabled = true;
-                        //    }));
-                        //}
-                    }  
+
+                            resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text.Trim() + "_" + txtLop.Text.Trim() + "_" + dem + ".bmp");
+                            Thread.Sleep(1000);
+
+                        });
+                    }
+                    addface = false;
+                    //if (btnThem.InvokeRequired)
+                    //{
+                    //    btnThem.Invoke(new ThreadStart(delegate {
+                    //        btnThem.Enabled = true;
+                    //    }));
+                    //}
                 }
+            }
             picBox.Image = currentFrame.Bitmap;
         }
 
@@ -223,7 +222,7 @@ namespace FaceAPI
                 quayVideo = new Capture();
                 quayVideo.ImageGrabbed += StartFrame;
                 quayVideo.Start();
-                
+
             }
 
         }
@@ -245,7 +244,7 @@ namespace FaceAPI
                         foreach (var file in files)
                         {
                             File.Delete(file);
-                           
+
                         }
                     }
                     MessageBox.Show("Xóa thành công");
@@ -268,19 +267,19 @@ namespace FaceAPI
         {
             if (e.RowIndex > -1 && e.ColumnIndex > -1 && dgvDSSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
-                
-               
+
+
                 dgvDSSV.CurrentRow.Selected = true;
                 txtMSSV.Text = dgvDSSV.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
                 txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
             }
             btnXoa.Enabled = true;
-           
+
             txtHoten.Enabled = false;
             txtLop.Enabled = false;
             txtMSSV.Enabled = false;
-           if(quayVideo!=null)
+            if (quayVideo != null)
             {
                 btnCapNhat.Enabled = true;
             }
@@ -304,46 +303,47 @@ namespace FaceAPI
 
         private void btnStop_Click(object sender, EventArgs e)
         {
-            if(quayVideo!=null)
+            if (quayVideo != null)
             {
                 quayVideo.Stop();
             }
             btnThem.Enabled = false;
-           
+
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_Lop = cboTim.Text.ToString();
-            
-                dgvDSSV.DataSource = SinhVienBUS.LayDSLop(sv.Ma_Lop);
-            
-           
+
+            dgvDSSV.DataSource = SinhVienBUS.LayDSLop(sv.Ma_Lop);
+
+
         }
 
-       
+
 
         private void btnTim_Click(object sender, EventArgs e)
         {
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtTim.Text.ToString();
-            if (txtTim.Text=="")
+            if (txtTim.Text == "")
             {
                 MessageBox.Show("Bạn chưa nhập thông tin cần tìm");
             }
             else
                 dgvDSSV.DataSource = SinhVienBUS.TimKiemMaSV(sv.Ma_SV);
         }
-       
+        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
+
 
         private void txtLop_KeyPress(object sender, KeyPressEventArgs e)
         {
-            
-            e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
-            
 
-              if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            e.KeyChar = char.Parse(e.KeyChar.ToString().ToUpper());
+
+
+            if (e.Handled = (e.KeyChar == (char)Keys.Space))
             {
 
             }
@@ -415,7 +415,7 @@ namespace FaceAPI
             }
         }
 
-       
+
 
         private void btnCapNhat_Click(object sender, EventArgs e)
         {
@@ -465,18 +465,18 @@ namespace FaceAPI
                 MessageBox.Show("Thêm sinh viên không thành công");
 
             }
-            
-           
+
+
             LoadDSSV();
-               
-            
+
+
         }
 
         private void DanhSachSV_Load_1(object sender, EventArgs e)
         {
             LoadDSSV();
 
-           
+
             btnStop.Enabled = false;
             btnXoa.Enabled = false;
             btnCapNhat.Enabled = false;
@@ -542,7 +542,7 @@ namespace FaceAPI
 
             // Export titles 
 
-            for (int j = 0; j < myDataGridViewQuantity.Columns.Count-1; j++)
+            for (int j = 0; j < myDataGridViewQuantity.Columns.Count - 1; j++)
             {
 
                 oRange = (xls.Range)oSheet.Cells[1, j + 1];
@@ -558,7 +558,7 @@ namespace FaceAPI
             for (int i = 0; i < myDataGridViewQuantity.Rows.Count; i++)
             {
 
-                for (int j = 0; j < myDataGridViewQuantity.Columns.Count-1; j++)
+                for (int j = 0; j < myDataGridViewQuantity.Columns.Count - 1; j++)
                 {
                     oRange = (xls.Range)oSheet.Cells[i + 2, j + 1];
                     oRange.Style.Font.Size = 14;
@@ -574,7 +574,7 @@ namespace FaceAPI
             oExcel_12 = null;
             GC.Collect();
         }
-   
+
         private void btnXuatEX_Click(object sender, EventArgs e)
         {
             try
@@ -617,7 +617,7 @@ namespace FaceAPI
 
         }
         int click = 0;
-        
+
         private void btnNhapEX_Click(object sender, EventArgs e)
         {
             DanhSachSV fm = new DanhSachSV();
@@ -640,62 +640,74 @@ namespace FaceAPI
                             dgvDSSV.Visible = true;
                             dgvDSSV.DataSource = dtExcel;
                             click++;
-                            
+
                         }
                         catch (Exception ex)
                         {
                             MessageBox.Show(ex.Message.ToString());
                         }
-                       
+
                     }
                     else
                     {
                         MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
+
                     }
                     Debug.WriteLine(click);
                 }
-             if(click==2)
+                else
                 {
+                    click = 0;
+                }
+            if (click == 2)
+            {
                 try
                 {
                     if (dgvDSSV.Rows.Count < 1)
+                    {
+                        MessageBox.Show("Vui lòng chọn file excel để nhập !", "Thông Báo", MessageBoxButtons.OK);
+                    }
+                    else
+                    {
+                        DialogResult dr;
+                        dr = MessageBox.Show(" Nhập danh sách này vào CSDL", "Thông Báo", MessageBoxButtons.YesNo);
+                        if (dr == DialogResult.Yes)
+                        {
+                            for (int i = 0; i < dgvDSSV.Rows.Count - 1; i++)
                             {
-                                MessageBox.Show("Vui lòng chọn file excel để nhập !", "Thông Báo", MessageBoxButtons.OK);
+                                sv.Ma_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[0].Value);
+                                sv.Ten_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[1].Value);
+                                sv.Ma_Lop = Convert.ToString(dgvDSSV.Rows[i].Cells[2].Value);
+                                sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
+                                sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
+                                sv.TrangThai = Convert.ToBoolean(null);
+
+                                SinhVienBUS.ThemSVExcel(sv);
+
                             }
-                            else
-                            {
-                                DialogResult dr;
-                                dr = MessageBox.Show(" Nhập danh sách này vào CSDL", "Thông Báo", MessageBoxButtons.OKCancel);
-                                if (dr == DialogResult.OK)
-                                {
-                                    for (int i = 0; i < dgvDSSV.Rows.Count-1; i++)
-                                    {
-                                        sv.Ma_SV=Convert.ToString(dgvDSSV.Rows[i].Cells[0].Value);
-                                        sv.Ten_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[1].Value);
-                                        sv.Ma_Lop = Convert.ToString(dgvDSSV.Rows[i].Cells[2].Value);
-                                        sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
-                                        sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
-                                        sv.TrangThai = Convert.ToBoolean(null);
-                                       
-                                        SinhVienBUS.ThemSVExcel(sv);
-                                       
-                                    }
-                                    dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
-                                    dgvDSSV.Columns[0].Width = 150;
-                                    dgvDSSV.Columns[1].Width = 150;
-                                    dgvDSSV.Columns[2].Width = 150;
-                                    dgvDSSV.Columns[3].Width = 100;
-                                    dgvDSSV.Columns[4].Width = 100;
-                                    dgvDSSV.Columns[5].Width = 150;
+                            dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
+                            ChonLop();
+                            dgvDSSV.Columns[0].Width = 150;
+                            dgvDSSV.Columns[1].Width = 150;
+                            dgvDSSV.Columns[2].Width = 150;
+                            dgvDSSV.Columns[3].Width = 100;
+                            dgvDSSV.Columns[4].Width = 100;
+                            dgvDSSV.Columns[5].Width = 150;
 
 
                             MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                   
-                            
-                                }
-                            }
+                            LoadDSSV();
 
-                        click = 0;
+
+                        }
+                        else if (dr == DialogResult.No)
+                        {
+                            click = 0;
+
+                        }
+                    }
+
+                    click = 0;
                 }
                 catch (Exception ex)
                 {
@@ -703,15 +715,37 @@ namespace FaceAPI
                     MessageBox.Show(ex.Message);
                 }
             }
-            }
+        }
 
         private void btnLamMoi_Click(object sender, EventArgs e)
         {
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_Lop = cboTim.Text.ToString();
+            Debug.WriteLine(cboTim.Text.ToString());
+
+            if (cboTim.Text.ToString() != "")
+            {
+                DialogResult dialogResult = MessageBox.Show("Bạn có chắc là làm mới danh sách sinh viên lớp " + sv.Ma_Lop + " ?", "Thông báo", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SinhVienBUS.LamMoiDSSV(sv);
+                    LoadDSSV();
+                }
+                if (dialogResult == DialogResult.No)
+                { }
+            }
+            else
+            {
+                MessageBox.Show("Bạn Chưa Chọn Lớp !!", "Thông Báo");
+            }
 
         }
+
+        private void btnThoat_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+        //hello world
     }
 
-        
-    
-            
 }
