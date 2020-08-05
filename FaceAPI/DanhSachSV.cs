@@ -269,9 +269,9 @@ namespace FaceAPI
                 
                
                 dgvDSSV.CurrentRow.Selected = true;
-                txtMSSV.Text = dgvDSSV.Rows[e.RowIndex].Cells["Ma_SV"].FormattedValue.ToString();
-                txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells["Ten_SV"].FormattedValue.ToString();
-                txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells["MaLop"].FormattedValue.ToString();
+                txtMSSV.Text = dgvDSSV.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+                txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
+                txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
             }
             btnXoa.Enabled = true;
            
@@ -534,8 +534,8 @@ namespace FaceAPI
 
             oSheet = (xls.Worksheet)oSheetsColl.get_Item("Sheet1");
             oSheet.Name = "DanhSach";
-            
-            
+
+
 
 
 
@@ -546,9 +546,9 @@ namespace FaceAPI
 
                 oRange = (xls.Range)oSheet.Cells[1, j + 1];
                 oRange.Value2 = myDataGridViewQuantity.Columns[j].HeaderText;
-                oRange.Style.Font.Name = "Times New Roman";
                 oRange.Style.Font.Size = 14;
                 oRange.EntireColumn.AutoFit();
+                oRange.Style.Font.Name = "Times New Roman";
 
             }
 
@@ -560,10 +560,10 @@ namespace FaceAPI
                 for (int j = 0; j < myDataGridViewQuantity.Columns.Count-1; j++)
                 {
                     oRange = (xls.Range)oSheet.Cells[i + 2, j + 1];
-                    oRange.Style.Font.Name = "Times New Roman";
                     oRange.Style.Font.Size = 14;
                     oRange.Value2 = myDataGridViewQuantity[j, i].Value;
                     oRange.EntireColumn.AutoFit();
+                    oRange.Style.Font.Name = "Times New Roman";
 
                 }
 
@@ -619,6 +619,7 @@ namespace FaceAPI
         
         private void btnNhapEX_Click(object sender, EventArgs e)
         {
+            DanhSachSV fm = new DanhSachSV();
             SinhVienDTO sv = new SinhVienDTO();
             string filePath = string.Empty;
             string fileExt = string.Empty;
@@ -674,15 +675,23 @@ namespace FaceAPI
                                         sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
                                         sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
                                         sv.TrangThai = Convert.ToBoolean(null);
-                       
+                                       
                                         SinhVienBUS.ThemSVExcel(sv);
                                        
                                     }
                                     dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
+                                    dgvDSSV.Columns[0].Width = 150;
+                                    dgvDSSV.Columns[1].Width = 150;
+                                    dgvDSSV.Columns[2].Width = 150;
+                                    dgvDSSV.Columns[3].Width = 100;
+                                    dgvDSSV.Columns[4].Width = 100;
+                                    dgvDSSV.Columns[5].Width = 150;
 
-                                    MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                            MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                   
+                            
                                 }
-
                             }
 
                         click = 0;
