@@ -13,7 +13,7 @@ namespace BUS
     {
         public static bool CapNhatChuyenCan(SinhVienDTO sv)
         {
-            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+            if (SinhVienDAO.KTSVTonTai(sv.Ma_SV))
             {
                 return SinhVienDAO.UpdateChuyenCan(sv);
             }
@@ -30,7 +30,8 @@ namespace BUS
 
         public static bool ThemSV(SinhVienDTO sv)
         {
-            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV)) {
+            if (SinhVienDAO.KTSVTonTai(sv.Ma_SV))
+            {
                 return false;
             }
             else
@@ -40,7 +41,7 @@ namespace BUS
         }
         public static SinhVienDTO LayThongTinSV(string maSV)
         {
-            if (!SinhVienDAO.KTTKTonTai(maSV))
+            if (!SinhVienDAO.KTSVTonTai(maSV))
             {
                 return null;
             }
@@ -51,7 +52,7 @@ namespace BUS
         }
         public static List<SinhVienDTO> TimKiemMaSV(string maSV)
         {
-            if (SinhVienDAO.KTTKTonTai(maSV))
+            if (SinhVienDAO.KTSVTonTai(maSV))
             {
                 return SinhVienDAO.TimKiemMaSV(maSV);
             }
@@ -90,7 +91,7 @@ namespace BUS
 
         public static bool XoaSV(SinhVienDTO sv)
         {
-            if (!SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+            if (!SinhVienDAO.KTSVTonTai(sv.Ma_SV))
             {
                 return false;
             }
@@ -99,9 +100,13 @@ namespace BUS
                 return SinhVienDAO.XoaSV(sv);
             }
         }
+        public static bool LamMoiDSSV(SinhVienDTO sv)
+        {
+            return SinhVienDAO.LamMoiDanhSach(sv);
+        }
         public static bool CapNhatTrangThai(SinhVienDTO sv)
         {
-            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+            if (SinhVienDAO.KTSVTonTai(sv.Ma_SV))
             {
                 return SinhVienDAO.LayTrangThai(sv);
             }
@@ -112,7 +117,7 @@ namespace BUS
         }
         public static bool ThemSVExcel(SinhVienDTO sv)
         {
-            if (SinhVienDAO.KTTKTonTai(sv.Ma_SV))
+            if (SinhVienDAO.KTSVTonTai(sv.Ma_SV))
             {
                 return false;
             }
