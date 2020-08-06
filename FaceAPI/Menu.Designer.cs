@@ -67,6 +67,7 @@
             // 
             // lblTenTK
             // 
+            this.lblTenTK.ForeColor = System.Drawing.Color.Red;
             this.lblTenTK.Location = new System.Drawing.Point(163, 14);
             this.lblTenTK.Name = "lblTenTK";
             this.lblTenTK.Size = new System.Drawing.Size(134, 22);

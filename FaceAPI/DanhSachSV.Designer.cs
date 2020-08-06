@@ -134,7 +134,10 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.groupBox2.Controls.Add(this.dgvDSSV);
+            this.groupBox2.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox2.ForeColor = System.Drawing.Color.Black;
             this.groupBox2.Location = new System.Drawing.Point(9, 448);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.groupBox2.Name = "groupBox2";
@@ -159,6 +162,8 @@
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.picBox2);
+            this.groupBox1.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.ForeColor = System.Drawing.Color.Red;
             this.groupBox1.Location = new System.Drawing.Point(470, 9);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(5);
             this.groupBox1.Name = "groupBox1";
@@ -170,6 +175,8 @@
             // 
             // btnThoat
             // 
+            this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThoat.ForeColor = System.Drawing.Color.Black;
             this.btnThoat.Location = new System.Drawing.Point(172, 114);
             this.btnThoat.Name = "btnThoat";
             this.btnThoat.Size = new System.Drawing.Size(175, 40);
@@ -180,6 +187,8 @@
             // 
             // btnCapNhat
             // 
+            this.btnCapNhat.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnCapNhat.ForeColor = System.Drawing.Color.Black;
             this.btnCapNhat.Location = new System.Drawing.Point(241, 264);
             this.btnCapNhat.Margin = new System.Windows.Forms.Padding(5);
             this.btnCapNhat.Name = "btnCapNhat";
@@ -191,6 +200,8 @@
             // 
             // btnStop
             // 
+            this.btnStop.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStop.ForeColor = System.Drawing.Color.Black;
             this.btnStop.Location = new System.Drawing.Point(172, 66);
             this.btnStop.Margin = new System.Windows.Forms.Padding(5);
             this.btnStop.Name = "btnStop";
@@ -202,6 +213,8 @@
             // 
             // btnStart
             // 
+            this.btnStart.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.ForeColor = System.Drawing.Color.Black;
             this.btnStart.Location = new System.Drawing.Point(172, 20);
             this.btnStart.Margin = new System.Windows.Forms.Padding(5);
             this.btnStart.Name = "btnStart";
@@ -213,6 +226,8 @@
             // 
             // btnXoa
             // 
+            this.btnXoa.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXoa.ForeColor = System.Drawing.Color.Black;
             this.btnXoa.Location = new System.Drawing.Point(125, 264);
             this.btnXoa.Margin = new System.Windows.Forms.Padding(5);
             this.btnXoa.Name = "btnXoa";
@@ -224,6 +239,8 @@
             // 
             // btnThem
             // 
+            this.btnThem.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnThem.ForeColor = System.Drawing.Color.Black;
             this.btnThem.Location = new System.Drawing.Point(9, 265);
             this.btnThem.Margin = new System.Windows.Forms.Padding(5);
             this.btnThem.Name = "btnThem";
@@ -235,6 +252,8 @@
             // 
             // txtLop
             // 
+            this.txtLop.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLop.ForeColor = System.Drawing.Color.Black;
             this.txtLop.Location = new System.Drawing.Point(87, 228);
             this.txtLop.Margin = new System.Windows.Forms.Padding(5);
             this.txtLop.MaxLength = 10;
@@ -245,6 +264,8 @@
             // 
             // txtMSSV
             // 
+            this.txtMSSV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMSSV.ForeColor = System.Drawing.Color.Black;
             this.txtMSSV.Location = new System.Drawing.Point(87, 195);
             this.txtMSSV.Margin = new System.Windows.Forms.Padding(5);
             this.txtMSSV.MaxLength = 10;
@@ -255,6 +276,8 @@
             // 
             // txtHoten
             // 
+            this.txtHoten.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtHoten.ForeColor = System.Drawing.Color.Black;
             this.txtHoten.Location = new System.Drawing.Point(86, 163);
             this.txtHoten.Margin = new System.Windows.Forms.Padding(5);
             this.txtHoten.Name = "txtHoten";
@@ -264,6 +287,8 @@
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.Black;
             this.label5.Location = new System.Drawing.Point(10, 231);
             this.label5.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label5.Name = "label5";
@@ -274,6 +299,8 @@
             // label4
             // 
             this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.ForeColor = System.Drawing.Color.Black;
             this.label4.Location = new System.Drawing.Point(10, 198);
             this.label4.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label4.Name = "label4";
@@ -284,6 +311,8 @@
             // label3
             // 
             this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.ForeColor = System.Drawing.Color.Black;
             this.label3.Location = new System.Drawing.Point(9, 168);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
@@ -302,6 +331,8 @@
             // 
             // btnXuatEX
             // 
+            this.btnXuatEX.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatEX.ForeColor = System.Drawing.Color.Black;
             this.btnXuatEX.Location = new System.Drawing.Point(180, 34);
             this.btnXuatEX.Margin = new System.Windows.Forms.Padding(5);
             this.btnXuatEX.Name = "btnXuatEX";
@@ -334,6 +365,8 @@
             // 
             // btnTim
             // 
+            this.btnTim.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnTim.ForeColor = System.Drawing.Color.Black;
             this.btnTim.Location = new System.Drawing.Point(332, 34);
             this.btnTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.btnTim.Name = "btnTim";
@@ -349,7 +382,7 @@
             this.cboTim.Location = new System.Drawing.Point(107, 70);
             this.cboTim.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.cboTim.Name = "cboTim";
-            this.cboTim.Size = new System.Drawing.Size(217, 27);
+            this.cboTim.Size = new System.Drawing.Size(217, 28);
             this.cboTim.TabIndex = 7;
             this.cboTim.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             this.cboTim.TextChanged += new System.EventHandler(this.cboTim_TextChanged);
@@ -357,6 +390,8 @@
             // lblNhapMSSV
             // 
             this.lblNhapMSSV.AutoSize = true;
+            this.lblNhapMSSV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblNhapMSSV.ForeColor = System.Drawing.Color.Black;
             this.lblNhapMSSV.Location = new System.Drawing.Point(8, 39);
             this.lblNhapMSSV.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblNhapMSSV.Name = "lblNhapMSSV";
@@ -368,6 +403,8 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(8, 73);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
@@ -378,6 +415,8 @@
             // 
             // btnNhapEX
             // 
+            this.btnNhapEX.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNhapEX.ForeColor = System.Drawing.Color.Black;
             this.btnNhapEX.Location = new System.Drawing.Point(6, 34);
             this.btnNhapEX.Margin = new System.Windows.Forms.Padding(5);
             this.btnNhapEX.Name = "btnNhapEX";
@@ -390,6 +429,8 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.picBox);
+            this.groupBox3.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.ForeColor = System.Drawing.Color.Red;
             this.groupBox3.Location = new System.Drawing.Point(9, 9);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(453, 317);
@@ -405,6 +446,8 @@
             this.groupBox5.Controls.Add(this.cboTim);
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.lblNhapMSSV);
+            this.groupBox5.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.ForeColor = System.Drawing.Color.Red;
             this.groupBox5.Location = new System.Drawing.Point(9, 333);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(453, 109);
@@ -414,6 +457,8 @@
             // 
             // btnLamMoi
             // 
+            this.btnLamMoi.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLamMoi.ForeColor = System.Drawing.Color.Black;
             this.btnLamMoi.Location = new System.Drawing.Point(332, 70);
             this.btnLamMoi.Name = "btnLamMoi";
             this.btnLamMoi.Size = new System.Drawing.Size(111, 25);
@@ -426,6 +471,8 @@
             // 
             this.groupBox4.Controls.Add(this.btnNhapEX);
             this.groupBox4.Controls.Add(this.btnXuatEX);
+            this.groupBox4.Font = new System.Drawing.Font("Times New Roman", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox4.ForeColor = System.Drawing.Color.Red;
             this.groupBox4.Location = new System.Drawing.Point(470, 333);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(358, 109);
