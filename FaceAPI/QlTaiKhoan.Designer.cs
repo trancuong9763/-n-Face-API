@@ -365,7 +365,7 @@
             this.Controls.Add(this.btnThem);
             this.Controls.Add(this.lblQLTK);
             this.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "QlTaiKhoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

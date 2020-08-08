@@ -13,7 +13,7 @@ create table ThongTinSV
 )
 create table QuanTriVien
 (		
-	Ten_QTV			nvarchar(100) primary key,
+	Ten_QTV			varchar(100) primary key,
 	Mat_Khau	varchar(50),
 	Ten_GV nvarchar(100),
 	SDT varchar(10),
