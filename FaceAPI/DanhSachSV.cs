@@ -221,10 +221,11 @@ namespace FaceAPI
             {
                 quayVideo = new Capture();
                 quayVideo.ImageGrabbed += StartFrame;
+                quayVideo.FlipHorizontal = !quayVideo.FlipHorizontal;
+
                 quayVideo.Start();
 
             }
-
         }
 
         private void btnXoa_Click(object sender, EventArgs e)

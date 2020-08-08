@@ -442,9 +442,13 @@ namespace FaceAPI
 
         private void btnStart_Click(object sender, EventArgs e)
         {
-            quayVideo = new Capture();
-            quayVideo.ImageGrabbed += ProcessFrame;
-            quayVideo.Start();
+            if(quayVideo==null)
+            {
+                quayVideo = new Capture();
+                quayVideo.ImageGrabbed += ProcessFrame;
+                quayVideo.FlipHorizontal = !quayVideo.FlipHorizontal;
+                quayVideo.Start();
+            }
             btnStop.Enabled = true;
             btnDiemDanh.Enabled = true;
         }
