@@ -77,9 +77,7 @@ namespace FaceAPI
             txtHoten.Enabled = false;
             txtMSSV.Enabled = false;
             txtLop.Enabled = false;
-            txtTim.Enabled = false;
-            btnTim.Enabled = false;
-            cboTim.Enabled = false;
+         
 
 
             SinhVienDTO sv = new SinhVienDTO();
@@ -112,6 +110,10 @@ namespace FaceAPI
                         txtHoten.Enabled = false;
                         txtLop.Enabled = false;
                         txtMSSV.Enabled = false;
+                        txtTim.Enabled = false;
+                        btnTim.Enabled = false;
+                        cboTim.Enabled = false;
+
                         dem++;
                     }
                     else
@@ -222,9 +224,12 @@ namespace FaceAPI
                 quayVideo = new Capture();
                 quayVideo.ImageGrabbed += StartFrame;
                 quayVideo.FlipHorizontal = !quayVideo.FlipHorizontal;
-
                 quayVideo.Start();
 
+            }
+            else
+            {
+                quayVideo.Dispose();
             }
         }
 
@@ -305,10 +310,13 @@ namespace FaceAPI
         {
             if (quayVideo != null)
             {
-                quayVideo.Stop();
+                quayVideo.Dispose();
             }
             btnThem.Enabled = false;
-
+            picBox.Image = null;
+            picBox2.Image = null;
+            quayVideo = null;
+            btnStart.Enabled = true;
         }
 
         private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -481,6 +489,9 @@ namespace FaceAPI
             txtMSSV.Enabled = false;
             txtLop.Enabled = false;
             btnThem.Enabled = false;
+            
+            
+            
         }
         public static void ExportDataGridViewTo_Excel12(DataGridView myDataGridViewQuantity)
         {
@@ -765,10 +776,19 @@ namespace FaceAPI
         {
             if (quayVideo != null)
             {
-                quayVideo.Stop();
+                quayVideo.Dispose();
             }
             this.Close();
         }
+
+        private void DanhSachSV_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(quayVideo!=null)
+            {
+                quayVideo.Dispose();
+            }
+          
+        }   
         //hello world
     }
 

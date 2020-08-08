@@ -246,7 +246,7 @@ namespace FaceAPI
         {
             if (quayVideo != null)
             {
-                quayVideo.Stop();
+                quayVideo.Dispose();
             }
             this.Close();
 
@@ -309,7 +309,13 @@ namespace FaceAPI
             }
         }
 
-       
+        private void Main_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            if(quayVideo!=null)
+            {
+                quayVideo.Dispose();
+            }
+        }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
@@ -448,7 +454,7 @@ namespace FaceAPI
                 quayVideo.ImageGrabbed += ProcessFrame;
                 quayVideo.FlipHorizontal = !quayVideo.FlipHorizontal;
                 quayVideo.Start();
-            }
+            }  
             btnStop.Enabled = true;
             btnDiemDanh.Enabled = true;
         }
@@ -456,12 +462,11 @@ namespace FaceAPI
         private void btnStop_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = true;
-            imgBox.Dispose();
-            imgBox2.Dispose();
-            if (quayVideo != null)
-            {
-                quayVideo.Stop();
-            }
+            imgBox.Image=null;
+            imgBox2.Image = null;
+            quayVideo.Dispose();
+            quayVideo = null;
+
         }
     }
 }

@@ -495,6 +495,7 @@
             this.Name = "DanhSachSV";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Danh Sách Sinh Viên";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DanhSachSV_FormClosed);
             this.Load += new System.EventHandler(this.DanhSachSV_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).EndInit();
             this.groupBox2.ResumeLayout(false);
