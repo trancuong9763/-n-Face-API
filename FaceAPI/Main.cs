@@ -244,9 +244,12 @@ namespace FaceAPI
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            quayVideo.Stop();
+            if (quayVideo != null)
+            {
+                quayVideo.Stop();
+            }
             this.Close();
-            
+
         }
 
         private void panel2_Paint(object sender, PaintEventArgs e)
@@ -451,7 +454,10 @@ namespace FaceAPI
             btnStart.Enabled = true;
             imgBox.Dispose();
             imgBox2.Dispose();
-            quayVideo.Stop();
+            if (quayVideo != null)
+            {
+                quayVideo.Stop();
+            }
         }
     }
 }
