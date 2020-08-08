@@ -244,6 +244,7 @@ namespace FaceAPI
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
+            quayVideo.Stop();
             this.Close();
             
         }
@@ -407,7 +408,7 @@ namespace FaceAPI
                     PersonsMSSV.Add(mssv);
                     PersonsLop.Add(lop);
                     ImagesCount++;
-                    Debug.WriteLine(ImagesCount + ". " + name + " mssv: " + mssv + "Lớp: "+ lop);
+                    
 
 
                 }
