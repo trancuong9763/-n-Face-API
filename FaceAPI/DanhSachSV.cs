@@ -268,7 +268,6 @@ namespace FaceAPI
             if (e.RowIndex > -1 && e.ColumnIndex > -1 && dgvDSSV.Rows[e.RowIndex].Cells[e.ColumnIndex].Value != null)
             {
 
-
                 dgvDSSV.CurrentRow.Selected = true;
                 txtMSSV.Text = dgvDSSV.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
                 txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
@@ -315,9 +314,7 @@ namespace FaceAPI
         {
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_Lop = cboTim.Text.ToString();
-
             dgvDSSV.DataSource = SinhVienBUS.LayDSLop(sv.Ma_Lop);
-
 
         }
 
@@ -475,7 +472,6 @@ namespace FaceAPI
         private void DanhSachSV_Load_1(object sender, EventArgs e)
         {
             LoadDSSV();
-
 
             btnStop.Enabled = false;
             btnXoa.Enabled = false;
@@ -721,6 +717,9 @@ namespace FaceAPI
         {
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_Lop = cboTim.Text.ToString();
+            string path = Directory.GetCurrentDirectory() + @"\TrainedImages";
+            string[] files = Directory.GetFiles(path, "*.bmp", SearchOption.AllDirectories);
+
             Debug.WriteLine(cboTim.Text.ToString());
 
             if (cboTim.Text.ToString() != "")
@@ -729,7 +728,25 @@ namespace FaceAPI
                 if (dialogResult == DialogResult.Yes)
                 {
                     SinhVienBUS.LamMoiDSSV(sv);
+                    foreach (var file in files)
+                    {
+                        string name = file.Split('\\').Last().Split('_')[0];
+                        string mssv = file.Split('\\').Last().Split('_')[1];
+                        string lop = file.Split('\\').Last().Split('_')[2];
+                        for(int i=1;i<=5;i++)
+                        {
+                            string[] fileLop = Directory.GetFiles(path, name + "_" + mssv + "_" + sv.Ma_Lop + "_" + i + "*.bmp", SearchOption.AllDirectories);
+                            foreach (var filelop in fileLop)
+                            {
+                                if (sv.Ma_Lop == lop)
+                                {
+                                    File.Delete(filelop);
+                                }
+                            }
+                        } 
+                    }
                     LoadDSSV();
+                    ChonLop();
                 }
                 if (dialogResult == DialogResult.No)
                 { }
@@ -745,6 +762,10 @@ namespace FaceAPI
 
         private void btnThoat_Click_1(object sender, EventArgs e)
         {
+            if (quayVideo != null)
+            {
+                quayVideo.Stop();
+            }
             this.Close();
         }
         //hello world
