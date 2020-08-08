@@ -71,11 +71,11 @@
             this.DiaChi,
             this.Mat_Khau});
             this.dgvTaiKhoan.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTaiKhoan.Location = new System.Drawing.Point(3, 23);
+            this.dgvTaiKhoan.Location = new System.Drawing.Point(3, 19);
             this.dgvTaiKhoan.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.dgvTaiKhoan.Name = "dgvTaiKhoan";
             this.dgvTaiKhoan.RowTemplate.Height = 24;
-            this.dgvTaiKhoan.Size = new System.Drawing.Size(739, 210);
+            this.dgvTaiKhoan.Size = new System.Drawing.Size(739, 214);
             this.dgvTaiKhoan.TabIndex = 0;
             this.dgvTaiKhoan.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellClick);
             this.dgvTaiKhoan.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTaiKhoan_CellContentClick);
@@ -130,7 +130,7 @@
             this.lblQLTK.Name = "lblQLTK";
             this.lblQLTK.Size = new System.Drawing.Size(320, 59);
             this.lblQLTK.TabIndex = 1;
-            this.lblQLTK.Text = "Quản lý tài khoản";
+            this.lblQLTK.Text = "Quản Lý Tài Khoản";
             this.lblQLTK.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnThem
@@ -224,7 +224,7 @@
             this.label4.Location = new System.Drawing.Point(397, 109);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(63, 19);
+            this.label4.Size = new System.Drawing.Size(51, 16);
             this.label4.TabIndex = 30;
             this.label4.Text = "Địa chỉ:";
             // 
@@ -235,7 +235,7 @@
             this.txtDiaChi.Location = new System.Drawing.Point(466, 106);
             this.txtDiaChi.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtDiaChi.Name = "txtDiaChi";
-            this.txtDiaChi.Size = new System.Drawing.Size(256, 27);
+            this.txtDiaChi.Size = new System.Drawing.Size(256, 23);
             this.txtDiaChi.TabIndex = 29;
             // 
             // lblSDT
@@ -246,7 +246,7 @@
             this.lblSDT.Location = new System.Drawing.Point(9, 109);
             this.lblSDT.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblSDT.Name = "lblSDT";
-            this.lblSDT.Size = new System.Drawing.Size(104, 19);
+            this.lblSDT.Size = new System.Drawing.Size(84, 16);
             this.lblSDT.TabIndex = 28;
             this.lblSDT.Text = "Số điện thoại:";
             // 
@@ -258,7 +258,7 @@
             this.txtSDT.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtSDT.MaxLength = 10;
             this.txtSDT.Name = "txtSDT";
-            this.txtSDT.Size = new System.Drawing.Size(256, 27);
+            this.txtSDT.Size = new System.Drawing.Size(256, 23);
             this.txtSDT.TabIndex = 27;
             this.txtSDT.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSDT_KeyPress);
             // 
@@ -270,7 +270,7 @@
             this.label2.Location = new System.Drawing.Point(397, 72);
             this.label2.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(54, 19);
+            this.label2.Size = new System.Drawing.Size(42, 16);
             this.label2.TabIndex = 26;
             this.label2.Text = "Email:";
             // 
@@ -281,7 +281,7 @@
             this.txtEmail.Location = new System.Drawing.Point(466, 69);
             this.txtEmail.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(256, 27);
+            this.txtEmail.Size = new System.Drawing.Size(256, 23);
             this.txtEmail.TabIndex = 25;
             // 
             // lblTenGV
@@ -292,7 +292,7 @@
             this.lblTenGV.Location = new System.Drawing.Point(397, 36);
             this.lblTenGV.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTenGV.Name = "lblTenGV";
-            this.lblTenGV.Size = new System.Drawing.Size(65, 19);
+            this.lblTenGV.Size = new System.Drawing.Size(55, 16);
             this.lblTenGV.TabIndex = 24;
             this.lblTenGV.Text = "Tên GV:";
             // 
@@ -303,7 +303,7 @@
             this.txtTenGV.Location = new System.Drawing.Point(466, 33);
             this.txtTenGV.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTenGV.Name = "txtTenGV";
-            this.txtTenGV.Size = new System.Drawing.Size(256, 27);
+            this.txtTenGV.Size = new System.Drawing.Size(256, 23);
             this.txtTenGV.TabIndex = 23;
             // 
             // lblMK
@@ -314,7 +314,7 @@
             this.lblMK.Location = new System.Drawing.Point(9, 73);
             this.lblMK.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblMK.Name = "lblMK";
-            this.lblMK.Size = new System.Drawing.Size(76, 19);
+            this.lblMK.Size = new System.Drawing.Size(64, 16);
             this.lblMK.TabIndex = 22;
             this.lblMK.Text = "Mật khẩu:";
             // 
@@ -326,7 +326,7 @@
             this.lblTen.Location = new System.Drawing.Point(9, 35);
             this.lblTen.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblTen.Name = "lblTen";
-            this.lblTen.Size = new System.Drawing.Size(104, 19);
+            this.lblTen.Size = new System.Drawing.Size(88, 16);
             this.lblTen.TabIndex = 21;
             this.lblTen.Text = "Tên tài khoản:";
             // 
@@ -338,7 +338,7 @@
             this.txtMatKhau.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtMatKhau.Name = "txtMatKhau";
             this.txtMatKhau.PasswordChar = '*';
-            this.txtMatKhau.Size = new System.Drawing.Size(256, 27);
+            this.txtMatKhau.Size = new System.Drawing.Size(256, 23);
             this.txtMatKhau.TabIndex = 20;
             // 
             // txtTaiKhoan
@@ -348,12 +348,12 @@
             this.txtTaiKhoan.Location = new System.Drawing.Point(117, 32);
             this.txtTaiKhoan.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTaiKhoan.Name = "txtTaiKhoan";
-            this.txtTaiKhoan.Size = new System.Drawing.Size(256, 27);
+            this.txtTaiKhoan.Size = new System.Drawing.Size(256, 23);
             this.txtTaiKhoan.TabIndex = 19;
             // 
             // QlTaiKhoan
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.ClientSize = new System.Drawing.Size(769, 530);
@@ -369,7 +369,7 @@
             this.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
             this.Name = "QlTaiKhoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "QlTaiKhoan";
+            this.Text = "Quản Lý Tài Khoản";
             this.Load += new System.EventHandler(this.QlTaiKhoan_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvTaiKhoan)).EndInit();
             this.groupBox1.ResumeLayout(false);
