@@ -97,13 +97,13 @@
             this.label1.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(146, 51);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(97, 31);
+            this.label1.Size = new System.Drawing.Size(119, 37);
             this.label1.TabIndex = 6;
             this.label1.Text = "MENU";
             // 
             // Menu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 22F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(393, 319);

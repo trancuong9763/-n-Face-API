@@ -152,6 +152,9 @@ namespace FaceAPI
                             txtHoten.Enabled = true;
                             txtLop.Enabled = true;
                             txtMSSV.Enabled = true;
+                            txtTim.Enabled = true;
+                            btnTim.Enabled = true;
+                            cboTim.Enabled = true;
                             txtHoten.Text = "";
                             txtLop.Text = "";
                             txtMSSV.Text = "";
@@ -699,7 +702,7 @@ namespace FaceAPI
                             {
                                 sv.Ma_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[0].Value);
                                 sv.Ten_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[1].Value);
-                                sv.Ma_Lop = Convert.ToString(dgvDSSV.Rows[i].Cells[2].Value);
+                                sv.Ma_Lop = Convert.ToString(dgvDSSV.Rows[i].Cells[2].Value).ToUpper();
                                 sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
                                 sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
                                 sv.TrangThai = Convert.ToBoolean(null);
