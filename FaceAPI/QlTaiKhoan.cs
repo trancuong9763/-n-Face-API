@@ -17,6 +17,7 @@ namespace FaceAPI
 {
     public partial class QlTaiKhoan : Form
     {
+        int button = 0;
         public QlTaiKhoan()
         {
             InitializeComponent();
@@ -40,7 +41,7 @@ namespace FaceAPI
         protected void GiaoDienThem(bool gd)
         {
             txtTaiKhoan.Enabled = gd;
-            btnThem.Enabled = gd;
+            
             btnSua.Enabled = !gd;
             btnXoa.Enabled = !gd;
         }
@@ -79,42 +80,55 @@ namespace FaceAPI
             tk.Ten_GV = txtTenGV.Text.Trim();
             tk.Email = txtEmail.Text.Trim();
             tk.DiaChi = txtDiaChi.Text.Trim();
-
-
-            if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "" || txtSDT.Text == "" || txtTenGV.Text == "" || txtDiaChi.Text == "" || txtEmail.Text == "")
+            if(button==1)
             {
-                MessageBox.Show("Thông tin không được để trống");
+                txtTaiKhoan.Text = "";
+                txtMatKhau.Text = "";
+                txtSDT.Text = "";
+                txtTenGV.Text = "";
+                txtDiaChi.Text = "";
+                txtEmail.Text = "";
+                txtTaiKhoan.Enabled = true;
+                button = 0;
             }
-            else if (!rEMail.IsMatch(txtEmail.Text))
-
-            {
-
-                MessageBox.Show("Sai định dạng Email");
-
-            }
-            else if (txtMatKhau.Text.Length < 6)
-            {
-                MessageBox.Show("Mật khẩu phải tối thiểu 6 ký tự");
-            }
-            else if (r.IsMatch(txtTaiKhoan.Text) || r.IsMatch(txtTenGV.Text) || r.IsMatch(txtSDT.Text))
-            {
-                MessageBox.Show("Thông tin không hợp lệ");
-            }
-
             else
             {
-                if (TaiKhoanBUS.ThemTK(tk))
+                if (txtTaiKhoan.Text == "" || txtMatKhau.Text == "" || txtSDT.Text == "" || txtTenGV.Text == "" || txtDiaChi.Text == "" || txtEmail.Text == "")
                 {
-                    XoaForm();
-                    LayDSTaiKhoan();
-                    MessageBox.Show("Thêm thành công");
-                    GiaoDienThem(true);
+                    MessageBox.Show("Thông tin không được để trống");
                 }
+                else if (!rEMail.IsMatch(txtEmail.Text))
+
+                {
+
+                    MessageBox.Show("Sai định dạng Email");
+
+                }
+                else if (txtMatKhau.Text.Length < 6)
+                {
+                    MessageBox.Show("Mật khẩu phải tối thiểu 6 ký tự");
+                }
+                else if (r.IsMatch(txtTaiKhoan.Text) || r.IsMatch(txtTenGV.Text) || r.IsMatch(txtSDT.Text))
+                {
+                    MessageBox.Show("Thông tin không hợp lệ");
+                }
+
                 else
                 {
-                    MessageBox.Show("Thêm Thất bại");
+                    if (TaiKhoanBUS.ThemTK(tk))
+                    {
+                        XoaForm();
+                        LayDSTaiKhoan();
+                        MessageBox.Show("Thêm thành công");
+                        GiaoDienThem(true);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Thêm Thất bại");
+                    }
                 }
             }
+           
         }
 
         private void btnXoa_Click(object sender, EventArgs e)
@@ -160,6 +174,7 @@ namespace FaceAPI
                 
                     txtTaiKhoan.Enabled = false;
                     GiaoDienThem(false);
+
                     dgvTaiKhoan.CurrentRow.Selected = true;
                     txtTaiKhoan.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Ten_QTV"].FormattedValue.ToString();
                     txtMatKhau.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Mat_Khau"].FormattedValue.ToString();
@@ -168,6 +183,7 @@ namespace FaceAPI
                     txtDiaChi.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["DiaChi"].FormattedValue.ToString();
                     txtEmail.Text = dgvTaiKhoan.Rows[e.RowIndex].Cells["Email"].FormattedValue.ToString();
                     txtMatKhau.Text = "";
+                    button = 1;
 
 
             }

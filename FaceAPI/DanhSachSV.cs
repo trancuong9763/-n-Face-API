@@ -30,7 +30,8 @@ namespace FaceAPI
         private Image<Bgr, Byte> currentFrame = null;
         private bool addface = false;
         private bool facederection = false;
-        int dem = 1;
+        int dem = 1,button=0;
+       
         public DanhSachSV()
         {
             InitializeComponent();
@@ -85,73 +86,86 @@ namespace FaceAPI
             sv.Ten_SV = txtHoten.Text;
             sv.Ma_Lop = txtLop.Text; ;
             sv.TrangThai = true;
-            if (txtMSSV.Text == "" || txtHoten.Text == "" || txtLop.Text == "")
+            if (button == 1)
             {
-                MessageBox.Show("Thông tin không được để trống");
-            }
-
-
-            else if (r.IsMatch(txtHoten.Text) || r.IsMatch(txtLop.Text) || r.IsMatch(txtMSSV.Text))
-            {
-                MessageBox.Show("Thông tin không hợp lệ");
+                txtHoten.Enabled = true;
+                txtMSSV.Enabled = true;
+                txtLop.Enabled = true;
+                txtMSSV.Text = "";
+                txtHoten.Text = "";
+                txtLop.Text = "";
+                button = 0;
             }
             else
             {
-
-                if (dem == 1)
+                if (txtMSSV.Text == "" || txtHoten.Text == "" || txtLop.Text == "")
                 {
-                    if (SinhVienBUS.ThemSV(sv))
-                    {
-                        addface = true;
-
-                        MessageBox.Show("Bạn Hãy Thêm Vào 5 Khuôn Mặt");
-                        MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
-                        LoadDSSV();
-                        txtHoten.Enabled = false;
-                        txtLop.Enabled = false;
-                        txtMSSV.Enabled = false;
-                        txtTim.Enabled = false;
-                        btnTim.Enabled = false;
-                        cboTim.Enabled = false;
-
-                        dem++;
-                    }
-                    else
-                    {
-                        MessageBox.Show("Sinh viên đã tồn tại");
-                        txtHoten.Enabled = true;
-                        txtLop.Enabled = true;
-                        txtMSSV.Enabled = true;
-                        txtHoten.Text = "";
-                        txtLop.Text = "";
-                        txtMSSV.Text = "";
-
-                    }
+                    MessageBox.Show("Thông tin không được để trống");
                 }
-                else if (dem > 1 && dem <= 5)
-                {
-                    addface = true;
-                    MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
-                    dem++;
-                    if (dem == 6)
-                    {
-                        MessageBox.Show("Thêm sinh viên thành công");
-                        txtHoten.Enabled = true;
-                        txtLop.Enabled = true;
-                        txtMSSV.Enabled = true;
-                        txtHoten.Text = "";
-                        txtLop.Text = "";
-                        txtMSSV.Text = "";
-                        dem = 1;
-                    }
 
+
+                else if (r.IsMatch(txtHoten.Text) || r.IsMatch(txtLop.Text) || r.IsMatch(txtMSSV.Text))
+                {
+                    MessageBox.Show("Thông tin không hợp lệ");
                 }
                 else
                 {
 
-                    MessageBox.Show("Thêm sinh viên không thành công");
+                    if (dem == 1)
+                    {
+                        if (SinhVienBUS.ThemSV(sv))
+                        {
+                            addface = true;
+
+                            MessageBox.Show("Bạn Hãy Thêm Vào 5 Khuôn Mặt");
+                            MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
+                            LoadDSSV();
+                            txtHoten.Enabled = false;
+                            txtLop.Enabled = false;
+                            txtMSSV.Enabled = false;
+                            txtTim.Enabled = false;
+                            btnTim.Enabled = false;
+                            cboTim.Enabled = false;
+
+                            dem++;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Sinh viên đã tồn tại");
+                            txtHoten.Enabled = true;
+                            txtLop.Enabled = true;
+                            txtMSSV.Enabled = true;
+                            txtHoten.Text = "";
+                            txtLop.Text = "";
+                            txtMSSV.Text = "";
+
+                        }
+                    }
+                    else if (dem > 1 && dem <= 5)
+                    {
+                        addface = true;
+                        MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
+                        dem++;
+                        if (dem == 6)
+                        {
+                            MessageBox.Show("Thêm sinh viên thành công");
+                            txtHoten.Enabled = true;
+                            txtLop.Enabled = true;
+                            txtMSSV.Enabled = true;
+                            txtHoten.Text = "";
+                            txtLop.Text = "";
+                            txtMSSV.Text = "";
+                            dem = 1;
+                        }
+
+                    }
+                    else
+                    {
+
+                        MessageBox.Show("Thêm sinh viên không thành công");
 
 
+                    }
                 }
             }
 
@@ -280,10 +294,10 @@ namespace FaceAPI
                 txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
             }
             btnXoa.Enabled = true;
-
             txtHoten.Enabled = false;
             txtLop.Enabled = false;
             txtMSSV.Enabled = false;
+            button = 1;
             if (quayVideo != null)
             {
                 btnCapNhat.Enabled = true;
