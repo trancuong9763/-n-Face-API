@@ -372,7 +372,8 @@ namespace FaceAPI
                 MessageBox.Show("Lưu Thông Tin Thành Công");
                 lstDiHoc.Items.Clear();
                 lstVang.Items.Clear();
-
+                lblHienDien.Text = "00";
+                lblVang.Text = "00";
             }
             else if (dialogResult == DialogResult.No)
             {
