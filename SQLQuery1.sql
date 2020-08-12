@@ -13,7 +13,7 @@ create table ThongTinSV
 )
 create table LopHoc
 (		
-	Ma_Lop nvarchar(15),
+	Ma_Lop nvarchar(15) primary key,
 	TrangThai bit,
 )
 
