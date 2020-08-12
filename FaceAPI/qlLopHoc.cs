@@ -14,6 +14,8 @@ namespace FaceAPI
     public partial class qlLopHoc : Form
     {
         int dem = 0;
+        System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
+
         public qlLopHoc()
         {
             InitializeComponent();
@@ -22,7 +24,7 @@ namespace FaceAPI
         private void btnThem_Click(object sender, EventArgs e)
         {
             LopHocDTO lh = new LopHocDTO();
-            lh.Ma_Lop = txtLop.Text;
+            lh.Ma_Lop = txtLop.Text.ToUpper();
             if (dem == 1)
             {
                 txtLop.Enabled = true;
@@ -40,9 +42,9 @@ namespace FaceAPI
                 {
                     lh.TrangThai = false;
                 }
-                if (txtLop.Text == "")
+                if (txtLop.Text == "" || r.IsMatch(txtLop.Text))
                 {
-                    MessageBox.Show("Bạn Chưa Nhập Mã Lớp");
+                    MessageBox.Show("Bạn chưa nhập mã lớp hoặc mã lớp không hợp lệ");
                 }
                 else if (LopHocBUS.ThemLop(lh))
                 {
@@ -109,6 +111,26 @@ namespace FaceAPI
         private void btnThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void txtLop_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+
+            // ko cho phep nhap dau .
+             if ((e.KeyChar == '.') && ((sender as System.Windows.Forms.TextBox).Text.IndexOf('.') == -1))
+            {
+                e.Handled = true;
+            }
+            else if (e.Handled = (e.KeyChar == (char)Keys.Space))
+            {
+
+            }
+
+            else
+            {
+                e.Handled = false;
+            }
         }
     }
 }

@@ -281,6 +281,7 @@
             this.txtHoten.Name = "txtHoten";
             this.txtHoten.Size = new System.Drawing.Size(260, 27);
             this.txtHoten.TabIndex = 6;
+            this.txtHoten.TextChanged += new System.EventHandler(this.txtHoten_TextChanged);
             // 
             // label5
             // 

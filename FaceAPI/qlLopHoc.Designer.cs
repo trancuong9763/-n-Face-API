@@ -119,6 +119,7 @@
             this.txtLop.Name = "txtLop";
             this.txtLop.Size = new System.Drawing.Size(219, 27);
             this.txtLop.TabIndex = 1;
+            this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
             // 
             // label1
             // 
