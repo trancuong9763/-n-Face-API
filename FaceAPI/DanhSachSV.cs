@@ -76,7 +76,6 @@ namespace FaceAPI
         }
         private void btnThem_Click(object sender, EventArgs e)
         {
-            addface = true;
 
             btnStart.Enabled = false;
             btnXoa.Enabled = false;
