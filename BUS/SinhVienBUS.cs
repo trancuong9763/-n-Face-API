@@ -71,12 +71,7 @@ namespace BUS
             return SinhVienDAO.ChonLop(sv);
 
         }
-        public static SinhVienDTO LayThongTinLop(string maLop)
-        {
-
-            return SinhVienDAO.LayThongTinLop(maLop);
-
-        }
+       
         //public static bool SuaSV(SinhVienDTO sv)
         //{
         //    if (!SinhVienDAO.KTTKTonTai(sv.Ma_SV))
@@ -125,6 +120,12 @@ namespace BUS
             {
                 return SinhVienDAO.ThemSVExcel(sv);
             }
+        }
+        public static DataTable LayDSLopHoc(SinhVienDTO sv)
+        {
+
+            return SinhVienDAO.LayDSLopHoc(sv);
+
         }
     }
 }

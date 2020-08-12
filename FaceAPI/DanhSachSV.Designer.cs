@@ -43,8 +43,6 @@
             this.btnStart = new System.Windows.Forms.Button();
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
-            this.txtLop = new System.Windows.Forms.TextBox();
-            this.txtMSSV = new System.Windows.Forms.TextBox();
             this.txtHoten = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -62,6 +60,8 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnLamMoi = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.txtMSSV = new System.Windows.Forms.TextBox();
+            this.cboLop = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDSSV)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -149,13 +149,13 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cboLop);
             this.groupBox1.Controls.Add(this.btnThoat);
             this.groupBox1.Controls.Add(this.btnCapNhat);
             this.groupBox1.Controls.Add(this.btnStop);
             this.groupBox1.Controls.Add(this.btnStart);
             this.groupBox1.Controls.Add(this.btnXoa);
             this.groupBox1.Controls.Add(this.btnThem);
-            this.groupBox1.Controls.Add(this.txtLop);
             this.groupBox1.Controls.Add(this.txtMSSV);
             this.groupBox1.Controls.Add(this.txtHoten);
             this.groupBox1.Controls.Add(this.label5);
@@ -249,30 +249,6 @@
             this.btnThem.Text = "Thêm";
             this.btnThem.UseVisualStyleBackColor = true;
             this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            // 
-            // txtLop
-            // 
-            this.txtLop.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLop.ForeColor = System.Drawing.Color.Black;
-            this.txtLop.Location = new System.Drawing.Point(87, 228);
-            this.txtLop.Margin = new System.Windows.Forms.Padding(5);
-            this.txtLop.MaxLength = 10;
-            this.txtLop.Name = "txtLop";
-            this.txtLop.Size = new System.Drawing.Size(260, 23);
-            this.txtLop.TabIndex = 8;
-            this.txtLop.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtLop_KeyPress);
-            // 
-            // txtMSSV
-            // 
-            this.txtMSSV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtMSSV.ForeColor = System.Drawing.Color.Black;
-            this.txtMSSV.Location = new System.Drawing.Point(87, 195);
-            this.txtMSSV.Margin = new System.Windows.Forms.Padding(5);
-            this.txtMSSV.MaxLength = 10;
-            this.txtMSSV.Name = "txtMSSV";
-            this.txtMSSV.Size = new System.Drawing.Size(260, 23);
-            this.txtMSSV.TabIndex = 7;
-            this.txtMSSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSSV_KeyPress);
             // 
             // txtHoten
             // 
@@ -480,6 +456,28 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Nhập Xuất File Excel";
             // 
+            // txtMSSV
+            // 
+            this.txtMSSV.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtMSSV.ForeColor = System.Drawing.Color.Black;
+            this.txtMSSV.Location = new System.Drawing.Point(87, 195);
+            this.txtMSSV.Margin = new System.Windows.Forms.Padding(5);
+            this.txtMSSV.MaxLength = 10;
+            this.txtMSSV.Name = "txtMSSV";
+            this.txtMSSV.Size = new System.Drawing.Size(260, 23);
+            this.txtMSSV.TabIndex = 7;
+            this.txtMSSV.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtMSSV_KeyPress);
+            // 
+            // cboLop
+            // 
+            this.cboLop.FormattingEnabled = true;
+            this.cboLop.Location = new System.Drawing.Point(87, 226);
+            this.cboLop.Margin = new System.Windows.Forms.Padding(4, 3, 4, 3);
+            this.cboLop.Name = "cboLop";
+            this.cboLop.Size = new System.Drawing.Size(259, 25);
+            this.cboLop.TabIndex = 12;
+            this.cboLop.SelectedIndexChanged += new System.EventHandler(this.cboLop_SelectedIndexChanged);
+            // 
             // DanhSachSV
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -519,8 +517,6 @@
         private System.Windows.Forms.Button btnXuatEX;
         private System.Windows.Forms.Button btnXoa;
         private System.Windows.Forms.Button btnThem;
-        private System.Windows.Forms.TextBox txtLop;
-        private System.Windows.Forms.TextBox txtMSSV;
         private System.Windows.Forms.TextBox txtHoten;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -547,5 +543,7 @@
         private System.Windows.Forms.Button btnLamMoi;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Button btnThoat;
+        private System.Windows.Forms.ComboBox cboLop;
+        private System.Windows.Forms.TextBox txtMSSV;
     }
 }

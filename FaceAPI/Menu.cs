@@ -20,7 +20,11 @@ namespace FaceAPI
 
         private void btnThoat_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult dialogResult = MessageBox.Show("Bạn có muốn thoát không ?", "Thông báo", MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
         }
 
         private void btnDiemDanh_Click(object sender, EventArgs e)
@@ -37,25 +41,32 @@ namespace FaceAPI
             this.Show();
         }
 
-        private void btnTaiKhoan_Click(object sender, EventArgs e)
+        private void btnLopHoc_Click(object sender, EventArgs e)
         {
-            QlTaiKhoan m = new QlTaiKhoan();
+            qlLopHoc m = new qlLopHoc();
             m.ShowDialog();
             this.Show();
         }
-        string taiKhoan = "";
-        private void Menu_Load(object sender, EventArgs e)
-        {
-            taiKhoan = DangNhap.taiKhoan;
-            lblTenTK.Text = taiKhoan;
-            if(lblTenTK.Text == "admin")
-            {
-                btnTaiKhoan.Enabled = true;
-            }
-            else
-            {
-                btnTaiKhoan.Enabled = false;
-            }
-        }
+
+        //private void btnTaiKhoan_Click(object sender, EventArgs e)
+        //{
+        //    QlTaiKhoan m = new QlTaiKhoan();
+        //    m.ShowDialog();
+        //    this.Show();
+        //}
+        //string taiKhoan = "";
+        //private void Menu_Load(object sender, EventArgs e)
+        //{
+        //    taiKhoan = DangNhap.taiKhoan;
+        //    lblTenTK.Text = taiKhoan;
+        //    if(lblTenTK.Text == "admin")
+        //    {
+        //        btnLopHoc.Enabled = true;
+        //    }
+        //    else
+        //    {
+        //        btnLopHoc.Enabled = false;
+        //    }
+        //}
     }
 }

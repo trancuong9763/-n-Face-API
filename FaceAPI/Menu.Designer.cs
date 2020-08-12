@@ -30,8 +30,7 @@
         {
             this.btnDiemDanh = new System.Windows.Forms.Button();
             this.btnDSSV = new System.Windows.Forms.Button();
-            this.btnTaiKhoan = new System.Windows.Forms.Button();
-            this.lblTenTK = new System.Windows.Forms.Label();
+            this.btnLopHoc = new System.Windows.Forms.Button();
             this.btnThoat = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
@@ -39,7 +38,7 @@
             // btnDiemDanh
             // 
             this.btnDiemDanh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDiemDanh.Location = new System.Drawing.Point(12, 101);
+            this.btnDiemDanh.Location = new System.Drawing.Point(12, 66);
             this.btnDiemDanh.Name = "btnDiemDanh";
             this.btnDiemDanh.Size = new System.Drawing.Size(367, 53);
             this.btnDiemDanh.TabIndex = 1;
@@ -50,7 +49,7 @@
             // btnDSSV
             // 
             this.btnDSSV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDSSV.Location = new System.Drawing.Point(12, 173);
+            this.btnDSSV.Location = new System.Drawing.Point(12, 138);
             this.btnDSSV.Name = "btnDSSV";
             this.btnDSSV.Size = new System.Drawing.Size(367, 53);
             this.btnDSSV.TabIndex = 2;
@@ -58,36 +57,25 @@
             this.btnDSSV.UseVisualStyleBackColor = true;
             this.btnDSSV.Click += new System.EventHandler(this.btnDSSV_Click);
             // 
-            // btnTaiKhoan
+            // btnLopHoc
             // 
-            this.btnTaiKhoan.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnTaiKhoan.Location = new System.Drawing.Point(14, 244);
-            this.btnTaiKhoan.Name = "btnTaiKhoan";
-            this.btnTaiKhoan.Size = new System.Drawing.Size(367, 53);
-            this.btnTaiKhoan.TabIndex = 3;
-            this.btnTaiKhoan.Text = "TÀI KHOẢN";
-            this.btnTaiKhoan.UseVisualStyleBackColor = true;
-            this.btnTaiKhoan.Click += new System.EventHandler(this.btnTaiKhoan_Click);
-            // 
-            // lblTenTK
-            // 
-            this.lblTenTK.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTenTK.ForeColor = System.Drawing.Color.Red;
-            this.lblTenTK.Location = new System.Drawing.Point(166, 18);
-            this.lblTenTK.Name = "lblTenTK";
-            this.lblTenTK.Size = new System.Drawing.Size(134, 22);
-            this.lblTenTK.TabIndex = 4;
-            this.lblTenTK.Text = "ten";
-            this.lblTenTK.TextAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnLopHoc.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnLopHoc.Location = new System.Drawing.Point(14, 209);
+            this.btnLopHoc.Name = "btnLopHoc";
+            this.btnLopHoc.Size = new System.Drawing.Size(367, 53);
+            this.btnLopHoc.TabIndex = 3;
+            this.btnLopHoc.Text = "QUẢN LÍ LỚP HỌC";
+            this.btnLopHoc.UseVisualStyleBackColor = true;
+            this.btnLopHoc.Click += new System.EventHandler(this.btnLopHoc_Click);
             // 
             // btnThoat
             // 
             this.btnThoat.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnThoat.Location = new System.Drawing.Point(306, 12);
+            this.btnThoat.Location = new System.Drawing.Point(14, 281);
             this.btnThoat.Name = "btnThoat";
-            this.btnThoat.Size = new System.Drawing.Size(75, 34);
+            this.btnThoat.Size = new System.Drawing.Size(367, 53);
             this.btnThoat.TabIndex = 5;
-            this.btnThoat.Text = "Thoát";
+            this.btnThoat.Text = "THOÁT";
             this.btnThoat.UseVisualStyleBackColor = true;
             this.btnThoat.Click += new System.EventHandler(this.btnThoat_Click);
             // 
@@ -95,7 +83,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(146, 51);
+            this.label1.Location = new System.Drawing.Point(146, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(97, 31);
             this.label1.TabIndex = 6;
@@ -106,11 +94,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(393, 319);
+            this.ClientSize = new System.Drawing.Size(393, 356);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.btnThoat);
-            this.Controls.Add(this.lblTenTK);
-            this.Controls.Add(this.btnTaiKhoan);
+            this.Controls.Add(this.btnLopHoc);
             this.Controls.Add(this.btnDSSV);
             this.Controls.Add(this.btnDiemDanh);
             this.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -119,7 +106,6 @@
             this.Name = "Menu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Menu";
-            this.Load += new System.EventHandler(this.Menu_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -129,8 +115,7 @@
 
         private System.Windows.Forms.Button btnDiemDanh;
         private System.Windows.Forms.Button btnDSSV;
-        private System.Windows.Forms.Button btnTaiKhoan;
-        private System.Windows.Forms.Label lblTenTK;
+        private System.Windows.Forms.Button btnLopHoc;
         private System.Windows.Forms.Button btnThoat;
         private System.Windows.Forms.Label label1;
     }
