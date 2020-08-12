@@ -14,6 +14,7 @@ create table ThongTinSV
 create table LopHoc
 (		
 	Ma_Lop nvarchar(15) primary key,
+	SoSinhVien int,
 	TrangThai bit,
 )
 
