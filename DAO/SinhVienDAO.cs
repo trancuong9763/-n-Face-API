@@ -74,7 +74,13 @@ namespace DAO
         }
         public static DataTable ChonLop(SinhVienDTO sv)
         {
-            string query = "SELECT DISTINCT MaLop FROM ThongTinSV";
+            string query = "SELECT TT.MaLop FROM LopHoc LH,ThongTinSV TT WHERE LH.Ma_Lop = TT.MaLop";
+            SqlParameter[] param = new SqlParameter[0];
+            return DataProvider.ExecuteSelectQuery(query, param);
+        }
+        public static DataTable LayDSLopHoc(SinhVienDTO sv)
+        {
+            string query = "SELECT Ma_Lop FROM LopHoc";
             SqlParameter[] param = new SqlParameter[0];
             return DataProvider.ExecuteSelectQuery(query, param);
         }
@@ -104,14 +110,7 @@ namespace DAO
             }
             return lstSinhVien;
         }
-        public static SinhVienDTO LayThongTinLop(string maLop)
-        {
-            string query = "SELECT *  FROM ThongTinSV Where MaLop=@Malop";
-            SqlParameter[] param = new SqlParameter[1];
-            param[0] = new SqlParameter("@MaLop", maLop);
-            return ConvertToDTO(DataProvider.ExecuteSelectQuery(query, param).Rows[0]);
 
-        }
         public static bool UpdateChuyenCan(SinhVienDTO sv)
         {
             string query = "UPDATE ThongTinSV SET SoNgayHoc = SoNgayHoc + @SoNgayHoc,SoNgayVang = SoNgayVang + @SoNgayVang WHERE Ma_SV = @Ma_SV";

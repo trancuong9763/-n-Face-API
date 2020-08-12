@@ -49,10 +49,14 @@ namespace FaceAPI
         protected void ChonLop()
         {
             SinhVienDTO sv = new SinhVienDTO();
-            cboTim.DataSource = SinhVienBUS.ChonLop(sv);
+            LopHocDTO lh = new LopHocDTO();
+            cboTim.DataSource = SinhVienBUS.LayDSLopHoc(sv);
+            cboTim.DisplayMember = "Ma_Lop";
+            cboTim.ValueMember = "Ma_Lop";
 
-            cboTim.DisplayMember = "MaLop";
-            cboTim.ValueMember = "MaLop";
+            cboLop.DataSource = LopHocBUS.LayDSLop(lh);
+            cboLop.DisplayMember = "Ma_Lop";
+            cboLop.ValueMember = "Ma_Lop";
 
         }
         protected void XoaForm()
@@ -60,13 +64,13 @@ namespace FaceAPI
 
             txtMSSV.Text = "";
             txtHoten.Text = "";
-            txtLop.Text = "";
+            cboLop.Text = "";
         }
         protected void GiaoDienThem(bool gd)
         {
             txtMSSV.Enabled = gd;
             txtHoten.Enabled = gd;
-            txtLop.Enabled = gd;
+            cboLop.Enabled = gd;
             btnThem.Enabled = gd;
 
         }
@@ -77,34 +81,34 @@ namespace FaceAPI
             btnCapNhat.Enabled = false;
             txtHoten.Enabled = false;
             txtMSSV.Enabled = false;
-            txtLop.Enabled = false;
+            cboLop.Enabled = false;
          
 
 
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_SV = txtMSSV.Text;
             sv.Ten_SV = txtHoten.Text;
-            sv.Ma_Lop = txtLop.Text; ;
+            sv.Ma_Lop = cboLop.Text; ;
             sv.TrangThai = true;
             if (button == 1)
             {
                 txtHoten.Enabled = true;
                 txtMSSV.Enabled = true;
-                txtLop.Enabled = true;
+                cboLop.Enabled = true;
                 txtMSSV.Text = "";
                 txtHoten.Text = "";
-                txtLop.Text = "";
+                cboLop.Text = "";
                 button = 0;
             }
             else
             {
-                if (txtMSSV.Text == "" || txtHoten.Text == "" || txtLop.Text == "")
+                if (txtMSSV.Text == "" || txtHoten.Text == "" || cboLop.Text == "")
                 {
                     MessageBox.Show("Thông tin không được để trống");
                 }
 
 
-                else if (r.IsMatch(txtHoten.Text) || r.IsMatch(txtLop.Text) || r.IsMatch(txtMSSV.Text))
+                else if (r.IsMatch(txtHoten.Text) || r.IsMatch(cboLop.Text) || r.IsMatch(txtMSSV.Text))
                 {
                     MessageBox.Show("Thông tin không hợp lệ");
                 }
@@ -121,7 +125,7 @@ namespace FaceAPI
                             MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
                             LoadDSSV();
                             txtHoten.Enabled = false;
-                            txtLop.Enabled = false;
+                            cboLop.Enabled = false;
                             txtMSSV.Enabled = false;
                             txtTim.Enabled = false;
                             btnTim.Enabled = false;
@@ -133,10 +137,10 @@ namespace FaceAPI
                         {
                             MessageBox.Show("Sinh viên đã tồn tại");
                             txtHoten.Enabled = true;
-                            txtLop.Enabled = true;
+                            cboLop.Enabled = true;
                             txtMSSV.Enabled = true;
                             txtHoten.Text = "";
-                            txtLop.Text = "";
+                            cboLop.Text = "";
                             txtMSSV.Text = "";
 
                         }
@@ -150,13 +154,13 @@ namespace FaceAPI
                         {
                             MessageBox.Show("Thêm sinh viên thành công");
                             txtHoten.Enabled = true;
-                            txtLop.Enabled = true;
+                            cboLop.Enabled = true;
                             txtMSSV.Enabled = true;
                             txtTim.Enabled = true;
                             btnTim.Enabled = true;
                             cboTim.Enabled = true;
                             txtHoten.Text = "";
-                            txtLop.Text = "";
+                            cboLop.Text = "";
                             txtMSSV.Text = "";
                             dem = 1;
                         }
@@ -211,7 +215,7 @@ namespace FaceAPI
                         Task.Factory.StartNew(() =>
                         {
 
-                            resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text.Trim() + "_" + txtLop.Text.Trim() + "_" + dem + ".bmp");
+                            resualtFace.Resize(100, 100, Inter.Cubic).Save(path + @"\" + System.Text.RegularExpressions.Regex.Replace(txtHoten.Text.Trim(), @"[\s+]", "") + "_" + txtMSSV.Text.Trim() + "_" + cboLop.Text.Trim() + "_" + dem + ".bmp");
                             Thread.Sleep(1000);
 
                         });
@@ -234,7 +238,7 @@ namespace FaceAPI
             btnStop.Enabled = true;
             btnThem.Enabled = true;
             txtHoten.Enabled = true;
-            txtLop.Enabled = true;
+            cboLop.Enabled = true;
             txtMSSV.Enabled = true;
             if (quayVideo == null)
             {
@@ -263,7 +267,7 @@ namespace FaceAPI
                     {
 
                         string path = Directory.GetCurrentDirectory() + @"\TrainedImages";
-                        string[] files = Directory.GetFiles(path, txtHoten.Text + "_" + txtMSSV.Text + "_" + txtLop.Text + "_" + i + "*.bmp", SearchOption.AllDirectories);
+                        string[] files = Directory.GetFiles(path, txtHoten.Text + "_" + txtMSSV.Text + "_" + cboLop.Text + "_" + i + "*.bmp", SearchOption.AllDirectories);
                         foreach (var file in files)
                         {
                             File.Delete(file);
@@ -294,11 +298,11 @@ namespace FaceAPI
                 dgvDSSV.CurrentRow.Selected = true;
                 txtMSSV.Text = dgvDSSV.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
                 txtHoten.Text = dgvDSSV.Rows[e.RowIndex].Cells[1].FormattedValue.ToString();
-                txtLop.Text = dgvDSSV.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
+                cboLop.Text = dgvDSSV.Rows[e.RowIndex].Cells[2].FormattedValue.ToString();
             }
             btnXoa.Enabled = true;
             txtHoten.Enabled = false;
-            txtLop.Enabled = false;
+            cboLop.Enabled = false;
             txtMSSV.Enabled = false;
             button = 1;
             if (quayVideo != null)
@@ -455,7 +459,7 @@ namespace FaceAPI
                     MessageBox.Show("Thêm Khuông Mặt Thứ: " + dem + " Thành Công");
                     LoadDSSV();
                     txtHoten.Enabled = false;
-                    txtLop.Enabled = false;
+                    cboLop.Enabled = false;
                     txtMSSV.Enabled = false;
                     dem++;
 
@@ -474,10 +478,10 @@ namespace FaceAPI
                 {
                     MessageBox.Show("Thêm sinh viên thành công");
                     txtHoten.Enabled = true;
-                    txtLop.Enabled = true;
+                    cboLop.Enabled = true;
                     txtMSSV.Enabled = true;
                     txtHoten.Text = "";
-                    txtLop.Text = "";
+                    cboLop.Text = "";
                     txtMSSV.Text = "";
                     dem = 1;
                 }
@@ -504,7 +508,7 @@ namespace FaceAPI
             btnCapNhat.Enabled = false;
             txtHoten.Enabled = false;
             txtMSSV.Enabled = false;
-            txtLop.Enabled = false;
+            cboLop.Enabled = false;
             btnThem.Enabled = false;
             
             
@@ -796,6 +800,11 @@ namespace FaceAPI
                 quayVideo.Dispose();
             }
             this.Close();
+        }
+
+        private void cboLop_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
         }
 
         private void DanhSachSV_FormClosed(object sender, FormClosedEventArgs e)
