@@ -61,9 +61,9 @@ namespace BUS
                 return null;
             }
         }
-        public static List<SinhVienDTO> LayDSLop(string maLop)
+        public static List<SinhVienDTO> LayDSSVLop(string maLop)
         {
-            return SinhVienDAO.LayDSLop(maLop);
+            return SinhVienDAO.LayDSSVLop(maLop);
         }
         public static DataTable ChonLop(SinhVienDTO sv)
         {
@@ -126,6 +126,10 @@ namespace BUS
 
             return SinhVienDAO.LayDSLopHoc(sv);
 
+        }
+        public static int DemSinhVien(SinhVienDTO sv)
+        {
+            return SinhVienDAO.DemSoSinhVien(sv.Ma_Lop);
         }
     }
 }

@@ -49,5 +49,61 @@ namespace BUS
             return LopHocDAO.LayDSLopHoc(lh);
 
         }
+        public static bool CapNhatSoLuongSinhVien(LopHocDTO lh)
+        {
+            if(LopHocDAO.KTLopTonTai(lh.Ma_Lop))
+            {
+                return LopHocDAO.CapNhatSinhVien(lh);
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public static bool XoaLopHoc(LopHocDTO lh)
+        {
+            if (!LopHocDAO.KTLopTonTai(lh.Ma_Lop))
+            {
+                return false;
+            }
+            else
+            {
+                return LopHocDAO.XoaLop(lh);
+            }
+        }
+        public static bool CapNhatSoSinhVienKhiThem(LopHocDTO lh)
+        {
+            if (!LopHocDAO.KTLopTonTai(lh.Ma_Lop))
+            {
+                return false;
+            }
+            else
+            {
+                return LopHocDAO.CapNhatSoSinhVienKhiThem(lh);
+            }
+        }
+        public static bool CapNhatSoSinhVienKhiXoa(LopHocDTO lh)
+        {
+            if (!LopHocDAO.KTLopTonTai(lh.Ma_Lop))
+            {
+                return false;
+            }
+            else
+            {
+                return LopHocDAO.CapNhatSoSinhVienKhiXoa(lh);
+            }
+        }
+
+        public static bool CapNhatSoSinhVienKhiLamMoi(LopHocDTO lh)
+        {
+            if (!LopHocDAO.KTLopTonTai(lh.Ma_Lop))
+            {
+                return false;
+            }
+            else
+            {
+                return LopHocDAO.CapNhatSoSinhVienKhiLamMoi(lh);
+            }
+        }
     }
 }

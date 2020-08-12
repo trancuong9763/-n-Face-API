@@ -16,6 +16,7 @@ namespace DAO
         {
             LopHocDTO lh = new LopHocDTO();
             lh.Ma_Lop = dr["Ma_Lop"].ToString();
+            lh.SoSinhVien = Convert.ToInt32(dr["SoSinhVien"]);
             lh.TrangThai = Convert.ToBoolean(dr["TrangThai"]);
             return lh;
         }
@@ -41,10 +42,11 @@ namespace DAO
         }
         public static bool ThemLopHoc(LopHocDTO lh)
         {
-            string query = "INSERT INTO LopHoc (Ma_Lop, TrangThai) VALUES (@Ma_Lop,@TrangThai)";
-            SqlParameter[] param = new SqlParameter[2];
+            string query = "INSERT INTO LopHoc (Ma_Lop,SoSinhVien,TrangThai) VALUES (@Ma_Lop,@SoSinhVien,@TrangThai)";
+            SqlParameter[] param = new SqlParameter[3];
             param[0] = new SqlParameter("@Ma_Lop",lh.Ma_Lop);
-            param[1] = new SqlParameter("@TrangThai", lh.TrangThai);
+            param[1] = new SqlParameter("@SoSinhVien", lh.SoSinhVien);
+            param[2] = new SqlParameter("@TrangThai", lh.TrangThai);
             return DataProvider.ExecuteInsertQuery(query, param) == 1;
         }
         public static bool CapNhatLop(LopHocDTO lh)
@@ -61,6 +63,44 @@ namespace DAO
             string query = "SELECT Ma_Lop FROM LopHoc";
             SqlParameter[] param = new SqlParameter[0];
             return DataProvider.ExecuteSelectQuery(query, param);
+        }
+        public static bool CapNhatSinhVien(LopHocDTO lh)
+        {
+            string query = "UPDATE LopHoc SET SoSinhVien = @SoSinhVien WHERE Ma_Lop=@MaLop";
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@MaLop", lh.Ma_Lop);
+            param[1] = new SqlParameter("@SoSinhVien", lh.SoSinhVien);
+            return DataProvider.ExecuteUpdateQuery(query, param) == 1;
+        }
+        public static bool XoaLop(LopHocDTO lh)
+        {
+            string query = "DELETE FROM LopHoc WHERE Ma_Lop=@Ma_Lop AND SoSinhVien = 0";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Ma_Lop", lh.Ma_Lop);
+            return DataProvider.ExecuteDeleteQuery(query, param) == 1;
+        }
+        public static bool CapNhatSoSinhVienKhiThem(LopHocDTO lh)
+        {
+            string query = "UPDATE LopHoc SET SoSinhVien = SoSinhVien + @SoSinhVien WHERE Ma_Lop = @Ma_Lop ";
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@Ma_Lop", lh.Ma_Lop);
+            param[1] = new SqlParameter("@SoSinhVien", lh.SoSinhVien);
+            return DataProvider.ExecuteUpdateQuery(query, param) == 1;
+        }
+        public static bool CapNhatSoSinhVienKhiXoa(LopHocDTO lh)
+        {
+            string query = "UPDATE LopHoc SET SoSinhVien = SoSinhVien - @SoSinhVien WHERE Ma_Lop = @Ma_Lop ";
+            SqlParameter[] param = new SqlParameter[2];
+            param[0] = new SqlParameter("@Ma_Lop", lh.Ma_Lop);
+            param[1] = new SqlParameter("@SoSinhVien", lh.SoSinhVien);
+            return DataProvider.ExecuteUpdateQuery(query, param) == 1;
+        }
+        public static bool CapNhatSoSinhVienKhiLamMoi(LopHocDTO lh)
+        {
+            string query = "UPDATE LopHoc SET SoSinhVien = 0 WHERE Ma_Lop = @Ma_Lop ";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@Ma_Lop", lh.Ma_Lop);
+            return DataProvider.ExecuteUpdateQuery(query, param) == 1;
         }
     } 
 }

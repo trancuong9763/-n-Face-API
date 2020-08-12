@@ -24,7 +24,7 @@ namespace DAO
         }
         public static List<SinhVienDTO> LayDSSV()
         {
-            string query = " SELECT * FROM ThongTinSV";
+            string query = " SELECT * FROM ThongTinSV ";
             SqlParameter[] param = new SqlParameter[0];
             DataTable dtbKetQua = DataProvider.ExecuteSelectQuery(query, param);
             List<SinhVienDTO> lstSinhVien = new List<SinhVienDTO>();
@@ -97,7 +97,7 @@ namespace DAO
             }
             return lstSinhVien;
         }
-        public static List<SinhVienDTO> LayDSLop(string maLop)
+        public static List<SinhVienDTO> LayDSSVLop(string maLop)
         {
             string query = "SELECT * FROM ThongTinSV WHERE MaLop=@MaLop";
             SqlParameter[] param = new SqlParameter[1];
@@ -161,6 +161,13 @@ namespace DAO
             param[0] = new SqlParameter("@MaLop", sv.Ma_Lop);
             return DataProvider.ExecuteDeleteQuery(query, param) == 1;
         }
-
+        public static int DemSoSinhVien(string maLop)
+        {
+            string query = "select count(*) from ThongTinSV where MaLop = @MaLop";
+            SqlParameter[] param = new SqlParameter[1];
+            param[0] = new SqlParameter("@MaLop", maLop);
+            return Convert.ToInt32(DataProvider.ExecuteSelectQuery(query, param).Rows[0][0]);
+        }
+      
     }
 }

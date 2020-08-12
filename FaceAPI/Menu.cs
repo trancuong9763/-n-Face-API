@@ -25,6 +25,7 @@ namespace FaceAPI
         }
         public void SplashStart()
         {
+            
             Application.Run(new ManHinhKhoiDong());// gọi form Welcome 
         }
         private void btnThoat_Click(object sender, EventArgs e)

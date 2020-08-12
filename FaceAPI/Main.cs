@@ -29,7 +29,6 @@ namespace FaceAPI
         static readonly CascadeClassifier cascadeClassifier = new CascadeClassifier("haarcascade_frontalface_alt.xml");
         Mat frame = new Mat();
         private bool facederection = false;//nhan diện khuôn mặt
-        private bool addFace = false;// save khuôn mặt
         private Image<Bgr, Byte> currentFrame = null;// khuôn mặt hiện tại
         private bool isTrained = false;// Kiểm tra khuôn mặt
 
@@ -42,8 +41,8 @@ namespace FaceAPI
 
         string names = null,Mssv=null,Lop=null,svHienDien=null,svVang=null;
         bool ktThongKe = false;
-        int hienDien=0, vang=0;
-        List<string> mssvHienDien = new List<string>();
+        //int hienDien=0, vang=0;
+        //List<string> mssvHienDien = new List<string>();
 
 
 
@@ -132,25 +131,15 @@ namespace FaceAPI
                                     if (lstDiHoc.Items.Count == 0)
                                     {
                                         lstDiHoc.Items.Add(Mssv + " " +names );
-                                        
-                                       
-                                        
-
                                     }
                                     else
                                     {
-                                        if (lstDiHoc.FindString(Mssv) != -1)
-                                        {
-                                           
-                                        }
+                                        if (lstDiHoc.FindString(Mssv) != -1) { }
                                         else
                                         {
                                             lstDiHoc.Items.Add(Mssv + " " + names);
                                             
                                         }
-
-
-
                                     }
 
                                     lblHoten.Text = names;

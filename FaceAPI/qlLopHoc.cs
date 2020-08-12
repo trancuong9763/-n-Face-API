@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,7 @@ namespace FaceAPI
 {
     public partial class qlLopHoc : Form
     {
-        int dem = 0;
+        int dem = 0, sosinhvien=0;
         System.Text.RegularExpressions.Regex r = new System.Text.RegularExpressions.Regex(@"[~`!@#$%^&*()+=|\\{}':;.,<>/?[\]""_-]");
 
         public qlLopHoc()
@@ -30,6 +31,8 @@ namespace FaceAPI
                 txtLop.Enabled = true;
                 txtLop.Text = "";
                 cbTrangThai.Checked = false;
+                btnSua.Enabled = false;
+                btnXoa.Enabled = false;
                 dem = 0;
             }
             else
@@ -63,6 +66,8 @@ namespace FaceAPI
         private void qlLopHoc_Load(object sender, EventArgs e)
         {
             LoadDSLOP();
+            btnSua.Enabled = false;
+            btnXoa.Enabled = false;
             
         }
         public void LoadDSLOP()
@@ -101,9 +106,12 @@ namespace FaceAPI
 
                 dgvDSLOP.CurrentRow.Selected = true;
                 txtLop.Text = dgvDSLOP.Rows[e.RowIndex].Cells[0].FormattedValue.ToString();
+                sosinhvien = Convert.ToInt32(dgvDSLOP.Rows[e.RowIndex].Cells[2].FormattedValue);
                 cbTrangThai.Checked = Convert.ToBoolean(dgvDSLOP.Rows[e.RowIndex].Cells[1].FormattedValue);
                
             }
+            btnSua.Enabled = true;
+            btnXoa.Enabled = true;
             txtLop.Enabled = false;
             dem = 1;
         }
@@ -130,6 +138,22 @@ namespace FaceAPI
             else
             {
                 e.Handled = false;
+            }
+        }
+
+        private void btnXoa_Click(object sender, EventArgs e)
+        {
+            LopHocDTO lh = new LopHocDTO();
+            lh.Ma_Lop = txtLop.Text;
+            lh.SoSinhVien = sosinhvien;
+            if (LopHocBUS.XoaLopHoc(lh))
+            {
+                MessageBox.Show("Xóa Lớp Thành Công");
+                LoadDSLOP();
+            }
+            else
+            {
+                MessageBox.Show("Còn Sinh Viên Trong Lớp " + lh.Ma_Lop);
             }
         }
     }
