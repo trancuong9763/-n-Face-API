@@ -345,7 +345,6 @@ namespace FaceAPI
             SinhVienDTO sv = new SinhVienDTO();
             sv.Ma_Lop = cboTim.Text.ToString();
             dgvDSSV.DataSource = SinhVienBUS.LayDSLop(sv.Ma_Lop);
-
         }
 
 
@@ -432,14 +431,7 @@ namespace FaceAPI
 
         private void cboTim_TextChanged(object sender, EventArgs e)
         {
-            if (cboTim.SelectedIndex < 0)
-            {
-                cboTim.Text = "";
-            }
-            else
-            {
-                cboTim.Text = cboTim.SelectedText;
-            }
+           
         }
 
 
@@ -501,8 +493,10 @@ namespace FaceAPI
 
         private void DanhSachSV_Load_1(object sender, EventArgs e)
         {
-            LoadDSSV();
-
+          
+            SinhVienDTO sv = new SinhVienDTO();
+            sv.Ma_Lop = cboTim.Text.ToString();
+            dgvDSSV.DataSource = SinhVienBUS.LayDSLop(sv.Ma_Lop);
             btnStop.Enabled = false;
             btnXoa.Enabled = false;
             btnCapNhat.Enabled = false;
@@ -651,6 +645,7 @@ namespace FaceAPI
         {
             DanhSachSV fm = new DanhSachSV();
             SinhVienDTO sv = new SinhVienDTO();
+            LopHocDTO lh = new LopHocDTO();
             string filePath = string.Empty;
             string fileExt = string.Empty;
             OpenFileDialog file = new OpenFileDialog(); //open dialog to choose file  
@@ -682,7 +677,6 @@ namespace FaceAPI
                         MessageBox.Show("Vui lòng chỉ chọn file .xls hoặc .xlsx.", "Cảnh báo", MessageBoxButtons.OK, MessageBoxIcon.Error); //custom messageBox to show error  
 
                     }
-                    Debug.WriteLine(click);
                 }
                 else
                 {
@@ -692,51 +686,67 @@ namespace FaceAPI
             {
                 try
                 {
-                    if (dgvDSSV.Rows.Count < 1)
-                    {
-                        MessageBox.Show("Vui lòng chọn file excel để nhập !", "Thông Báo", MessageBoxButtons.OK);
-                    }
-                    else
-                    {
-                        DialogResult dr;
-                        dr = MessageBox.Show(" Nhập danh sách này vào CSDL", "Thông Báo", MessageBoxButtons.YesNo);
-                        if (dr == DialogResult.Yes)
+                    
+                        if (dgvDSSV.Rows.Count < 1)
                         {
-                            for (int i = 0; i < dgvDSSV.Rows.Count - 1; i++)
+                            MessageBox.Show("Vui lòng chọn file excel để nhập !", "Thông Báo", MessageBoxButtons.OK);
+                        }
+                        else
+                        {
+                            DialogResult dr;
+                            dr = MessageBox.Show(" Nhập danh sách này vào CSDL", "Thông Báo", MessageBoxButtons.YesNo);
+                            if (dr == DialogResult.Yes)
                             {
-                                sv.Ma_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[0].Value);
-                                sv.Ten_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[1].Value);
-                                sv.Ma_Lop = Convert.ToString(dgvDSSV.Rows[i].Cells[2].Value).ToUpper();
-                                sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
-                                sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
-                                sv.TrangThai = Convert.ToBoolean(null);
+                             
+                                for (int i = 0; i < dgvDSSV.Rows.Count - 1; i++)
+                                {
+                                    sv.Ma_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[0].Value);
+                                    sv.Ten_SV = Convert.ToString(dgvDSSV.Rows[i].Cells[1].Value);
+                                    sv.Ma_Lop = Convert.ToString(dgvDSSV.Rows[i].Cells[2].Value).ToUpper();
+                                    sv.SoNgayHoc = Convert.ToInt32(dgvDSSV.Rows[i].Cells[3].Value);
+                                    sv.SoNgayVang = Convert.ToInt32(dgvDSSV.Rows[i].Cells[4].Value);
+                                    sv.TrangThai = Convert.ToBoolean(null);
+                                    if (LopHocBUS.KTLopHoc(sv.Ma_Lop))
+                                    {
+                                        SinhVienBUS.ThemSVExcel(sv);
+                                        if (i == dgvDSSV.Rows.Count)
+                                        {
+                                            MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                        }
+                                    }
+                                    else
+                                    {
+                                        MessageBox.Show("Lớp không tồn tại");break;
+                                    }
+                                   
+                                   
 
-                                SinhVienBUS.ThemSVExcel(sv);
+                                }
+                                dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
+                                ChonLop();
+                                dgvDSSV.Columns[0].Width = 150;
+                                dgvDSSV.Columns[1].Width = 150;
+                                dgvDSSV.Columns[2].Width = 150;
+                                dgvDSSV.Columns[3].Width = 100;
+                                dgvDSSV.Columns[4].Width = 100;
+                                dgvDSSV.Columns[5].Width = 150;
+
+
+                               
+                                LoadDSSV();
+
 
                             }
-                            dgvDSSV.DataSource = SinhVienBUS.LayDSSV();
-                            ChonLop();
-                            dgvDSSV.Columns[0].Width = 150;
-                            dgvDSSV.Columns[1].Width = 150;
-                            dgvDSSV.Columns[2].Width = 150;
-                            dgvDSSV.Columns[3].Width = 100;
-                            dgvDSSV.Columns[4].Width = 100;
-                            dgvDSSV.Columns[5].Width = 150;
+                            else if (dr == DialogResult.No)
+                            {
+                                click = 0;
 
-
-                            MessageBox.Show("\tĐã nhập thành công !", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadDSSV();
-
-
+                            }
                         }
-                        else if (dr == DialogResult.No)
-                        {
-                            click = 0;
 
-                        }
-                    }
-
-                    click = 0;
+                        click = 0;
+                    
+                    
                 }
                 catch (Exception ex)
                 {
@@ -753,7 +763,6 @@ namespace FaceAPI
             string path = Directory.GetCurrentDirectory() + @"\TrainedImages";
             string[] files = Directory.GetFiles(path, "*.bmp", SearchOption.AllDirectories);
 
-            Debug.WriteLine(cboTim.Text.ToString());
 
             if (cboTim.Text.ToString() != "")
             {

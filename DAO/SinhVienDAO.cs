@@ -80,7 +80,7 @@ namespace DAO
         }
         public static DataTable LayDSLopHoc(SinhVienDTO sv)
         {
-            string query = "SELECT Ma_Lop FROM LopHoc";
+            string query = "SELECT Ma_Lop FROM LopHoc WHERE TrangThai=1";
             SqlParameter[] param = new SqlParameter[0];
             return DataProvider.ExecuteSelectQuery(query, param);
         }

@@ -15,6 +15,12 @@ namespace BUS
         {
             return LopHocDAO.LayDSLopHoc();
         }
+        public static bool KTLopHoc(string maLop)
+        {
+            return LopHocDAO.KTLopTonTai(maLop);
+
+            
+        }
         public static bool ThemLop(LopHocDTO lh)
         {
             if (LopHocDAO.KTLopTonTai(lh.Ma_Lop))
@@ -39,7 +45,7 @@ namespace BUS
         }
         public static DataTable LayDSLop(LopHocDTO lh)
         {
-
+            
             return LopHocDAO.LayDSLopHoc(lh);
 
         }
