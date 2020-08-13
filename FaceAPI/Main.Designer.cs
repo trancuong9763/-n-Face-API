@@ -51,8 +51,10 @@
             this.btnThongKe = new System.Windows.Forms.Button();
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnDiemDanh = new System.Windows.Forms.Button();
+            this.imgBox2 = new System.Windows.Forms.PictureBox();
             this.timer = new System.Windows.Forms.Timer(this.components);
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.imgBox = new System.Windows.Forms.PictureBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.lblVang = new System.Windows.Forms.Label();
             this.lable8 = new System.Windows.Forms.Label();
@@ -62,16 +64,14 @@
             this.lstDiHoc = new System.Windows.Forms.ListBox();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.imgBox = new System.Windows.Forms.PictureBox();
-            this.imgBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imgBox2)).BeginInit();
+            this.groupBox5.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBox)).BeginInit();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -350,6 +350,15 @@
             this.btnDiemDanh.UseVisualStyleBackColor = true;
             this.btnDiemDanh.Click += new System.EventHandler(this.btnDiemDanh_Click);
             // 
+            // imgBox2
+            // 
+            this.imgBox2.Location = new System.Drawing.Point(3, 26);
+            this.imgBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.imgBox2.Name = "imgBox2";
+            this.imgBox2.Size = new System.Drawing.Size(149, 152);
+            this.imgBox2.TabIndex = 0;
+            this.imgBox2.TabStop = false;
+            // 
             // timer
             // 
             this.timer.Enabled = true;
@@ -366,6 +375,17 @@
             this.groupBox5.TabIndex = 3;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Camera";
+            // 
+            // imgBox
+            // 
+            this.imgBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.imgBox.Location = new System.Drawing.Point(3, 19);
+            this.imgBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.imgBox.Name = "imgBox";
+            this.imgBox.Size = new System.Drawing.Size(381, 278);
+            this.imgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.imgBox.TabIndex = 0;
+            this.imgBox.TabStop = false;
             // 
             // groupBox6
             // 
@@ -476,25 +496,6 @@
             this.label5.TabIndex = 16;
             this.label5.Text = "Sinh Viên Đi Học";
             // 
-            // imgBox
-            // 
-            this.imgBox.Location = new System.Drawing.Point(7, 23);
-            this.imgBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.imgBox.Name = "imgBox";
-            this.imgBox.Size = new System.Drawing.Size(376, 271);
-            this.imgBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.imgBox.TabIndex = 0;
-            this.imgBox.TabStop = false;
-            // 
-            // imgBox2
-            // 
-            this.imgBox2.Location = new System.Drawing.Point(3, 26);
-            this.imgBox2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.imgBox2.Name = "imgBox2";
-            this.imgBox2.Size = new System.Drawing.Size(149, 152);
-            this.imgBox2.TabIndex = 0;
-            this.imgBox2.TabStop = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -519,11 +520,11 @@
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.imgBox2)).EndInit();
             this.groupBox5.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.imgBox)).EndInit();
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBox)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.imgBox2)).EndInit();
             this.ResumeLayout(false);
 
         }

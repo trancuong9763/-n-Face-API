@@ -72,8 +72,8 @@ namespace FaceAPI
         private void btnDiemDanh_Click(object sender, EventArgs e)
         {
             btnThongKe.Enabled = true;
-            facederection = true;
-            TrainImagesFromDir();
+            facederection = true; // quet khuon mat 
+            TrainImagesFromDir();//train hinh anh tuong duong khuon mat
             btnStart.Enabled = false;
             //cam = new VideoCaptureDevice(camera[0].MonikerString);
 
@@ -189,13 +189,15 @@ namespace FaceAPI
             lblHoten.Text = "";
             lblLop.Text = "";
             lblMSSV.Text = "";
+            //hien thi sinh vien len list vang
+            //PersonsLabes so hinh anh
             if (lstDiHoc.Items.Count == 0)
             {
                 for (int i = 0; i < PersonsLabes.Count; i++)
                 {
                     if(lstVang.FindString(PersonsMSSV[i])!=-1)
                     {
-
+                        // kiểm tra list vắng có tồn tại mssv đó chưa
                     }
                     else
                     {
@@ -210,13 +212,13 @@ namespace FaceAPI
                 {
                     if(lstDiHoc.FindString(PersonsMSSV[i])!=-1)
                     {
-                        //nếu trong list đi học tồn tại tên rồi thì không add
+                        //nếu trong list đi học tồn tại mssv rồi thì không add qua list vắng
                     }
                     else
                     {
                         if(lstVang.FindString(PersonsMSSV[i]) != -1)
                         {
-
+                            //kiểm tra list vắng có tồn tại mssv đó chưa, có không add
                         }
                         else
                         {
@@ -452,9 +454,17 @@ namespace FaceAPI
         private void btnStop_Click(object sender, EventArgs e)
         {
             btnStart.Enabled = true;
-            imgBox.Image=null;
-            imgBox2.Image = null;
-            quayVideo.Dispose();
+            btnDiemDanh.Enabled = false;
+            btnThongKe.Enabled = false;
+            btnLuu.Enabled = false;
+
+            if (quayVideo != null)
+            {
+                facederection = false;
+                quayVideo.Dispose();
+                imgBox.Image = null;
+                imgBox2.Image = null;
+            }    
             quayVideo = null;
 
         }
