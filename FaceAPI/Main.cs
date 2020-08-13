@@ -167,18 +167,6 @@ namespace FaceAPI
 
             imgBox.Image = currentFrame.Bitmap;
         }
-
-
-
-
-
-
-       
-
-      
-
-
-
         private void btnThongKe_Click(object sender, EventArgs e)
         {
             facederection = false;
